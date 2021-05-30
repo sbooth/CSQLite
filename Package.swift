@@ -63,7 +63,10 @@ let package = Package(
 			],
 			linkerSettings: [
 				.linkedLibrary("m")
-			])
+			]),
+		.testTarget(
+			name: "CSQLiteTests",
+			dependencies: ["CSQLite"])
     ],
 	cLanguageStandard: .gnu11
 )
