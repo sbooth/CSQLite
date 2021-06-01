@@ -14,7 +14,7 @@
  ** accessible from Swift.
  */
 
-#include "sqlite3_swift_glue.h"
+#include "csqlite_swift_glue.h"
 
 char * csqlite_sqlite3_strdup(const char *s)
 {
