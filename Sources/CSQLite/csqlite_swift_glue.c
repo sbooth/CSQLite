@@ -140,6 +140,11 @@ int csqlite_sqlite3_config_memdb_maxsize(sqlite3_int64 x)
 
 // MARK: - Database connection configuration
 
+int csqlite_sqlite3_db_config_lookaside(sqlite3 *db, void *x, int y, int z)
+{
+	return sqlite3_db_config(db, SQLITE_DBCONFIG_LOOKASIDE, x, y, z);
+}
+
 int csqlite_sqlite3_db_config_enable_fkey(sqlite3 *db, int x, int *y)
 {
 	return sqlite3_db_config(db, SQLITE_DBCONFIG_ENABLE_FKEY, x, y);
@@ -155,9 +160,19 @@ int csqlite_sqlite3_db_config_enable_view(sqlite3 *db, int x, int *y)
 	return sqlite3_db_config(db, SQLITE_DBCONFIG_ENABLE_VIEW, x, y);
 }
 
+int csqlite_sqlite3_db_config_enable_ft3_tokenizer(sqlite3 *db, int x, int *y)
+{
+	return sqlite3_db_config(db, SQLITE_DBCONFIG_ENABLE_FTS3_TOKENIZER, x, y);
+}
+
 int csqlite_sqlite3_db_config_enable_load_extension(sqlite3 *db, int x, int *y)
 {
 	return sqlite3_db_config(db, SQLITE_DBCONFIG_ENABLE_LOAD_EXTENSION, x, y);
+}
+
+int csqlite_sqlite3_db_config_maindbname(sqlite3 *db, char *x)
+{
+	return sqlite3_db_config(db, SQLITE_DBCONFIG_MAINDBNAME, x);
 }
 
 int csqlite_sqlite3_db_config_no_ckpt_on_close(sqlite3 *db, int x, int *y)
@@ -168,6 +183,16 @@ int csqlite_sqlite3_db_config_no_ckpt_on_close(sqlite3 *db, int x, int *y)
 int csqlite_sqlite3_db_config_enable_qpsg(sqlite3 *db, int x, int *y)
 {
 	return sqlite3_db_config(db, SQLITE_DBCONFIG_ENABLE_QPSG, x, y);
+}
+
+int csqlite_sqlite3_db_config_trigger_eqp(sqlite3 *db, int x, int *y)
+{
+	return sqlite3_db_config(db, SQLITE_DBCONFIG_TRIGGER_EQP, x, y);
+}
+
+int csqlite_sqlite3_db_config_reset_database(sqlite3 *db, int x, int *y)
+{
+	return sqlite3_db_config(db, SQLITE_DBCONFIG_RESET_DATABASE, x, y);
 }
 
 int csqlite_sqlite3_db_config_defensive(sqlite3 *db, int x, int *y)
@@ -198,4 +223,9 @@ int csqlite_sqlite3_db_config_dqs_ddl(sqlite3 *db, int x, int *y)
 int csqlite_sqlite3_db_config_trusted_schema(sqlite3 *db, int x, int *y)
 {
 	return sqlite3_db_config(db, SQLITE_DBCONFIG_TRUSTED_SCHEMA, x, y);
+}
+
+int csqlite_sqlite3_db_config_legacy_file_format(sqlite3 *db, int x, int *y)
+{
+	return sqlite3_db_config(db, SQLITE_DBCONFIG_LEGACY_FILE_FORMAT, x, y);
 }
