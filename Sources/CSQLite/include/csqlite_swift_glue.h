@@ -49,13 +49,13 @@ int csqlite_sqlite3_config_pcache2(sqlite3 *db, sqlite3_pcache_methods2 *x);
 /// Equivalent to `sqlite3_config(db, SQLITE_CONFIG_GETPCACHE2, x)`
 int csqlite_sqlite3_config_getpcache2(sqlite3 *db, sqlite3_pcache_methods2 *x);
 /// Equivalent to `sqlite3_config(db, SQLITE_CONFIG_LOG, x, y)`
-int csqlite_sqlite3_config_log(sqlite3 *db, void(*x)(void *,int,const char *), void *y);
+int csqlite_sqlite3_config_log(sqlite3 *db, void(*x)(void *, int, const char *), void *y);
 /// Equivalent to `sqlite3_config(db, SQLITE_CONFIG_URI, x)`
 int csqlite_sqlite3_config_uri(sqlite3 *db, int x);
 /// Equivalent to `sqlite3_config(db, SQLITE_CONFIG_COVERING_INDEX_SCAN, x)`
 int csqlite_sqlite3_config_covering_index_scan(sqlite3 *db, int x);
 /// Equivalent to `sqlite3_config(db, SQLITE_CONFIG_SQLLOG, x, y)`
-int csqlite_sqlite3_config_sqllog(sqlite3 *db, void(*x)(void *,sqlite3 *,const char *, int), void *y);
+int csqlite_sqlite3_config_sqllog(sqlite3 *db, void(*x)(void *, sqlite3 *, const char *, int), void *y);
 /// Equivalent to `sqlite3_config(db, SQLITE_CONFIG_MMAP_SIZE, x, y)`
 int csqlite_sqlite3_config_mmap_size(sqlite3 *db, sqlite3_int64 x, sqlite3_int64 y);
 /// Equivalent to `sqlite3_config(db, SQLITE_CONFIG_PCACHE_HDRSZ, x)`

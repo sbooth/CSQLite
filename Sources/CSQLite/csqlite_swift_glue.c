@@ -88,7 +88,7 @@ int csqlite_sqlite3_config_getpcache2(sqlite3 *db, sqlite3_pcache_methods2 *x)
 	return sqlite3_config(SQLITE_CONFIG_GETPCACHE2, x);
 }
 
-int csqlite_sqlite3_config_log(sqlite3 *db, void(*x)(void *,int,const char *), void *y)
+int csqlite_sqlite3_config_log(sqlite3 *db, void(*x)(void *, int, const char *), void *y)
 {
 	return sqlite3_config(SQLITE_CONFIG_LOG, x, y);
 }
@@ -103,7 +103,7 @@ int csqlite_sqlite3_config_covering_index_scan(sqlite3 *db, int x)
 	return sqlite3_config(SQLITE_CONFIG_COVERING_INDEX_SCAN, x);
 }
 
-int csqlite_sqlite3_config_sqllog(sqlite3 *db, void(*x)(void *,sqlite3 *,const char *, int), void *y)
+int csqlite_sqlite3_config_sqllog(sqlite3 *db, void(*x)(void *, sqlite3 *, const char *, int), void *y)
 {
 	return sqlite3_config(SQLITE_CONFIG_SQLLOG, x, y);
 }
