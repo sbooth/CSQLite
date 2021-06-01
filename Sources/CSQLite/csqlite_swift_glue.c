@@ -23,117 +23,117 @@ char * csqlite_sqlite3_strdup(const char *s)
 
 // MARK: - SQLite library configuration
 
-int csqlite_sqlite3_config_singlethread(sqlite3 *db)
+int csqlite_sqlite3_config_singlethread()
 {
 	return sqlite3_config(SQLITE_CONFIG_SINGLETHREAD);
 }
 
-int csqlite_sqlite3_config_multithread(sqlite3 *db)
+int csqlite_sqlite3_config_multithread()
 {
 	return sqlite3_config(SQLITE_CONFIG_MULTITHREAD);
 }
 
-int csqlite_sqlite3_config_serialized(sqlite3 *db)
+int csqlite_sqlite3_config_serialized()
 {
 	return sqlite3_config(SQLITE_CONFIG_SERIALIZED);
 }
 
-int csqlite_sqlite3_config_malloc(sqlite3 *db, sqlite3_mem_methods *x)
+int csqlite_sqlite3_config_malloc(sqlite3_mem_methods *x)
 {
 	return sqlite3_config(SQLITE_CONFIG_MALLOC, x);
 }
 
-int csqlite_sqlite3_config_getmalloc(sqlite3 *db, sqlite3_mem_methods *x)
+int csqlite_sqlite3_config_getmalloc(sqlite3_mem_methods *x)
 {
 	return sqlite3_config(SQLITE_CONFIG_GETMALLOC, x);
 }
 
-int csqlite_sqlite3_config_memstatus(sqlite3 *db, int x)
+int csqlite_sqlite3_config_memstatus(int x)
 {
 	return sqlite3_config(SQLITE_CONFIG_MEMSTATUS, x);
 }
 
-int csqlite_sqlite3_config_pagecache(sqlite3 *db, void *x, int y, int z)
+int csqlite_sqlite3_config_pagecache(void *x, int y, int z)
 {
 	return sqlite3_config(SQLITE_CONFIG_PAGECACHE, x, y, z);
 }
 
-int csqlite_sqlite3_config_heap(sqlite3 *db, void *x, int y, int z)
+int csqlite_sqlite3_config_heap(void *x, int y, int z)
 {
 	return sqlite3_config(SQLITE_CONFIG_HEAP, x, y, z);
 }
 
-int csqlite_sqlite3_config_mutex(sqlite3 *db, sqlite3_mutex_methods *x)
+int csqlite_sqlite3_config_mutex(sqlite3_mutex_methods *x)
 {
 	return sqlite3_config(SQLITE_CONFIG_MUTEX, x);
 }
 
-int csqlite_sqlite3_config_getmutex(sqlite3 *db, sqlite3_mutex_methods *x)
+int csqlite_sqlite3_config_getmutex(sqlite3_mutex_methods *x)
 {
 	return sqlite3_config(SQLITE_CONFIG_GETMUTEX, x);
 }
 
-int csqlite_sqlite3_config_lookaside(sqlite3 *db, int x, int y)
+int csqlite_sqlite3_config_lookaside(int x, int y)
 {
 	return sqlite3_config(SQLITE_CONFIG_LOOKASIDE, x);
 }
 
-int csqlite_sqlite3_config_pcache2(sqlite3 *db, sqlite3_pcache_methods2 *x)
+int csqlite_sqlite3_config_pcache2(sqlite3_pcache_methods2 *x)
 {
 	return sqlite3_config(SQLITE_CONFIG_PCACHE2, x);
 }
 
-int csqlite_sqlite3_config_getpcache2(sqlite3 *db, sqlite3_pcache_methods2 *x)
+int csqlite_sqlite3_config_getpcache2(sqlite3_pcache_methods2 *x)
 {
 	return sqlite3_config(SQLITE_CONFIG_GETPCACHE2, x);
 }
 
-int csqlite_sqlite3_config_log(sqlite3 *db, void(*x)(void *, int, const char *), void *y)
+int csqlite_sqlite3_config_log(void(*x)(void *, int, const char *), void *y)
 {
 	return sqlite3_config(SQLITE_CONFIG_LOG, x, y);
 }
 
-int csqlite_sqlite3_config_uri(sqlite3 *db, int x)
+int csqlite_sqlite3_config_uri(int x)
 {
 	return sqlite3_config(SQLITE_CONFIG_URI, x);
 }
 
-int csqlite_sqlite3_config_covering_index_scan(sqlite3 *db, int x)
+int csqlite_sqlite3_config_covering_index_scan(int x)
 {
 	return sqlite3_config(SQLITE_CONFIG_COVERING_INDEX_SCAN, x);
 }
 
-int csqlite_sqlite3_config_sqllog(sqlite3 *db, void(*x)(void *, sqlite3 *, const char *, int), void *y)
+int csqlite_sqlite3_config_sqllog(void(*x)(void *, sqlite3 *, const char *, int), void *y)
 {
 	return sqlite3_config(SQLITE_CONFIG_SQLLOG, x, y);
 }
 
-int csqlite_sqlite3_config_mmap_size(sqlite3 *db, sqlite3_int64 x, sqlite3_int64 y)
+int csqlite_sqlite3_config_mmap_size(sqlite3_int64 x, sqlite3_int64 y)
 {
 	return sqlite3_config(SQLITE_CONFIG_MMAP_SIZE, x, y);
 }
 
-int csqlite_sqlite3_config_pcache_hdrsz(sqlite3 *db, int *x)
+int csqlite_sqlite3_config_pcache_hdrsz(int *x)
 {
 	return sqlite3_config(SQLITE_CONFIG_PCACHE_HDRSZ, x);
 }
 
-int csqlite_sqlite3_config_pmasz(sqlite3 *db, unsigned int x)
+int csqlite_sqlite3_config_pmasz(unsigned int x)
 {
 	return sqlite3_config(SQLITE_CONFIG_PMASZ, x);
 }
 
-int csqlite_sqlite3_config_stmtjrnl_spill(sqlite3 *db, int x)
+int csqlite_sqlite3_config_stmtjrnl_spill(int x)
 {
 	return sqlite3_config(SQLITE_CONFIG_STMTJRNL_SPILL, x);
 }
 
-int csqlite_sqlite3_config_sorterref_size(sqlite3 *db, int x)
+int csqlite_sqlite3_config_sorterref_size(int x)
 {
 	return sqlite3_config(SQLITE_CONFIG_SORTERREF_SIZE, x);
 }
 
-int csqlite_sqlite3_config_memdb_maxsize(sqlite3 *db, sqlite3_int64 x)
+int csqlite_sqlite3_config_memdb_maxsize(sqlite3_int64 x)
 {
 	return sqlite3_config(SQLITE_CONFIG_MEMDB_MAXSIZE, x);
 }
