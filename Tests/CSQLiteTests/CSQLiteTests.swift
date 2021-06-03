@@ -108,7 +108,7 @@ final class CSQLiteTests: XCTestCase {
 	}
 
 	func testIEEE() {
-		XCTAssert(csqlite_sqlite3_auto_extension_ieee() == SQLITE_OK)
+		XCTAssert(csqlite_sqlite3_auto_extension_ieee754() == SQLITE_OK)
 
 		var db: OpaquePointer?
 		sqlite3_open_v2(":memory:", &db, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, nil)
@@ -146,7 +146,7 @@ final class CSQLiteTests: XCTestCase {
 	}
 
 	func testSHA1() {
-		XCTAssert(csqlite_sqlite3_auto_extension_sha() == SQLITE_OK)
+		XCTAssert(csqlite_sqlite3_auto_extension_sha1() == SQLITE_OK)
 
 		var db: OpaquePointer?
 		sqlite3_open_v2(":memory:", &db, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, nil)
@@ -162,7 +162,7 @@ final class CSQLiteTests: XCTestCase {
 	}
 
 	func testSHA3() {
-		XCTAssert(csqlite_sqlite3_auto_extension_shathree() == SQLITE_OK)
+		XCTAssert(csqlite_sqlite3_auto_extension_sha3() == SQLITE_OK)
 
 		var db: OpaquePointer?
 		sqlite3_open_v2(":memory:", &db, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, nil)

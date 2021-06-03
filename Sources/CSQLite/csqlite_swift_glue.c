@@ -244,7 +244,7 @@ int csqlite_sqlite3_auto_extension_decimal()
 }
 
 void sqlite3_ieee_init();
-int csqlite_sqlite3_auto_extension_ieee()
+int csqlite_sqlite3_auto_extension_ieee754()
 {
 	return sqlite3_auto_extension(sqlite3_ieee_init);
 }
@@ -256,13 +256,13 @@ int csqlite_sqlite3_auto_extension_series()
 }
 
 void sqlite3_sha_init();
-int csqlite_sqlite3_auto_extension_sha()
+int csqlite_sqlite3_auto_extension_sha1()
 {
 	return sqlite3_auto_extension(sqlite3_sha_init);
 }
 
 void sqlite3_shathree_init();
-int csqlite_sqlite3_auto_extension_shathree()
+int csqlite_sqlite3_auto_extension_sha3()
 {
 	return sqlite3_auto_extension(sqlite3_shathree_init);
 }

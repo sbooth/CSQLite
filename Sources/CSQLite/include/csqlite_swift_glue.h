@@ -143,12 +143,12 @@ int csqlite_sqlite3_auto_extension_carray();
 /// Equivalent to `sqlite3_auto_extension(sqlite3_decimal_init)`
 int csqlite_sqlite3_auto_extension_decimal();
 /// Equivalent to `sqlite3_auto_extension(sqlite3_ieee_init)`
-int csqlite_sqlite3_auto_extension_ieee();
+int csqlite_sqlite3_auto_extension_ieee754();
 /// Equivalent to `sqlite3_auto_extension(sqlite3_series_init)`
 int csqlite_sqlite3_auto_extension_series();
 /// Equivalent to `sqlite3_auto_extension(sqlite3_sha_init)`
-int csqlite_sqlite3_auto_extension_sha();
+int csqlite_sqlite3_auto_extension_sha1();
 /// Equivalent to `sqlite3_auto_extension(sqlite3_shathree_init)`
-int csqlite_sqlite3_auto_extension_shathree();
+int csqlite_sqlite3_auto_extension_sha3();
 /// Equivalent to `sqlite3_auto_extension(sqlite3_uuid_init)`
 int csqlite_sqlite3_auto_extension_uuid();
