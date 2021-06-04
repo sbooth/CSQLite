@@ -168,11 +168,6 @@ int csqlite_sqlite3_auto_extension_series();
 /// Equivalent to `sqlite3_cancel_auto_extension(sqlite3_series_init)`
 int csqlite_sqlite3_cancel_auto_extension_series();
 
-/// Equivalent to `sqlite3_auto_extension(sqlite3_sha_init)`
-int csqlite_sqlite3_auto_extension_sha1();
-/// Equivalent to `sqlite3_cancel_auto_extension(sqlite3_sha_init)`
-int csqlite_sqlite3_cancel_auto_extension_sha1();
-
 /// Equivalent to `sqlite3_auto_extension(sqlite3_shathree_init)`
 int csqlite_sqlite3_auto_extension_sha3();
 /// Equivalent to `sqlite3_cancel_auto_extension(sqlite3_shathree_init)`
