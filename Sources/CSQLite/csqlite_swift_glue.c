@@ -229,6 +229,23 @@ int csqlite_sqlite3_db_config_legacy_file_format(sqlite3 *db, int x, int *y)
 	return sqlite3_db_config(db, SQLITE_DBCONFIG_LEGACY_FILE_FORMAT, x, y);
 }
 
+// MARK: - Virtual table configuration
+
+int csqlite_sqlite3_vtab_config_constraint_support(sqlite3 *db, int x)
+{
+	return sqlite3_vtab_config(db, SQLITE_VTAB_CONSTRAINT_SUPPORT, x);
+}
+
+int csqlite_sqlite3_vtab_config_innocuous(sqlite3 *db)
+{
+	return sqlite3_vtab_config(db, SQLITE_VTAB_INNOCUOUS);
+}
+
+int csqlite_sqlite3_vtab_config_directonly(sqlite3 *db)
+{
+	return sqlite3_vtab_config(db, SQLITE_VTAB_DIRECTONLY);
+}
+
 // MARK: - Database extensions
 
 void sqlite3_carray_init();
