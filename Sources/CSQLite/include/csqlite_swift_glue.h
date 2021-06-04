@@ -108,6 +108,16 @@ int csqlite_sqlite3_db_config_trusted_schema(sqlite3 *db, int x, int *y);
 /// Equivalent to `sqlite3_db_config(db, SQLITE_DBCONFIG_LEGACY_FILE_FORMAT, x, y)`
 int csqlite_sqlite3_db_config_legacy_file_format(sqlite3 *db, int x, int *y);
 
+// MARK: - Virtual table configuration
+// See https://sqlite.org/c3ref/vtab_config.html
+
+/// Equivalent to `sqlite3_vtab_config(db, SQLITE_VTAB_CONSTRAINT_SUPPORT, x)`
+int csqlite_sqlite3_vtab_config_constraint_support(sqlite3 *db, int x);
+/// Equivalent to `sqlite3_vtab_config(db, SQLITE_VTAB_INNOCUOUS)`
+int csqlite_sqlite3_vtab_config_innocuous(sqlite3 *db);
+/// Equivalent to `sqlite3_vtab_config(db, SQLITE_VTAB_DIRECTONLY)`
+int csqlite_sqlite3_vtab_config_directonly(sqlite3 *db);
+
 // MARK: - Database extensions
 // See https://sqlite.org/loadext.html
 
