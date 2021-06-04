@@ -13,7 +13,7 @@
  ** Wrappers for C functions not easily accessible from Swift.
  */
 
-#include "csqlite_swift_glue.h"
+#include "csqlite_swift_shims.h"
 
 char * csqlite_sqlite3_strdup(const char *s)
 {
