@@ -145,22 +145,6 @@ final class CSQLiteTests: XCTestCase {
 		XCTAssert(sqlite3_close(db) == SQLITE_OK)
 	}
 
-	func testSHA1() {
-		XCTAssert(csqlite_sqlite3_auto_extension_sha1() == SQLITE_OK)
-
-		var db: OpaquePointer?
-		XCTAssert(sqlite3_open_v2(":memory:", &db, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, nil) == SQLITE_OK)
-
-		var stmt: OpaquePointer?
-		XCTAssert(sqlite3_prepare_v2(db, "select sha1('sqlite');", -1, &stmt, nil) == SQLITE_OK)
-		XCTAssert(sqlite3_step(stmt) == SQLITE_ROW)
-		let h = String(cString: sqlite3_column_text(stmt, 0))
-		XCTAssertEqual(h, "6d64a5ee3d4875588bfd6dfd8a79cc338887ac1d")
-
-		XCTAssert(sqlite3_finalize(stmt) == SQLITE_OK)
-		XCTAssert(sqlite3_close(db) == SQLITE_OK)
-	}
-
 	func testSHA3() {
 		XCTAssert(csqlite_sqlite3_auto_extension_sha3() == SQLITE_OK)
 

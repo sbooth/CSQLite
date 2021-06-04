@@ -292,17 +292,6 @@ int csqlite_sqlite3_cancel_auto_extension_series()
 	return sqlite3_cancel_auto_extension(sqlite3_series_init);
 }
 
-void sqlite3_sha_init();
-int csqlite_sqlite3_auto_extension_sha1()
-{
-	return sqlite3_auto_extension(sqlite3_sha_init);
-}
-
-int csqlite_sqlite3_cancel_auto_extension_sha1()
-{
-	return sqlite3_cancel_auto_extension(sqlite3_sha_init);
-}
-
 void sqlite3_shathree_init();
 int csqlite_sqlite3_auto_extension_sha3()
 {
