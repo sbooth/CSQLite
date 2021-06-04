@@ -254,10 +254,20 @@ int csqlite_sqlite3_auto_extension_carray()
 	return sqlite3_auto_extension(sqlite3_carray_init);
 }
 
+int csqlite_sqlite3_cancel_auto_extension_carray()
+{
+	return sqlite3_cancel_auto_extension(sqlite3_carray_init);
+}
+
 void sqlite3_decimal_init();
 int csqlite_sqlite3_auto_extension_decimal()
 {
 	return sqlite3_auto_extension(sqlite3_decimal_init);
+}
+
+int csqlite_sqlite3_cancel_auto_extension_decimal()
+{
+	return sqlite3_cancel_auto_extension(sqlite3_decimal_init);
 }
 
 void sqlite3_ieee_init();
@@ -266,10 +276,20 @@ int csqlite_sqlite3_auto_extension_ieee754()
 	return sqlite3_auto_extension(sqlite3_ieee_init);
 }
 
+int csqlite_sqlite3_cancel_auto_extension_ieee754()
+{
+	return sqlite3_cancel_auto_extension(sqlite3_ieee_init);
+}
+
 void sqlite3_series_init();
 int csqlite_sqlite3_auto_extension_series()
 {
 	return sqlite3_auto_extension(sqlite3_series_init);
+}
+
+int csqlite_sqlite3_cancel_auto_extension_series()
+{
+	return sqlite3_cancel_auto_extension(sqlite3_series_init);
 }
 
 void sqlite3_sha_init();
@@ -278,14 +298,29 @@ int csqlite_sqlite3_auto_extension_sha1()
 	return sqlite3_auto_extension(sqlite3_sha_init);
 }
 
+int csqlite_sqlite3_cancel_auto_extension_sha1()
+{
+	return sqlite3_cancel_auto_extension(sqlite3_sha_init);
+}
+
 void sqlite3_shathree_init();
 int csqlite_sqlite3_auto_extension_sha3()
 {
 	return sqlite3_auto_extension(sqlite3_shathree_init);
 }
 
+int csqlite_sqlite3_cancel_auto_extension_sha3()
+{
+	return sqlite3_cancel_auto_extension(sqlite3_shathree_init);
+}
+
 void sqlite3_uuid_init();
 int csqlite_sqlite3_auto_extension_uuid()
 {
 	return sqlite3_auto_extension(sqlite3_uuid_init);
+}
+
+int csqlite_sqlite3_cancel_auto_extension_uuid()
+{
+	return sqlite3_cancel_auto_extension(sqlite3_uuid_init);
 }
