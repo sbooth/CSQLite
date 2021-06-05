@@ -11,23 +11,23 @@ import PackageDescription
 //  - Uncomment lines containing `SQLITE_ENABLE_SESSION`
 
 let package = Package(
-    name: "CSQLite",
-    products: [
-        // Products define the executables and libraries a package produces, and make them visible to other packages.
-        .library(
-            name: "CSQLite",
-            targets: ["CSQLite"]),
-    ],
-    dependencies: [
-        // Dependencies declare other packages that this package depends on.
-        // .package(url: /* package url */, from: "1.0.0"),
-    ],
-    targets: [
-        // Targets are the basic building blocks of a package. A target can define a module or a test suite.
-        // Targets can depend on other targets in this package, and on products in packages this package depends on.
-        .target(
-            name: "CSQLite",
-            dependencies: [],
+	name: "CSQLite",
+	products: [
+		// Products define the executables and libraries a package produces, and make them visible to other packages.
+		.library(
+			name: "CSQLite",
+			targets: ["CSQLite"]),
+	],
+	dependencies: [
+		// Dependencies declare other packages that this package depends on.
+		// .package(url: /* package url */, from: "1.0.0"),
+	],
+	targets: [
+		// Targets are the basic building blocks of a package. A target can define a module or a test suite.
+		// Targets can depend on other targets in this package, and on products in packages this package depends on.
+		.target(
+			name: "CSQLite",
+			dependencies: [],
 			cSettings: [
 				// Compile-time options
 				// https://sqlite.org/compile.html#recommended_compile_time_options
@@ -67,6 +67,6 @@ let package = Package(
 		.testTarget(
 			name: "CSQLiteTests",
 			dependencies: ["CSQLite"])
-    ],
+	],
 	cLanguageStandard: .gnu11
 )
