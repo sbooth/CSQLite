@@ -16,7 +16,7 @@ let package = Package(
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
             name: "CSQLite",
-            targets: ["CSQLite"]),
+            targets: ["CSQLite", "CSQLiteExtensions"]),
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
@@ -59,14 +59,22 @@ let package = Package(
 				.define("SQLITE_ENABLE_RTREE", to: "1"),
 //				.define("SQLITE_ENABLE_SESSION", to: "1"),
 				.define("SQLITE_ENABLE_SNAPSHOT", to: "1"),
-				.define("SQLITE_ENABLE_STAT4", to: "1"),
-				.define("SQLITE_CORE", to: "1")],
+				.define("SQLITE_ENABLE_STAT4", to: "1")],
 			linkerSettings: [
 				.linkedLibrary("m")
 			]),
+		.target(
+			name: "CSQLiteExtensions",
+			dependencies: [ .target(name: "CSQLite") ],
+			cSettings: [
+				.define("SQLITE_CORE", to: "1"),
+			]),
 		.testTarget(
 			name: "CSQLiteTests",
-			dependencies: ["CSQLite"])
+			dependencies: ["CSQLite"]),
+		.testTarget(
+			name: "CSQLiteExtensionsTests",
+			dependencies: ["CSQLiteExtensions"])
     ],
 	cLanguageStandard: .gnu11
 )
