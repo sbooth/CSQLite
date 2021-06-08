@@ -15,7 +15,7 @@ final class CSQLiteTests: XCTestCase {
 		XCTAssert(sqlite3_exec(db, "create table t1(a,b);", nil, nil, nil) == SQLITE_OK)
 
 		var stmt: OpaquePointer?
-		XCTAssert(sqlite3_prepare_v2(db, "insert into t1(a, b) values (?,?);", -1, &stmt, nil) == SQLITE_OK)
+		XCTAssert(sqlite3_prepare_v2(db, "insert into t1(a,b) values (?,?);", -1, &stmt, nil) == SQLITE_OK)
 
 		let rowCount = 42
 		for i in 0..<rowCount {
