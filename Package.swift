@@ -54,7 +54,6 @@ let package = Package(
 //				.define("SQLITE_ENABLE_GEOPOLY", to: "1"),
 //				.define("SQLITE_ENABLE_ICU", to: "1"),
 				.define("SQLITE_ENABLE_MATH_FUNCTIONS", to: "1"),
-				.define("SQLITE_ENABLE_JSON1", to: "1"),
 //				.define("SQLITE_ENABLE_PREUPDATE_HOOK", to: "1"),
 				.define("SQLITE_ENABLE_RTREE", to: "1"),
 //				.define("SQLITE_ENABLE_SESSION", to: "1"),
