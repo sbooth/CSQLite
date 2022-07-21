@@ -1,6 +1,21 @@
 // swift-tools-version:5.3
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
+/*
+ ** 2022-02-25
+ **
+ ** The author disclaims copyright to this source code.  In place of
+ ** a legal notice, here is a blessing:
+ **
+ **    May you do good and not evil.
+ **    May you find forgiveness for yourself and forgive others.
+ **    May you share freely, never taking more than you give.
+ **
+ ******************************************************************************
+ **
+ ** Swift Package Manager manifest for the CSQLite package.
+ */
+
 import PackageDescription
 
 // For pre-update hook support:
