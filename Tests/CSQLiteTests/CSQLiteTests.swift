@@ -199,4 +199,15 @@ final class CSQLiteTests: XCTestCase {
 		XCTAssert(sqlite3_finalize(stmt) == SQLITE_OK)
 		XCTAssert(sqlite3_close(db) == SQLITE_OK)
 	}
-}
+
+	func testStmt() {
+		var db: OpaquePointer?
+		XCTAssert(sqlite3_open_v2(":memory:", &db, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, nil) == SQLITE_OK)
+
+		var stmt: OpaquePointer?
+		XCTAssert(sqlite3_prepare_v2(db, "select * from sqlite_stmt;", -1, &stmt, nil) == SQLITE_OK)
+		XCTAssert(sqlite3_step(stmt) == SQLITE_ROW)
+
+		XCTAssert(sqlite3_finalize(stmt) == SQLITE_OK)
+		XCTAssert(sqlite3_close(db) == SQLITE_OK)
+	}}
