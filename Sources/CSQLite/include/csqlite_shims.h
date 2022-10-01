@@ -15,7 +15,7 @@
 
 #include "sqlite3.h"
 
-/// Duplicates and returns `s` using memory allocated by `sqlite3_malloc()`
+/// Copies `s` into memory allocated by `sqlite3_malloc()` and returns the result
 char * csqlite_sqlite3_strdup(const char *s);
 
 // MARK: - SQLite library configuration
