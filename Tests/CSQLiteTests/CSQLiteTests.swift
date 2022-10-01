@@ -210,4 +210,5 @@ final class CSQLiteTests: XCTestCase {
 
 		XCTAssert(sqlite3_finalize(stmt) == SQLITE_OK)
 		XCTAssert(sqlite3_close(db) == SQLITE_OK)
-	}}
+	}
+}
