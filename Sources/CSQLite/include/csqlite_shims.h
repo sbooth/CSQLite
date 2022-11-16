@@ -31,32 +31,37 @@ int csqlite_sqlite3_config_serialized(void);
 int csqlite_sqlite3_config_malloc(sqlite3_mem_methods *x);
 /// Equivalent to `sqlite3_config(SQLITE_CONFIG_GETMALLOC, x)`
 int csqlite_sqlite3_config_getmalloc(sqlite3_mem_methods *x);
-/// Equivalent to `sqlite3_config(SQLITE_CONFIG_MEMSTATUS, x)`
-int csqlite_sqlite3_config_memstatus(int x);
+// SQLITE_CONFIG_SCRATCH no longer used
 /// Equivalent to `sqlite3_config(SQLITE_CONFIG_PAGECACHE, x, y, z)`
 int csqlite_sqlite3_config_pagecache(void *x, int y, int z);
 /// Equivalent to `sqlite3_config(SQLITE_CONFIG_HEAP, x, y, z)`
 int csqlite_sqlite3_config_heap(void *x, int y, int z);
+/// Equivalent to `sqlite3_config(SQLITE_CONFIG_MEMSTATUS, x)`
+int csqlite_sqlite3_config_memstatus(int x);
 /// Equivalent to `sqlite3_config(SQLITE_CONFIG_MUTEX, x)`
 int csqlite_sqlite3_config_mutex(sqlite3_mutex_methods *x);
 /// Equivalent to `sqlite3_config(SQLITE_CONFIG_GETMUTEX, x)`
 int csqlite_sqlite3_config_getmutex(sqlite3_mutex_methods *x);
+// SQLITE_CONFIG_CHUNKALLOC now unused
 /// Equivalent to `sqlite3_config(SQLITE_CONFIG_LOOKASIDE, x, y)`
 int csqlite_sqlite3_config_lookaside(int x, int y);
-/// Equivalent to `sqlite3_config(SQLITE_CONFIG_PCACHE2, x)`
-int csqlite_sqlite3_config_pcache2(sqlite3_pcache_methods2 *x);
-/// Equivalent to `sqlite3_config(SQLITE_CONFIG_GETPCACHE2, x)`
-int csqlite_sqlite3_config_getpcache2(sqlite3_pcache_methods2 *x);
+// SQLITE_CONFIG_PCACHE no-op
+// SQLITE_CONFIG_GETPCACHE no-op
 /// Equivalent to `sqlite3_config(SQLITE_CONFIG_LOG, x, y)`
 int csqlite_sqlite3_config_log(void(*x)(void *, int, const char *), void *y);
 /// Equivalent to `sqlite3_config(SQLITE_CONFIG_URI, x)`
 int csqlite_sqlite3_config_uri(int x);
+/// Equivalent to `sqlite3_config(SQLITE_CONFIG_PCACHE2, x)`
+int csqlite_sqlite3_config_pcache2(sqlite3_pcache_methods2 *x);
+/// Equivalent to `sqlite3_config(SQLITE_CONFIG_GETPCACHE2, x)`
+int csqlite_sqlite3_config_getpcache2(sqlite3_pcache_methods2 *x);
 /// Equivalent to `sqlite3_config(SQLITE_CONFIG_COVERING_INDEX_SCAN, x)`
 int csqlite_sqlite3_config_covering_index_scan(int x);
 /// Equivalent to `sqlite3_config(SQLITE_CONFIG_SQLLOG, x, y)`
 int csqlite_sqlite3_config_sqllog(void(*x)(void *, sqlite3 *, const char *, int), void *y);
 /// Equivalent to `sqlite3_config(SQLITE_CONFIG_MMAP_SIZE, x, y)`
 int csqlite_sqlite3_config_mmap_size(sqlite3_int64 x, sqlite3_int64 y);
+// SQLITE_CONFIG_WIN32_HEAPSIZE
 /// Equivalent to `sqlite3_config(SQLITE_CONFIG_PCACHE_HDRSZ, x)`
 int csqlite_sqlite3_config_pcache_hdrsz(int *x);
 /// Equivalent to `sqlite3_config(SQLITE_CONFIG_PMASZ, x)`
@@ -71,20 +76,18 @@ int csqlite_sqlite3_config_memdb_maxsize(sqlite3_int64 x);
 // MARK: - Database connection configuration
 // See https://sqlite.org/c3ref/db_config.html
 
+/// Equivalent to `sqlite3_db_config(db, SQLITE_DBCONFIG_MAINDBNAME, x)`
+int csqlite_sqlite3_db_config_maindbname(sqlite3 *db, char *x);
 /// Equivalent to `sqlite3_db_config(db, SQLITE_DBCONFIG_LOOKASIDE, x, y, z)`
 int csqlite_sqlite3_db_config_lookaside(sqlite3 *db, void *x, int y, int z);
 /// Equivalent to `sqlite3_db_config(db, SQLITE_DBCONFIG_ENABLE_FKEY, x, y)`
 int csqlite_sqlite3_db_config_enable_fkey(sqlite3 *db, int x, int *y);
 /// Equivalent to `sqlite3_db_config(db, SQLITE_DBCONFIG_ENABLE_TRIGGER, x, y)`
 int csqlite_sqlite3_db_config_enable_trigger(sqlite3 *db, int x, int *y);
-/// Equivalent to `sqlite3_db_config(db, SQLITE_DBCONFIG_ENABLE_VIEW, x, y)`
-int csqlite_sqlite3_db_config_enable_view(sqlite3 *db, int x, int *y);
 /// Equivalent to `sqlite3_db_config(db, SQLITE_DBCONFIG_ENABLE_FTS3_TOKENIZER, x, y)`
 int csqlite_sqlite3_db_config_enable_ft3_tokenizer(sqlite3 *db, int x, int *y);
 /// Equivalent to `sqlite3_db_config(db, SQLITE_DBCONFIG_ENABLE_LOAD_EXTENSION, x, y)`
 int csqlite_sqlite3_db_config_enable_load_extension(sqlite3 *db, int x, int *y);
-/// Equivalent to `sqlite3_db_config(db, SQLITE_DBCONFIG_MAINDBNAME, x)`
-int csqlite_sqlite3_db_config_maindbname(sqlite3 *db, char *x);
 /// Equivalent to `sqlite3_db_config(db, SQLITE_DBCONFIG_NO_CKPT_ON_CLOSE, x, y)`
 int csqlite_sqlite3_db_config_no_ckpt_on_close(sqlite3 *db, int x, int *y);
 /// Equivalent to `sqlite3_db_config(db, SQLITE_DBCONFIG_ENABLE_QPSG, x, y)`
@@ -103,10 +106,12 @@ int csqlite_sqlite3_db_config_legacy_alter_table(sqlite3 *db, int x, int *y);
 int csqlite_sqlite3_db_config_dqs_dml(sqlite3 *db, int x, int *y);
 /// Equivalent to `sqlite3_db_config(db, SQLITE_DBCONFIG_DQS_DDL, x, y)`
 int csqlite_sqlite3_db_config_dqs_ddl(sqlite3 *db, int x, int *y);
-/// Equivalent to `sqlite3_db_config(db, SQLITE_DBCONFIG_TRUSTED_SCHEMA, x, y)`
-int csqlite_sqlite3_db_config_trusted_schema(sqlite3 *db, int x, int *y);
+/// Equivalent to `sqlite3_db_config(db, SQLITE_DBCONFIG_ENABLE_VIEW, x, y)`
+int csqlite_sqlite3_db_config_enable_view(sqlite3 *db, int x, int *y);
 /// Equivalent to `sqlite3_db_config(db, SQLITE_DBCONFIG_LEGACY_FILE_FORMAT, x, y)`
 int csqlite_sqlite3_db_config_legacy_file_format(sqlite3 *db, int x, int *y);
+/// Equivalent to `sqlite3_db_config(db, SQLITE_DBCONFIG_TRUSTED_SCHEMA, x, y)`
+int csqlite_sqlite3_db_config_trusted_schema(sqlite3 *db, int x, int *y);
 
 // MARK: - Virtual table configuration
 // See https://sqlite.org/c3ref/vtab_config.html
