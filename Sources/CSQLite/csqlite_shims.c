@@ -47,19 +47,19 @@ int csqlite_sqlite3_config_getmalloc(sqlite3_mem_methods *x)
 	return sqlite3_config(SQLITE_CONFIG_GETMALLOC, x);
 }
 
+int csqlite_sqlite3_config_pagecache(void *x, int sz, int N)
+{
+	return sqlite3_config(SQLITE_CONFIG_PAGECACHE, x, sz, N);
+}
+
+int csqlite_sqlite3_config_heap(void *x, int nByte, int min)
+{
+	return sqlite3_config(SQLITE_CONFIG_HEAP, x, nByte, min);
+}
+
 int csqlite_sqlite3_config_memstatus(int x)
 {
 	return sqlite3_config(SQLITE_CONFIG_MEMSTATUS, x);
-}
-
-int csqlite_sqlite3_config_pagecache(void *x, int y, int z)
-{
-	return sqlite3_config(SQLITE_CONFIG_PAGECACHE, x, y, z);
-}
-
-int csqlite_sqlite3_config_heap(void *x, int y, int z)
-{
-	return sqlite3_config(SQLITE_CONFIG_HEAP, x, y, z);
 }
 
 int csqlite_sqlite3_config_mutex(sqlite3_mutex_methods *x)
@@ -77,16 +77,6 @@ int csqlite_sqlite3_config_lookaside(int x, int y)
 	return sqlite3_config(SQLITE_CONFIG_LOOKASIDE, x);
 }
 
-int csqlite_sqlite3_config_pcache2(sqlite3_pcache_methods2 *x)
-{
-	return sqlite3_config(SQLITE_CONFIG_PCACHE2, x);
-}
-
-int csqlite_sqlite3_config_getpcache2(sqlite3_pcache_methods2 *x)
-{
-	return sqlite3_config(SQLITE_CONFIG_GETPCACHE2, x);
-}
-
 int csqlite_sqlite3_config_log(void(*x)(void *, int, const char *), void *y)
 {
 	return sqlite3_config(SQLITE_CONFIG_LOG, x, y);
@@ -95,6 +85,16 @@ int csqlite_sqlite3_config_log(void(*x)(void *, int, const char *), void *y)
 int csqlite_sqlite3_config_uri(int x)
 {
 	return sqlite3_config(SQLITE_CONFIG_URI, x);
+}
+
+int csqlite_sqlite3_config_pcache2(sqlite3_pcache_methods2 *x)
+{
+	return sqlite3_config(SQLITE_CONFIG_PCACHE2, x);
+}
+
+int csqlite_sqlite3_config_getpcache2(sqlite3_pcache_methods2 *x)
+{
+	return sqlite3_config(SQLITE_CONFIG_GETPCACHE2, x);
 }
 
 int csqlite_sqlite3_config_covering_index_scan(int x)
@@ -112,24 +112,34 @@ int csqlite_sqlite3_config_mmap_size(sqlite3_int64 x, sqlite3_int64 y)
 	return sqlite3_config(SQLITE_CONFIG_MMAP_SIZE, x, y);
 }
 
-int csqlite_sqlite3_config_pcache_hdrsz(int *x)
+int csqlite_sqlite3_config_win32_heapsize(int nByte)
 {
-	return sqlite3_config(SQLITE_CONFIG_PCACHE_HDRSZ, x);
+	return sqlite3_config(SQLITE_CONFIG_WIN32_HEAPSIZE, nByte);
 }
 
-int csqlite_sqlite3_config_pmasz(unsigned int x)
+int csqlite_sqlite3_config_pcache_hdrsz(int *psz)
 {
-	return sqlite3_config(SQLITE_CONFIG_PMASZ, x);
+	return sqlite3_config(SQLITE_CONFIG_PCACHE_HDRSZ, psz);
 }
 
-int csqlite_sqlite3_config_stmtjrnl_spill(int x)
+int csqlite_sqlite3_config_pmasz(unsigned int szPma)
 {
-	return sqlite3_config(SQLITE_CONFIG_STMTJRNL_SPILL, x);
+	return sqlite3_config(SQLITE_CONFIG_PMASZ, szPma);
 }
 
-int csqlite_sqlite3_config_sorterref_size(int x)
+int csqlite_sqlite3_config_stmtjrnl_spill(int nByte)
 {
-	return sqlite3_config(SQLITE_CONFIG_SORTERREF_SIZE, x);
+	return sqlite3_config(SQLITE_CONFIG_STMTJRNL_SPILL, nByte);
+}
+
+int csqlite_sqlite3_config_small_malloc(int x)
+{
+	return sqlite3_config(SQLITE_CONFIG_SMALL_MALLOC, x);
+}
+
+int csqlite_sqlite3_config_sorterref_size(int nByte)
+{
+	return sqlite3_config(SQLITE_CONFIG_SORTERREF_SIZE, nByte);
 }
 
 int csqlite_sqlite3_config_memdb_maxsize(sqlite3_int64 x)
@@ -138,6 +148,11 @@ int csqlite_sqlite3_config_memdb_maxsize(sqlite3_int64 x)
 }
 
 // MARK: - Database connection configuration
+
+int csqlite_sqlite3_db_config_maindbname(sqlite3 *db, char *x)
+{
+	return sqlite3_db_config(db, SQLITE_DBCONFIG_MAINDBNAME, x);
+}
 
 int csqlite_sqlite3_db_config_lookaside(sqlite3 *db, void *x, int y, int z)
 {
@@ -154,11 +169,6 @@ int csqlite_sqlite3_db_config_enable_trigger(sqlite3 *db, int x, int *y)
 	return sqlite3_db_config(db, SQLITE_DBCONFIG_ENABLE_TRIGGER, x, y);
 }
 
-int csqlite_sqlite3_db_config_enable_view(sqlite3 *db, int x, int *y)
-{
-	return sqlite3_db_config(db, SQLITE_DBCONFIG_ENABLE_VIEW, x, y);
-}
-
 int csqlite_sqlite3_db_config_enable_ft3_tokenizer(sqlite3 *db, int x, int *y)
 {
 	return sqlite3_db_config(db, SQLITE_DBCONFIG_ENABLE_FTS3_TOKENIZER, x, y);
@@ -167,11 +177,6 @@ int csqlite_sqlite3_db_config_enable_ft3_tokenizer(sqlite3 *db, int x, int *y)
 int csqlite_sqlite3_db_config_enable_load_extension(sqlite3 *db, int x, int *y)
 {
 	return sqlite3_db_config(db, SQLITE_DBCONFIG_ENABLE_LOAD_EXTENSION, x, y);
-}
-
-int csqlite_sqlite3_db_config_maindbname(sqlite3 *db, char *x)
-{
-	return sqlite3_db_config(db, SQLITE_DBCONFIG_MAINDBNAME, x);
 }
 
 int csqlite_sqlite3_db_config_no_ckpt_on_close(sqlite3 *db, int x, int *y)
@@ -219,14 +224,19 @@ int csqlite_sqlite3_db_config_dqs_ddl(sqlite3 *db, int x, int *y)
 	return sqlite3_db_config(db, SQLITE_DBCONFIG_DQS_DDL, x, y);
 }
 
-int csqlite_sqlite3_db_config_trusted_schema(sqlite3 *db, int x, int *y)
+int csqlite_sqlite3_db_config_enable_view(sqlite3 *db, int x, int *y)
 {
-	return sqlite3_db_config(db, SQLITE_DBCONFIG_TRUSTED_SCHEMA, x, y);
+	return sqlite3_db_config(db, SQLITE_DBCONFIG_ENABLE_VIEW, x, y);
 }
 
 int csqlite_sqlite3_db_config_legacy_file_format(sqlite3 *db, int x, int *y)
 {
 	return sqlite3_db_config(db, SQLITE_DBCONFIG_LEGACY_FILE_FORMAT, x, y);
+}
+
+int csqlite_sqlite3_db_config_trusted_schema(sqlite3 *db, int x, int *y)
+{
+	return sqlite3_db_config(db, SQLITE_DBCONFIG_TRUSTED_SCHEMA, x, y);
 }
 
 // MARK: - Virtual table configuration
