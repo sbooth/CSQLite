@@ -112,6 +112,11 @@ int csqlite_sqlite3_config_mmap_size(sqlite3_int64 x, sqlite3_int64 y)
 	return sqlite3_config(SQLITE_CONFIG_MMAP_SIZE, x, y);
 }
 
+int csqlite_sqlite3_config_win32_heapsize(int nByte)
+{
+	return sqlite3_config(SQLITE_CONFIG_WIN32_HEAPSIZE, nByte);
+}
+
 int csqlite_sqlite3_config_pcache_hdrsz(int *x)
 {
 	return sqlite3_config(SQLITE_CONFIG_PCACHE_HDRSZ, x);

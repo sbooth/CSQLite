@@ -61,7 +61,8 @@ int csqlite_sqlite3_config_covering_index_scan(int x);
 int csqlite_sqlite3_config_sqllog(void(*x)(void *, sqlite3 *, const char *, int), void *y);
 /// Equivalent to `sqlite3_config(SQLITE_CONFIG_MMAP_SIZE, x, y)`
 int csqlite_sqlite3_config_mmap_size(sqlite3_int64 x, sqlite3_int64 y);
-// SQLITE_CONFIG_WIN32_HEAPSIZE
+/// Equivalent to `sqlite3_config(SQLITE_CONFIG_WIN32_HEAPSIZE, nByte)`
+int csqlite_sqlite3_config_win32_heapsize(int nByte);
 /// Equivalent to `sqlite3_config(SQLITE_CONFIG_PCACHE_HDRSZ, x)`
 int csqlite_sqlite3_config_pcache_hdrsz(int *x);
 /// Equivalent to `sqlite3_config(SQLITE_CONFIG_PMASZ, x)`
