@@ -132,6 +132,11 @@ int csqlite_sqlite3_config_stmtjrnl_spill(int nByte)
 	return sqlite3_config(SQLITE_CONFIG_STMTJRNL_SPILL, nByte);
 }
 
+int csqlite_sqlite3_config_small_malloc(int x)
+{
+	return sqlite3_config(SQLITE_CONFIG_SMALL_MALLOC, x);
+}
+
 int csqlite_sqlite3_config_sorterref_size(int nByte)
 {
 	return sqlite3_config(SQLITE_CONFIG_SORTERREF_SIZE, nByte);
