@@ -32,10 +32,10 @@ int csqlite_sqlite3_config_malloc(sqlite3_mem_methods *x);
 /// Equivalent to `sqlite3_config(SQLITE_CONFIG_GETMALLOC, x)`
 int csqlite_sqlite3_config_getmalloc(sqlite3_mem_methods *x);
 // SQLITE_CONFIG_SCRATCH no longer used
-/// Equivalent to `sqlite3_config(SQLITE_CONFIG_PAGECACHE, x, y, z)`
-int csqlite_sqlite3_config_pagecache(void *x, int y, int z);
-/// Equivalent to `sqlite3_config(SQLITE_CONFIG_HEAP, x, y, z)`
-int csqlite_sqlite3_config_heap(void *x, int y, int z);
+/// Equivalent to `sqlite3_config(SQLITE_CONFIG_PAGECACHE, x, sz, N)`
+int csqlite_sqlite3_config_pagecache(void *x, int sz, int N);
+/// Equivalent to `sqlite3_config(SQLITE_CONFIG_HEAP, x, nByte, min)`
+int csqlite_sqlite3_config_heap(void *x, int nByte, int min);
 /// Equivalent to `sqlite3_config(SQLITE_CONFIG_MEMSTATUS, x)`
 int csqlite_sqlite3_config_memstatus(int x);
 /// Equivalent to `sqlite3_config(SQLITE_CONFIG_MUTEX, x)`
@@ -63,14 +63,14 @@ int csqlite_sqlite3_config_sqllog(void(*x)(void *, sqlite3 *, const char *, int)
 int csqlite_sqlite3_config_mmap_size(sqlite3_int64 x, sqlite3_int64 y);
 /// Equivalent to `sqlite3_config(SQLITE_CONFIG_WIN32_HEAPSIZE, nByte)`
 int csqlite_sqlite3_config_win32_heapsize(int nByte);
-/// Equivalent to `sqlite3_config(SQLITE_CONFIG_PCACHE_HDRSZ, x)`
-int csqlite_sqlite3_config_pcache_hdrsz(int *x);
-/// Equivalent to `sqlite3_config(SQLITE_CONFIG_PMASZ, x)`
-int csqlite_sqlite3_config_pmasz(unsigned int x);
-/// Equivalent to `sqlite3_config(SQLITE_CONFIG_STMTJRNL_SPILL, x)`
-int csqlite_sqlite3_config_stmtjrnl_spill(int x);
-/// Equivalent to `sqlite3_config(SQLITE_CONFIG_SORTERREF_SIZE, x)`
-int csqlite_sqlite3_config_sorterref_size(int x);
+/// Equivalent to `sqlite3_config(SQLITE_CONFIG_PCACHE_HDRSZ, psz)`
+int csqlite_sqlite3_config_pcache_hdrsz(int *psz);
+/// Equivalent to `sqlite3_config(SQLITE_CONFIG_PMASZ, szPma)`
+int csqlite_sqlite3_config_pmasz(unsigned int szPma);
+/// Equivalent to `sqlite3_config(SQLITE_CONFIG_STMTJRNL_SPILL, nByte)`
+int csqlite_sqlite3_config_stmtjrnl_spill(int nByte);
+/// Equivalent to `sqlite3_config(SQLITE_CONFIG_SORTERREF_SIZE, nByte)`
+int csqlite_sqlite3_config_sorterref_size(int nByte);
 /// Equivalent to `sqlite3_config(SQLITE_CONFIG_MEMDB_MAXSIZE, x)`
 int csqlite_sqlite3_config_memdb_maxsize(sqlite3_int64 x);
 
