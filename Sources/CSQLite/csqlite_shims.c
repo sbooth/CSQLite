@@ -239,6 +239,16 @@ int csqlite_sqlite3_db_config_trusted_schema(sqlite3 *db, int x, int *y)
 	return sqlite3_db_config(db, SQLITE_DBCONFIG_TRUSTED_SCHEMA, x, y);
 }
 
+int csqlite_sqlite3_db_config_stmt_scanstatus(sqlite3 *db, int x, int *y)
+{
+	return sqlite3_db_config(db, SQLITE_DBCONFIG_STMT_SCANSTATUS, x, y);
+}
+
+int csqlite_sqlite3_db_config_reverse_scanorder(sqlite3 *db, int x, int *y)
+{
+	return sqlite3_db_config(db, SQLITE_DBCONFIG_REVERSE_SCANORDER, x, y);
+}
+
 // MARK: - Virtual table configuration
 
 int csqlite_sqlite3_vtab_config_constraint_support(sqlite3 *db, int x)

@@ -115,6 +115,10 @@ int csqlite_sqlite3_db_config_enable_view(sqlite3 *db, int x, int *y);
 int csqlite_sqlite3_db_config_legacy_file_format(sqlite3 *db, int x, int *y);
 /// Equivalent to `sqlite3_db_config(db, SQLITE_DBCONFIG_TRUSTED_SCHEMA, x, y)`
 int csqlite_sqlite3_db_config_trusted_schema(sqlite3 *db, int x, int *y);
+/// Equivalent to `sqlite3_db_config(db, SQLITE_DBCONFIG_STMT_SCANSTATUS, x, y)`
+int csqlite_sqlite3_db_config_stmt_scanstatus(sqlite3 *db, int x, int *y);
+/// Equivalent to `sqlite3_db_config(db, SQLITE_DBCONFIG_REVERSE_SCANORDER, x, y)`
+int csqlite_sqlite3_db_config_reverse_scanorder(sqlite3 *db, int x, int *y);
 
 // MARK: - Virtual table configuration
 // See https://sqlite.org/c3ref/vtab_config.html
