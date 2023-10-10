@@ -33,10 +33,6 @@ let package = Package(
 			name: "CSQLite",
 			targets: ["CSQLite"]),
 	],
-	dependencies: [
-		// Dependencies declare other packages that this package depends on.
-		// .package(url: /* package url */, from: "1.0.0"),
-	],
 	targets: [
 		// Targets are the basic building blocks of a package. A target can define a module or a test suite.
 		// Targets can depend on other targets in this package, and on products in packages this package depends on.
@@ -65,6 +61,7 @@ let package = Package(
 				.define("HAVE_UTIME", to: "1"),
 				// Features
 				// https://sqlite.org/compile.html#_options_to_enable_features_normally_turned_off
+//				.define("SQLITE_ENABLE_COLUMN_METADATA"),
 				.define("SQLITE_ENABLE_FTS5", to: "1"),
 //				.define("SQLITE_ENABLE_GEOPOLY", to: "1"),
 //				.define("SQLITE_ENABLE_ICU", to: "1"),
@@ -77,7 +74,7 @@ let package = Package(
 				.define("SQLITE_ENABLE_STAT4", to: "1"),
 				.define("SQLITE_CORE", to: "1")],
 			linkerSettings: [
-				.linkedLibrary("m")
+				.linkedLibrary("m"),
 			]),
 		.testTarget(
 			name: "CSQLiteTests",
