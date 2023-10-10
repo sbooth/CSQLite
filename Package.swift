@@ -74,7 +74,7 @@ let package = Package(
 				.define("SQLITE_ENABLE_STAT4", to: "1"),
 				.define("SQLITE_CORE", to: "1")],
 			linkerSettings: [
-				.linkedLibrary("m"),
+				.linkedLibrary("m")
 			]),
 		.testTarget(
 			name: "CSQLiteTests",
