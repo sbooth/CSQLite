@@ -129,6 +129,8 @@ int csqlite_sqlite3_vtab_config_constraint_support(sqlite3 *db, int x);
 int csqlite_sqlite3_vtab_config_innocuous(sqlite3 *db);
 /// Equivalent to `sqlite3_vtab_config(db, SQLITE_VTAB_DIRECTONLY)`
 int csqlite_sqlite3_vtab_config_directonly(sqlite3 *db);
+/// Equivalent to `sqlite3_vtab_config(db, SQLITE_VTAB_USES_ALL_SCHEMAS)`
+int csqlite_sqlite3_vtab_uses_all_schemas(sqlite3 *db);
 
 // MARK: - Database extensions
 // See https://sqlite.org/loadext.html
