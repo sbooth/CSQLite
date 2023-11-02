@@ -266,6 +266,11 @@ int csqlite_sqlite3_vtab_config_directonly(sqlite3 *db)
 	return sqlite3_vtab_config(db, SQLITE_VTAB_DIRECTONLY);
 }
 
+int csqlite_sqlite3_vtab_uses_all_schemas(sqlite3 *db)
+{
+	return sqlite3_vtab_config(db, SQLITE_VTAB_USES_ALL_SCHEMAS);
+}
+
 // MARK: - Database extensions
 
 void sqlite3_carray_init(void);
