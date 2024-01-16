@@ -54,10 +54,10 @@ let package = Package(
 				.define("SQLITE_OMIT_SHARED_CACHE", to: "1"),
 				.define("SQLITE_USE_ALLOCA", to: "1"),
 				.define("SQLITE_OMIT_AUTOINIT"),
+				.define("SQLITE_STRICT_SUBTYPE", to: "1"),
 				// Platform configuration
 				// https://sqlite.org/compile.html#_platform_configuration
 				.define("HAVE_ISNAN", to: "1"),
-				.define("HAVE_USLEEP", to: "1"),
 				.define("HAVE_UTIME", to: "1"),
 				// Features
 				// https://sqlite.org/compile.html#_options_to_enable_features_normally_turned_off
