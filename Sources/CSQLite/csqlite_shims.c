@@ -147,6 +147,11 @@ int csqlite_sqlite3_config_memdb_maxsize(sqlite3_int64 x)
 	return sqlite3_config(SQLITE_CONFIG_MEMDB_MAXSIZE, x);
 }
 
+int csqlite_sqlite3_config_rowid_in_view(int *x)
+{
+	return sqlite3_config(SQLITE_CONFIG_ROWID_IN_VIEW, x);
+}
+
 // MARK: - Database connection configuration
 
 int csqlite_sqlite3_db_config_maindbname(sqlite3 *db, char *x)
