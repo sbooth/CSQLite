@@ -75,6 +75,8 @@ int csqlite_sqlite3_config_small_malloc(int x);
 int csqlite_sqlite3_config_sorterref_size(int nByte);
 /// Equivalent to `sqlite3_config(SQLITE_CONFIG_MEMDB_MAXSIZE, x)`
 int csqlite_sqlite3_config_memdb_maxsize(sqlite3_int64 x);
+/// Equivalent to `sqlite3_config(SQLITE_CONFIG_ROWID_IN_VIEW, x)`
+int csqlite_sqlite3_config_rowid_in_view(int *x);
 
 // MARK: - Database connection configuration
 // See https://sqlite.org/c3ref/db_config.html
