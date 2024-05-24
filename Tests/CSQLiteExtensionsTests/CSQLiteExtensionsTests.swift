@@ -1,8 +1,22 @@
+/*
+ ** 2024-05-24
+ **
+ ** The author disclaims copyright to this source code.  In place of
+ ** a legal notice, here is a blessing:
+ **
+ **    May you do good and not evil.
+ **    May you find forgiveness for yourself and forgive others.
+ **    May you share freely, never taking more than you give.
+ **
+ ******************************************************************************
+ **
+ ** Basic tests of CSQLiteExtensions functionality.
+ */
+
 import XCTest
-@testable import CSQLite
 @testable import CSQLiteExtensions
 
-final class CSQLiteTests: XCTestCase {
+final class CSQLiteExtensionsTests: XCTestCase {
 	override class func setUp() {
 		super.setUp()
 		// It's necessary to call sqlite3_initialize() since SQLITE_OMIT_AUTOINIT is defined
