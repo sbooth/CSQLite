@@ -10,7 +10,7 @@
  **
  ******************************************************************************
  **
- ** Wrappers for C functions not easily accessible from Swift.
+ ** Functions to manage automatic database extension registration from Swift.
  */
 
 // MARK: - Database extensions
