@@ -14,6 +14,7 @@
  */
 
 #include "csqlite_extensions.h"
+#include "sqlite3.h"
 
 // MARK: - Database extensions
 

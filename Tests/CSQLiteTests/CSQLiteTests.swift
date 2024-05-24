@@ -1,3 +1,18 @@
+/*
+ ** 2021-06-08
+ **
+ ** The author disclaims copyright to this source code.  In place of
+ ** a legal notice, here is a blessing:
+ **
+ **    May you do good and not evil.
+ **    May you find forgiveness for yourself and forgive others.
+ **    May you share freely, never taking more than you give.
+ **
+ ******************************************************************************
+ **
+ ** Basic tests of CSQLite functionality.
+ */
+
 import XCTest
 @testable import CSQLite
 
@@ -15,7 +30,7 @@ final class CSQLiteTests: XCTestCase {
 		XCTAssert(sqlite3_exec(db, "create table t1(a,b);", nil, nil, nil) == SQLITE_OK)
 
 		var stmt: OpaquePointer?
-		XCTAssert(sqlite3_prepare_v2(db, "insert into t1(a, b) values (?,?);", -1, &stmt, nil) == SQLITE_OK)
+		XCTAssert(sqlite3_prepare_v2(db, "insert into t1(a,b) values (?,?);", -1, &stmt, nil) == SQLITE_OK)
 
 		let rowCount = 42
 		for i in 0..<rowCount {
