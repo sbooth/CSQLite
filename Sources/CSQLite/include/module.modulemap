@@ -1,0 +1,7 @@
+module CSQLite {
+	header "sqlite3.h"
+	header "sqlite3ext.h"
+	header "carray.h"
+	header "csqlite_shims.h"
+	export *
+}
