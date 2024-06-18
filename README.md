@@ -1,5 +1,8 @@
 # CSQLite
 
+[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fsbooth%2FCSQLite%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/sbooth/CSQLite)
+[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fsbooth%2FCSQLite%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/sbooth/CSQLite)
+
 [SQLite](https://sqlite.org/index.html) packaged for the [Swift Package Manager](https://swift.org/package-manager/).
 
 The package contains the [SQLite amalgamation](https://sqlite.org/amalgamation.html) built using the [recommended compile-time options](https://sqlite.org/compile.html#recommended_compile_time_options).
