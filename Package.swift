@@ -33,6 +33,7 @@ let package = Package(
 			name: "CSQLite",
 			targets: [
 				"CSQLite",
+				"CSQLiteExtensions",
 			]),
 	],
 	targets: [
@@ -78,10 +79,23 @@ let package = Package(
 			linkerSettings: [
 				.linkedLibrary("m"),
 			]),
+		.target(
+			name: "CSQLiteExtensions",
+			dependencies: [
+				"CSQLite",
+			],
+			cSettings: [
+				.define("SQLITE_CORE", to: "1"),
+			]),
 		.testTarget(
 			name: "CSQLiteTests",
 			dependencies: [
 				"CSQLite",
+			]),
+		.testTarget(
+			name: "CSQLiteExtensionsTests",
+			dependencies: [
+				"CSQLiteExtensions",
 			])
 	],
 	cLanguageStandard: .gnu11
