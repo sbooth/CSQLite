@@ -134,6 +134,21 @@ final class CSQLiteTests: XCTestCase {
 		XCTAssertEqual(sqlite3_close(db), SQLITE_OK)
 	}
 
+	func testPercentile() {
+		XCTAssertEqual(csqlite_sqlite3_auto_extension_percentile(), SQLITE_OK)
+
+		var db: OpaquePointer?
+		XCTAssertEqual(sqlite3_open_v2(":memory:", &db, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, nil), SQLITE_OK)
+
+		var stmt: OpaquePointer?
+		XCTAssertEqual(sqlite3_prepare_v2(db, "select median(33);", -1, &stmt, nil), SQLITE_OK)
+		XCTAssertEqual(sqlite3_step(stmt), SQLITE_ROW)
+		XCTAssertEqual(sqlite3_column_int(stmt, 0), 33)
+
+		XCTAssertEqual(sqlite3_finalize(stmt), SQLITE_OK)
+		XCTAssertEqual(sqlite3_close(db), SQLITE_OK)
+	}
+
 	func testSeries() {
 		XCTAssertEqual(csqlite_sqlite3_auto_extension_series(), SQLITE_OK)
 
