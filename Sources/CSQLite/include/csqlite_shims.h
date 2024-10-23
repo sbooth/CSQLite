@@ -152,6 +152,11 @@ int csqlite_sqlite3_auto_extension_ieee754(void);
 /// Equivalent to `sqlite3_cancel_auto_extension(sqlite3_ieee_init)`
 int csqlite_sqlite3_cancel_auto_extension_ieee754(void);
 
+/// Equivalent to `sqlite3_auto_extension(sqlite3_percentile_init)`
+int csqlite_sqlite3_auto_extension_percentile(void);
+/// Equivalent to `sqlite3_cancel_auto_extension(sqlite3_percentile_init)`
+int csqlite_sqlite3_cancel_auto_extension_percentile(void);
+
 /// Equivalent to `sqlite3_auto_extension(sqlite3_series_init)`
 int csqlite_sqlite3_auto_extension_series(void);
 /// Equivalent to `sqlite3_cancel_auto_extension(sqlite3_series_init)`
