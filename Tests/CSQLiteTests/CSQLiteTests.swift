@@ -76,139 +76,58 @@ final class CSQLiteTests: XCTestCase {
 		XCTAssertEqual(sqlite3_close(db), SQLITE_OK)
 	}
 
-	func testCarray() {
-		XCTAssertEqual(csqlite_sqlite3_auto_extension_carray(), SQLITE_OK)
+	// MARK: Features (extensions built into the amalgamation)
 
+	func testFTS5() {
 		var db: OpaquePointer?
 		XCTAssertEqual(sqlite3_open_v2(":memory:", &db, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, nil), SQLITE_OK)
 
-		XCTAssertEqual(sqlite3_exec(db, "create table t1(a);", nil, nil, nil), SQLITE_OK)
-		XCTAssertEqual(sqlite3_exec(db, "insert into t1(a) values (2),(3),(4),(5);", nil, nil, nil), SQLITE_OK)
+		XCTAssertEqual(sqlite3_exec(db, "CREATE VIRTUAL TABLE email USING fts5(sender, title, body);", nil, nil, nil), SQLITE_OK)
+		XCTAssertEqual(sqlite3_exec(db, "INSERT INTO email VALUES ('tina', 'fts', ''), ('bill', 'fts5', '');", nil, nil, nil), SQLITE_OK)
 
 		var stmt: OpaquePointer?
-		XCTAssertEqual(sqlite3_prepare_v2(db, "select a from t1 where a in carray(?);", -1, &stmt, nil), SQLITE_OK)
-		let array: [Int32] = [3,5];
-		let mem = UnsafeMutableBufferPointer<Int32>.allocate(capacity: array.count)
-		_ = mem.initialize(from: array)
-		XCTAssertEqual(sqlite3_carray_bind(stmt, 1, mem.baseAddress, Int32(array.count), CARRAY_INT32, {
-			$0?.deallocate()
-		}), SQLITE_OK)
-		XCTAssertEqual(sqlite3_step(stmt), SQLITE_ROW)
-		XCTAssertEqual(sqlite3_column_int(stmt, 0), 3)
-		XCTAssertEqual(sqlite3_step(stmt), SQLITE_ROW)
-		XCTAssertEqual(sqlite3_column_int(stmt, 0), 5)
+		XCTAssertEqual(sqlite3_prepare_v2(db, "SELECT * FROM email WHERE email MATCH 'fts5' ORDER BY rank;", -1, &stmt, nil), SQLITE_OK)
 
-		XCTAssertEqual(sqlite3_finalize(stmt), SQLITE_OK)
-		XCTAssertEqual(sqlite3_close(db), SQLITE_OK)
-	}
-
-	func testDecimal() {
-		XCTAssertEqual(csqlite_sqlite3_auto_extension_decimal(), SQLITE_OK)
-
-		var db: OpaquePointer?
-		XCTAssertEqual(sqlite3_open_v2(":memory:", &db, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, nil), SQLITE_OK)
-
-		var stmt: OpaquePointer?
-		XCTAssertEqual(sqlite3_prepare_v2(db, "select decimal_add('1.67','2.33');", -1, &stmt, nil), SQLITE_OK)
-		XCTAssertEqual(sqlite3_step(stmt), SQLITE_ROW)
-		let r = String(cString: sqlite3_column_text(stmt, 0))
-		XCTAssertEqual(r, "4.00")
-
-		XCTAssertEqual(sqlite3_finalize(stmt), SQLITE_OK)
-		XCTAssertEqual(sqlite3_close(db), SQLITE_OK)
-	}
-
-	func testIEEE() {
-		XCTAssertEqual(csqlite_sqlite3_auto_extension_ieee754(), SQLITE_OK)
-
-		var db: OpaquePointer?
-		XCTAssertEqual(sqlite3_open_v2(":memory:", &db, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, nil), SQLITE_OK)
-
-		var stmt: OpaquePointer?
-		XCTAssertEqual(sqlite3_prepare_v2(db, "select ieee754(45.25);", -1, &stmt, nil), SQLITE_OK)
-		XCTAssertEqual(sqlite3_step(stmt), SQLITE_ROW)
-		let f = String(cString: sqlite3_column_text(stmt, 0))
-		XCTAssertEqual(f, "ieee754(181,-2)")
-
-		XCTAssertEqual(sqlite3_finalize(stmt), SQLITE_OK)
-		XCTAssertEqual(sqlite3_close(db), SQLITE_OK)
-	}
-
-	func testPercentile() {
-		XCTAssertEqual(csqlite_sqlite3_auto_extension_percentile(), SQLITE_OK)
-
-		var db: OpaquePointer?
-		XCTAssertEqual(sqlite3_open_v2(":memory:", &db, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, nil), SQLITE_OK)
-
-		var stmt: OpaquePointer?
-		XCTAssertEqual(sqlite3_prepare_v2(db, "select median(33);", -1, &stmt, nil), SQLITE_OK)
-		XCTAssertEqual(sqlite3_step(stmt), SQLITE_ROW)
-		XCTAssertEqual(sqlite3_column_int(stmt, 0), 33)
-
-		XCTAssertEqual(sqlite3_finalize(stmt), SQLITE_OK)
-		XCTAssertEqual(sqlite3_close(db), SQLITE_OK)
-	}
-
-	func testSeries() {
-		XCTAssertEqual(csqlite_sqlite3_auto_extension_series(), SQLITE_OK)
-
-		var db: OpaquePointer?
-		XCTAssertEqual(sqlite3_open_v2(":memory:", &db, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, nil), SQLITE_OK)
-
-		var stmt: OpaquePointer?
-		XCTAssertEqual(sqlite3_prepare_v2(db, "select * from generate_series(10,20,5);", -1, &stmt, nil), SQLITE_OK)
-		XCTAssertEqual(sqlite3_step(stmt), SQLITE_ROW)
-		XCTAssertEqual(sqlite3_column_int(stmt, 0), 10)
-		XCTAssertEqual(sqlite3_step(stmt), SQLITE_ROW)
-		XCTAssertEqual(sqlite3_column_int(stmt, 0), 15)
-		XCTAssertEqual(sqlite3_step(stmt), SQLITE_ROW)
-		XCTAssertEqual(sqlite3_column_int(stmt, 0), 20)
-
-		XCTAssertEqual(sqlite3_finalize(stmt), SQLITE_OK)
-		XCTAssertEqual(sqlite3_close(db), SQLITE_OK)
-	}
-
-	func testSHA3() {
-		XCTAssertEqual(csqlite_sqlite3_auto_extension_sha3(), SQLITE_OK)
-
-		var db: OpaquePointer?
-		XCTAssertEqual(sqlite3_open_v2(":memory:", &db, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, nil), SQLITE_OK)
-
-		var stmt: OpaquePointer?
-		XCTAssertEqual(sqlite3_prepare_v2(db, "select lower(hex(sha3('sqlite')));", -1, &stmt, nil), SQLITE_OK)
-		XCTAssertEqual(sqlite3_step(stmt), SQLITE_ROW)
-		let h = String(cString: sqlite3_column_text(stmt, 0))
-		XCTAssertEqual(h, "963a88636d4c9cc3f011dfc9dc0058e96669d80a89893c68c0bb08a6a8208db3")
-
-		XCTAssertEqual(sqlite3_finalize(stmt), SQLITE_OK)
-		XCTAssertEqual(sqlite3_close(db), SQLITE_OK)
-	}
-
-	func testUUID() {
-		XCTAssertEqual(csqlite_sqlite3_auto_extension_uuid(), SQLITE_OK)
-
-		var db: OpaquePointer?
-		XCTAssertEqual(sqlite3_open_v2(":memory:", &db, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, nil), SQLITE_OK)
-
-		var stmt: OpaquePointer?
-		XCTAssertEqual(sqlite3_prepare_v2(db, "select uuid();", -1, &stmt, nil), SQLITE_OK)
 		XCTAssertEqual(sqlite3_step(stmt), SQLITE_ROW)
 		let u = String(cString: sqlite3_column_text(stmt, 0))
-		let comps = u.components(separatedBy: "-")
-		XCTAssertEqual(comps.count, 5)
-		XCTAssertEqual(comps[0].count, 8)
-		XCTAssertEqual(comps[1].count, 4)
-		XCTAssertEqual(comps[2].count, 4)
-		XCTAssertEqual(comps[3].count, 4)
-		XCTAssertEqual(comps[4].count, 12)
-		let uu = UUID(uuidString: u)
-		XCTAssertNotNil(uu)
+		XCTAssertEqual(u, "bill")
 
 		XCTAssertEqual(sqlite3_finalize(stmt), SQLITE_OK)
 		XCTAssertEqual(sqlite3_close(db), SQLITE_OK)
 	}
 
-	func testStmt() {
+	func testMathFunctions() {
+		var db: OpaquePointer?
+		XCTAssertEqual(sqlite3_open_v2(":memory:", &db, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, nil), SQLITE_OK)
+
+		var stmt: OpaquePointer?
+		XCTAssertEqual(sqlite3_prepare_v2(db, "select pi();", -1, &stmt, nil), SQLITE_OK)
+
+		XCTAssertEqual(sqlite3_step(stmt), SQLITE_ROW)
+		XCTAssertLessThan(sqlite3_column_double(stmt, 0), 4)
+
+		XCTAssertEqual(sqlite3_finalize(stmt), SQLITE_OK)
+		XCTAssertEqual(sqlite3_close(db), SQLITE_OK)
+	}
+
+	func testRTree() {
+		var db: OpaquePointer?
+		XCTAssertEqual(sqlite3_open_v2(":memory:", &db, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, nil), SQLITE_OK)
+
+		XCTAssertEqual(sqlite3_exec(db, "CREATE VIRTUAL TABLE demo_index USING rtree(id,minX, maxX,minY, maxY);", nil, nil, nil), SQLITE_OK)
+		XCTAssertEqual(sqlite3_exec(db, "INSERT INTO demo_index VALUES (28215, -80.781227, -80.604706, 35.208813, 35.297367), (28216, -80.957283, -80.840599, 35.235920, 35.367825), (28217, -80.960869, -80.869431, 35.133682, 35.208233), (28226, -80.878983, -80.778275, 35.060287, 35.154446), (28227, -80.745544, -80.555382, 35.130215, 35.236916), (28244, -80.844208, -80.841988, 35.223728, 35.225471), (28262, -80.809074, -80.682938, 35.276207, 35.377747), (28269, -80.851471, -80.735718, 35.272560, 35.407925), (28270, -80.794983, -80.728966, 35.059872, 35.161823), (28273, -80.994766, -80.875259, 35.074734, 35.172836), (28277, -80.876793, -80.767586, 35.001709, 35.101063), (28278, -81.058029, -80.956375, 35.044701, 35.223812), (28280, -80.844208, -80.841972, 35.225468, 35.227203), (28282, -80.846382, -80.844193, 35.223972, 35.225655);", nil, nil, nil), SQLITE_OK)
+
+		var stmt: OpaquePointer?
+		XCTAssertEqual(sqlite3_prepare_v2(db, "SELECT id FROM demo_index WHERE minX<=-80.77470 AND maxX>=-80.77470 AND minY<=35.37785  AND maxY>=35.37785;", -1, &stmt, nil), SQLITE_OK)
+
+		XCTAssertEqual(sqlite3_step(stmt), SQLITE_ROW)
+		XCTAssertEqual(sqlite3_column_int64(stmt, 0), 28269)
+
+		XCTAssertEqual(sqlite3_finalize(stmt), SQLITE_OK)
+		XCTAssertEqual(sqlite3_close(db), SQLITE_OK)
+	}
+
+	func testStmtVtab() {
 		var db: OpaquePointer?
 		XCTAssertEqual(sqlite3_open_v2(":memory:", &db, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, nil), SQLITE_OK)
 
