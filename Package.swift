@@ -33,6 +33,7 @@ let package = Package(
 			name: "CSQLite",
 			targets: [
 				"CSQLite",
+				"CSQLiteExtensions",
 			]),
 	],
 	targets: [
@@ -73,17 +74,29 @@ let package = Package(
 				.define("SQLITE_ENABLE_SNAPSHOT"),
 				.define("SQLITE_ENABLE_STMTVTAB"),
 				.define("SQLITE_ENABLE_STAT4"),
-				// For statically linking extensions
-				// https://sqlite.org/loadext.html#statically_linking_a_run_time_loadable_extension
-				.define("SQLITE_CORE", to: "1"),
 			],
 			linkerSettings: [
 				.linkedLibrary("m"),
+			]),
+		.target(
+			name: "CSQLiteExtensions",
+			dependencies: [
+				"CSQLite",
+			],
+			cSettings: [
+				// For statically linking extensions
+				// https://sqlite.org/loadext.html#statically_linking_a_run_time_loadable_extension
+				.define("SQLITE_CORE", to: "1"),
 			]),
 		.testTarget(
 			name: "CSQLiteTests",
 			dependencies: [
 				"CSQLite",
+			]),
+		.testTarget(
+			name: "CSQLiteExtensionsTests",
+			dependencies: [
+				"CSQLiteExtensions",
 			])
 	],
 	cLanguageStandard: .gnu11
