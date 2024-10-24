@@ -74,9 +74,6 @@ let package = Package(
 				.define("SQLITE_ENABLE_SNAPSHOT"),
 				.define("SQLITE_ENABLE_STMTVTAB"),
 				.define("SQLITE_ENABLE_STAT4"),
-				// For statically linking extensions
-				// https://sqlite.org/loadext.html#statically_linking_a_run_time_loadable_extension
-				.define("SQLITE_CORE", to: "1"),
 			],
 			linkerSettings: [
 				.linkedLibrary("m"),
@@ -87,6 +84,8 @@ let package = Package(
 				"CSQLite",
 			],
 			cSettings: [
+				// For statically linking extensions
+				// https://sqlite.org/loadext.html#statically_linking_a_run_time_loadable_extension
 				.define("SQLITE_CORE", to: "1"),
 			]),
 		.testTarget(
