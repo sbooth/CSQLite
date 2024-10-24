@@ -28,7 +28,7 @@ import PackageDescription
 let package = Package(
 	name: "CSQLite",
 	products: [
-		// Products define the executables and libraries a package produces, and make them visible to other packages.
+		// Products define the executables and libraries a package produces, making them visible to other packages.
 		.library(
 			name: "CSQLite",
 			targets: [
@@ -37,8 +37,8 @@ let package = Package(
 			]),
 	],
 	targets: [
-		// Targets are the basic building blocks of a package. A target can define a module or a test suite.
-		// Targets can depend on other targets in this package, and on products in packages this package depends on.
+		// Targets are the basic building blocks of a package, defining a module or a test suite.
+		// Targets can depend on other targets in this package and products from dependencies.
 		.target(
 			name: "CSQLite",
 			cSettings: [
@@ -50,11 +50,11 @@ let package = Package(
 				.define("SQLITE_DEFAULT_WAL_SYNCHRONOUS", to: "1"),
 				.define("SQLITE_LIKE_DOESNT_MATCH_BLOBS"),
 				.define("SQLITE_MAX_EXPR_DEPTH", to: "0"),
-				.define("SQLITE_OMIT_DECLTYPE", to: "1"),
+				.define("SQLITE_OMIT_DECLTYPE"),
 				.define("SQLITE_OMIT_DEPRECATED"),
-				.define("SQLITE_OMIT_PROGRESS_CALLBACK", to: "1"),
-				.define("SQLITE_OMIT_SHARED_CACHE", to: "1"),
-				.define("SQLITE_USE_ALLOCA", to: "1"),
+				.define("SQLITE_OMIT_PROGRESS_CALLBACK"),
+				.define("SQLITE_OMIT_SHARED_CACHE"),
+				.define("SQLITE_USE_ALLOCA"),
 				.define("SQLITE_OMIT_AUTOINIT"),
 				.define("SQLITE_STRICT_SUBTYPE", to: "1"),
 				// Platform configuration
@@ -64,16 +64,18 @@ let package = Package(
 				// Features
 				// https://sqlite.org/compile.html#_options_to_enable_features_normally_turned_off
 //				.define("SQLITE_ENABLE_COLUMN_METADATA"),
-				.define("SQLITE_ENABLE_FTS5", to: "1"),
-//				.define("SQLITE_ENABLE_GEOPOLY", to: "1"),
-//				.define("SQLITE_ENABLE_ICU", to: "1"),
-				.define("SQLITE_ENABLE_MATH_FUNCTIONS", to: "1"),
-//				.define("SQLITE_ENABLE_PREUPDATE_HOOK", to: "1"),
-				.define("SQLITE_ENABLE_RTREE", to: "1"),
-//				.define("SQLITE_ENABLE_SESSION", to: "1"),
-				.define("SQLITE_ENABLE_SNAPSHOT", to: "1"),
-				.define("SQLITE_ENABLE_STMTVTAB", to: "1"),
-				.define("SQLITE_ENABLE_STAT4", to: "1"),
+				.define("SQLITE_ENABLE_FTS5"),
+//				.define("SQLITE_ENABLE_GEOPOLY"),
+//				.define("SQLITE_ENABLE_ICU"),
+				.define("SQLITE_ENABLE_MATH_FUNCTIONS"),
+//				.define("SQLITE_ENABLE_PREUPDATE_HOOK"),
+				.define("SQLITE_ENABLE_RTREE"),
+//				.define("SQLITE_ENABLE_SESSION"),
+				.define("SQLITE_ENABLE_SNAPSHOT"),
+				.define("SQLITE_ENABLE_STMTVTAB"),
+				.define("SQLITE_ENABLE_STAT4"),
+				// For statically linking extensions
+				// https://sqlite.org/loadext.html#statically_linking_a_run_time_loadable_extension
 				.define("SQLITE_CORE", to: "1"),
 			],
 			linkerSettings: [
