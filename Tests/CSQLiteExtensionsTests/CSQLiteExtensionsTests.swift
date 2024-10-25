@@ -10,17 +10,17 @@
  **
  ******************************************************************************
  **
- ** Basic tests of CSQLiteExtensions functionality.
+ ** Basic tests of CSQLite statically-linked extension functionality.
  */
 
 import XCTest
 @testable import CSQLiteExtensions
 
-final class CSQLiteExtensionsTests: XCTestCase {
+final class CSQLiteExtensionTests: XCTestCase {
 	override class func setUp() {
 		super.setUp()
 		// It's necessary to call sqlite3_initialize() since SQLITE_OMIT_AUTOINIT is defined
-		XCTAssert(sqlite3_initialize() == SQLITE_OK)
+		XCTAssertEqual(sqlite3_initialize(), SQLITE_OK)
 	}
 
 	func testCarray() {
