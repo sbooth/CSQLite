@@ -26,7 +26,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
     - name: Test Linux
-      uses: swift test
+      run: swift test
     - name: Test Android
       uses: skiptools/swift-android-action@v2
 
