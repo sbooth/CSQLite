@@ -68,12 +68,12 @@ let features: [CSetting] = [
 //	.define("SQLITE_ENABLE_ICU"),
 	// https://sqlite.org/lang_mathfunc.html
 	.define("SQLITE_ENABLE_MATH_FUNCTIONS"),
-	// --> For pre-update hook support uncomment the following line
+	// --> For pre-update hook support uncomment the following define
 	// https://sqlite.org/c3ref/preupdate_blobwrite.html
 //	.define("SQLITE_ENABLE_PREUPDATE_HOOK"),
 	// https://sqlite.org/rtree.html
 	.define("SQLITE_ENABLE_RTREE"),
-	// --> For session support uncomment the following line and enable the pre-update hook
+	// --> For session support uncomment the following define and enable the pre-update hook
 	// https://sqlite.org/sessionintro.html
 //	.define("SQLITE_ENABLE_SESSION"),
 	// https://sqlite.org/c3ref/snapshot.html
