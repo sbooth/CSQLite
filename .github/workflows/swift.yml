@@ -18,3 +18,15 @@ jobs:
       run: swift build -v
     - name: Run tests
       run: swift test -v
+
+  linux-android:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: Test Linux
+      run: swift test
+    - name: Test Android
+      uses: skiptools/swift-android-action@v2
+
