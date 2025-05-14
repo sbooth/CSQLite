@@ -59,8 +59,14 @@ let platformConfiguration: [CSetting] = [
 /// Features
 /// - seealso: [Options To Enable Features Normally Turned Off](https://sqlite.org/compile.html#_options_to_enable_features_normally_turned_off)
 let features: [CSetting] = [
+	// https://sqlite.org/bytecodevtab.html
+	.define("SQLITE_ENABLE_BYTECODE_VTAB", .when( traits: ["ENABLE_BYTECODE_VTAB"])),
 	// https://sqlite.org/c3ref/column_database_name.html
 	.define("SQLITE_ENABLE_COLUMN_METADATA", .when( traits: ["ENABLE_COLUMN_METADATA"])),
+	// https://sqlite.org/dbpage.html
+	.define("SQLITE_ENABLE_DBPAGE_VTAB", .when( traits: ["ENABLE_DBPAGE_VTAB"])),
+	// https://sqlite.org/dbstat.html
+	.define("SQLITE_ENABLE_DBSTAT_VTAB", .when( traits: ["ENABLE_DBSTAT_VTAB"])),
 	// https://sqlite.org/fts5.html
 	.define("SQLITE_ENABLE_FTS5", .when(traits: ["ENABLE_FTS5"])),
 	// https://sqlite.org/geopoly.html
@@ -68,6 +74,8 @@ let features: [CSetting] = [
 //	.define("SQLITE_ENABLE_ICU", .when(traits: ["ENABLE_ICU"])),
 	// https://sqlite.org/lang_mathfunc.html
 	.define("SQLITE_ENABLE_MATH_FUNCTIONS", .when(traits: ["ENABLE_MATH_FUNCTIONS"])),
+	// https://sqlite.org/lang_mathfunc.html
+	.define("SQLITE_ENABLE_NORMALIZE", .when(traits: ["ENABLE_NORMALIZE"])),
 	// https://sqlite.org/c3ref/preupdate_blobwrite.html
 	.define("SQLITE_ENABLE_PREUPDATE_HOOK", .when(traits: ["ENABLE_PREUPDATE_HOOK"])),
 	// https://sqlite.org/rtree.html
@@ -94,8 +102,20 @@ let package = Package(
 	],
 	traits: [
 		.trait(
+			name: "ENABLE_BYTECODE_VTAB",
+			description: "Enables bytecode and tables_used table-valued functions"
+		),
+		.trait(
 			name: "ENABLE_COLUMN_METADATA",
 			description: "Enables column and table metadata functions"
+		),
+		.trait(
+			name: "ENABLE_DBPAGE_VTAB",
+			description: "Enables the sqlite_dbpage virtual table"
+		),
+		.trait(
+			name: "ENABLE_DBSTAT_VTAB",
+			description: "Enables the dbstat virtual table"
 		),
 		.trait(
 			name: "ENABLE_FTS5",
@@ -108,6 +128,10 @@ let package = Package(
 		.trait(
 			name: "ENABLE_MATH_FUNCTIONS",
 			description: "Enables the built-in SQL math functions"
+		),
+		.trait(
+			name: "ENABLE_NORMALIZE",
+			description: "Enables the sqlite3_normalized_sql function"
 		),
 		.trait(
 			name: "ENABLE_PREUPDATE_HOOK",
