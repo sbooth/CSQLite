@@ -74,7 +74,7 @@ let features: [CSetting] = [
 //	.define("SQLITE_ENABLE_ICU", .when(traits: ["ENABLE_ICU"])),
 	// https://sqlite.org/lang_mathfunc.html
 	.define("SQLITE_ENABLE_MATH_FUNCTIONS", .when(traits: ["ENABLE_MATH_FUNCTIONS"])),
-	// https://sqlite.org/lang_mathfunc.html
+	// https://sqlite.org/c3ref/expanded_sql.html
 	.define("SQLITE_ENABLE_NORMALIZE", .when(traits: ["ENABLE_NORMALIZE"])),
 	// https://sqlite.org/c3ref/preupdate_blobwrite.html
 	.define("SQLITE_ENABLE_PREUPDATE_HOOK", .when(traits: ["ENABLE_PREUPDATE_HOOK"])),
