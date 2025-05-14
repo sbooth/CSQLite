@@ -1,4 +1,4 @@
-// swift-tools-version:5.3
+// swift-tools-version:6.1
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 /*
@@ -60,28 +60,26 @@ let platformConfiguration: [CSetting] = [
 /// - seealso: [Options To Enable Features Normally Turned Off](https://sqlite.org/compile.html#_options_to_enable_features_normally_turned_off)
 let features: [CSetting] = [
 	// https://sqlite.org/c3ref/column_database_name.html
-//	.define("SQLITE_ENABLE_COLUMN_METADATA"),
+	.define("SQLITE_ENABLE_COLUMN_METADATA", .when( traits: ["SQLITE_ENABLE_COLUMN_METADATA"])),
 	// https://sqlite.org/fts5.html
-	.define("SQLITE_ENABLE_FTS5"),
+	.define("SQLITE_ENABLE_FTS5", .when(traits: ["SQLITE_ENABLE_FTS5"])),
 	// https://sqlite.org/geopoly.html
-//	.define("SQLITE_ENABLE_GEOPOLY"),
-//	.define("SQLITE_ENABLE_ICU"),
+	.define("SQLITE_ENABLE_GEOPOLY", .when(traits: ["SQLITE_ENABLE_GEOPOLY"])),
+//	.define("SQLITE_ENABLE_ICU", .when(traits: ["SQLITE_ENABLE_ICU"])),
 	// https://sqlite.org/lang_mathfunc.html
-	.define("SQLITE_ENABLE_MATH_FUNCTIONS"),
-	// --> For pre-update hook support uncomment the following define
+	.define("SQLITE_ENABLE_MATH_FUNCTIONS", .when(traits: ["SQLITE_ENABLE_MATH_FUNCTIONS"])),
 	// https://sqlite.org/c3ref/preupdate_blobwrite.html
-//	.define("SQLITE_ENABLE_PREUPDATE_HOOK"),
+	.define("SQLITE_ENABLE_PREUPDATE_HOOK", .when(traits: ["SQLITE_ENABLE_PREUPDATE_HOOK"])),
 	// https://sqlite.org/rtree.html
-	.define("SQLITE_ENABLE_RTREE"),
-	// --> For session support uncomment the following define and enable the pre-update hook
+	.define("SQLITE_ENABLE_RTREE", .when(traits: ["SQLITE_ENABLE_RTREE"])),
 	// https://sqlite.org/sessionintro.html
-//	.define("SQLITE_ENABLE_SESSION"),
+	.define("SQLITE_ENABLE_SESSION", .when(traits: ["SQLITE_ENABLE_SESSION"])),
 	// https://sqlite.org/c3ref/snapshot.html
-	.define("SQLITE_ENABLE_SNAPSHOT"),
+	.define("SQLITE_ENABLE_SNAPSHOT", .when(traits: ["SQLITE_ENABLE_SNAPSHOT"])),
 	// https://sqlite.org/stmt.html
-	.define("SQLITE_ENABLE_STMTVTAB"),
+	.define("SQLITE_ENABLE_STMTVTAB", .when(traits: ["SQLITE_ENABLE_STMTVTAB"])),
 	// https://sqlite.org/fileformat2.html#stat4tab
-	.define("SQLITE_ENABLE_STAT4"),
+	.define("SQLITE_ENABLE_STAT4", .when(traits: ["SQLITE_ENABLE_STAT4"])),
 ]
 
 let package = Package(
@@ -93,6 +91,58 @@ let package = Package(
 			targets: [
 				"CSQLite",
 			]),
+	],
+	traits: [
+		.trait(
+			name: "SQLITE_ENABLE_COLUMN_METADATA",
+			description: "Enables column and table metadata functions"
+		),
+		.trait(
+			name: "SQLITE_ENABLE_FTS5",
+			description: "Enables version 5 of the full-text search engine (fts5)"
+		),
+		.trait(
+			name: "SQLITE_ENABLE_GEOPOLY",
+			description: "Includes the Geopoly extension"
+		),
+		.trait(
+			name: "SQLITE_ENABLE_MATH_FUNCTIONS",
+			description: "Enables the built-in SQL math functions"
+		),
+		.trait(
+			name: "SQLITE_ENABLE_PREUPDATE_HOOK",
+			description: "Enables the pre-update hook"
+		),
+		.trait(
+			name: "SQLITE_ENABLE_RTREE",
+			description: "Enables the R*Tree index extension"
+		),
+		.trait(
+			name: "SQLITE_ENABLE_SESSION",
+			description: "Enables the preupdate hook and session extension",
+			enabledTraits: [
+				"SQLITE_ENABLE_PREUPDATE_HOOK",
+			]
+		),
+		.trait(
+			name: "SQLITE_ENABLE_SNAPSHOT",
+			description: "Enables support for the sqlite3_snapshot object and associated functions"
+		),
+		.trait(
+			name: "SQLITE_ENABLE_STMTVTAB",
+			description: "Enables the SQLITE_STMT Virtual Table"
+		),
+		.trait(
+			name: "SQLITE_ENABLE_STAT4",
+			description: "Enables the sqlite_stat4 table"
+		),
+		.default(enabledTraits: [
+			"SQLITE_ENABLE_FTS5",
+			"SQLITE_ENABLE_MATH_FUNCTIONS",
+			"SQLITE_ENABLE_RTREE",
+			"SQLITE_ENABLE_STMTVTAB",
+			"SQLITE_ENABLE_STAT4",
+		]),
 	],
 	targets: [
 		// Targets are the basic building blocks of a package, defining a module or a test suite.
