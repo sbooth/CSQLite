@@ -60,26 +60,26 @@ let platformConfiguration: [CSetting] = [
 /// - seealso: [Options To Enable Features Normally Turned Off](https://sqlite.org/compile.html#_options_to_enable_features_normally_turned_off)
 let features: [CSetting] = [
 	// https://sqlite.org/c3ref/column_database_name.html
-	.define("SQLITE_ENABLE_COLUMN_METADATA", .when( traits: ["SQLITE_ENABLE_COLUMN_METADATA"])),
+	.define("SQLITE_ENABLE_COLUMN_METADATA", .when( traits: ["ENABLE_COLUMN_METADATA"])),
 	// https://sqlite.org/fts5.html
-	.define("SQLITE_ENABLE_FTS5", .when(traits: ["SQLITE_ENABLE_FTS5"])),
+	.define("SQLITE_ENABLE_FTS5", .when(traits: ["ENABLE_FTS5"])),
 	// https://sqlite.org/geopoly.html
-	.define("SQLITE_ENABLE_GEOPOLY", .when(traits: ["SQLITE_ENABLE_GEOPOLY"])),
-//	.define("SQLITE_ENABLE_ICU", .when(traits: ["SQLITE_ENABLE_ICU"])),
+	.define("SQLITE_ENABLE_GEOPOLY", .when(traits: ["ENABLE_GEOPOLY"])),
+//	.define("SQLITE_ENABLE_ICU", .when(traits: ["ENABLE_ICU"])),
 	// https://sqlite.org/lang_mathfunc.html
-	.define("SQLITE_ENABLE_MATH_FUNCTIONS", .when(traits: ["SQLITE_ENABLE_MATH_FUNCTIONS"])),
+	.define("SQLITE_ENABLE_MATH_FUNCTIONS", .when(traits: ["ENABLE_MATH_FUNCTIONS"])),
 	// https://sqlite.org/c3ref/preupdate_blobwrite.html
-	.define("SQLITE_ENABLE_PREUPDATE_HOOK", .when(traits: ["SQLITE_ENABLE_PREUPDATE_HOOK"])),
+	.define("SQLITE_ENABLE_PREUPDATE_HOOK", .when(traits: ["ENABLE_PREUPDATE_HOOK"])),
 	// https://sqlite.org/rtree.html
-	.define("SQLITE_ENABLE_RTREE", .when(traits: ["SQLITE_ENABLE_RTREE"])),
+	.define("SQLITE_ENABLE_RTREE", .when(traits: ["ENABLE_RTREE"])),
 	// https://sqlite.org/sessionintro.html
-	.define("SQLITE_ENABLE_SESSION", .when(traits: ["SQLITE_ENABLE_SESSION"])),
+	.define("SQLITE_ENABLE_SESSION", .when(traits: ["ENABLE_SESSION"])),
 	// https://sqlite.org/c3ref/snapshot.html
-	.define("SQLITE_ENABLE_SNAPSHOT", .when(traits: ["SQLITE_ENABLE_SNAPSHOT"])),
+	.define("SQLITE_ENABLE_SNAPSHOT", .when(traits: ["ENABLE_SNAPSHOT"])),
 	// https://sqlite.org/stmt.html
-	.define("SQLITE_ENABLE_STMTVTAB", .when(traits: ["SQLITE_ENABLE_STMTVTAB"])),
+	.define("SQLITE_ENABLE_STMTVTAB", .when(traits: ["ENABLE_STMTVTAB"])),
 	// https://sqlite.org/fileformat2.html#stat4tab
-	.define("SQLITE_ENABLE_STAT4", .when(traits: ["SQLITE_ENABLE_STAT4"])),
+	.define("SQLITE_ENABLE_STAT4", .when(traits: ["ENABLE_STAT4"])),
 ]
 
 let package = Package(
@@ -94,55 +94,55 @@ let package = Package(
 	],
 	traits: [
 		.trait(
-			name: "SQLITE_ENABLE_COLUMN_METADATA",
+			name: "ENABLE_COLUMN_METADATA",
 			description: "Enables column and table metadata functions"
 		),
 		.trait(
-			name: "SQLITE_ENABLE_FTS5",
+			name: "ENABLE_FTS5",
 			description: "Enables version 5 of the full-text search engine (fts5)"
 		),
 		.trait(
-			name: "SQLITE_ENABLE_GEOPOLY",
+			name: "ENABLE_GEOPOLY",
 			description: "Enables the Geopoly extension"
 		),
 		.trait(
-			name: "SQLITE_ENABLE_MATH_FUNCTIONS",
+			name: "ENABLE_MATH_FUNCTIONS",
 			description: "Enables the built-in SQL math functions"
 		),
 		.trait(
-			name: "SQLITE_ENABLE_PREUPDATE_HOOK",
+			name: "ENABLE_PREUPDATE_HOOK",
 			description: "Enables the pre-update hook"
 		),
 		.trait(
-			name: "SQLITE_ENABLE_RTREE",
+			name: "ENABLE_RTREE",
 			description: "Enables the R*Tree index extension"
 		),
 		.trait(
-			name: "SQLITE_ENABLE_SESSION",
+			name: "ENABLE_SESSION",
 			description: "Enables the pre-update hook and session extension",
 			enabledTraits: [
-				"SQLITE_ENABLE_PREUPDATE_HOOK",
+				"ENABLE_PREUPDATE_HOOK",
 			]
 		),
 		.trait(
-			name: "SQLITE_ENABLE_SNAPSHOT",
+			name: "ENABLE_SNAPSHOT",
 			description: "Enables support for database snapshots"
 		),
 		.trait(
-			name: "SQLITE_ENABLE_STMTVTAB",
+			name: "ENABLE_STMTVTAB",
 			description: "Enables the sqlite_stmt virtual table"
 		),
 		.trait(
-			name: "SQLITE_ENABLE_STAT4",
+			name: "ENABLE_STAT4",
 			description: "Enables the sqlite_stat4 table"
 		),
 		.default(enabledTraits: [
-			"SQLITE_ENABLE_FTS5",
-			"SQLITE_ENABLE_MATH_FUNCTIONS",
-			"SQLITE_ENABLE_RTREE",
-			"SQLITE_ENABLE_SNAPSHOT",
-			"SQLITE_ENABLE_STMTVTAB",
-			"SQLITE_ENABLE_STAT4",
+			"ENABLE_FTS5",
+			"ENABLE_MATH_FUNCTIONS",
+			"ENABLE_RTREE",
+			"ENABLE_SNAPSHOT",
+			"ENABLE_STMTVTAB",
+			"ENABLE_STAT4",
 		]),
 	],
 	targets: [
