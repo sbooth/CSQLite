@@ -103,7 +103,7 @@ let package = Package(
 		),
 		.trait(
 			name: "SQLITE_ENABLE_GEOPOLY",
-			description: "Includes the Geopoly extension"
+			description: "Enables the Geopoly extension"
 		),
 		.trait(
 			name: "SQLITE_ENABLE_MATH_FUNCTIONS",
@@ -119,18 +119,18 @@ let package = Package(
 		),
 		.trait(
 			name: "SQLITE_ENABLE_SESSION",
-			description: "Enables the preupdate hook and session extension",
+			description: "Enables the pre-update hook and session extension",
 			enabledTraits: [
 				"SQLITE_ENABLE_PREUPDATE_HOOK",
 			]
 		),
 		.trait(
 			name: "SQLITE_ENABLE_SNAPSHOT",
-			description: "Enables support for the sqlite3_snapshot object and associated functions"
+			description: "Enables support for database snapshots"
 		),
 		.trait(
 			name: "SQLITE_ENABLE_STMTVTAB",
-			description: "Enables the SQLITE_STMT Virtual Table"
+			description: "Enables the sqlite_stmt virtual table"
 		),
 		.trait(
 			name: "SQLITE_ENABLE_STAT4",
