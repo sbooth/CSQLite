@@ -9,9 +9,19 @@ The package contains the [SQLite amalgamation](https://sqlite.org/amalgamation.h
 
 The default build configuration includes the [FTS5 extension](https://sqlite.org/fts5.html), built-in [SQL math functions](https://sqlite.org/lang_mathfunc.html), the [R\*Tree index extension](https://sqlite.org/rtree.html), [database snapshots](https://sqlite.org/c3ref/snapshot.html), [sqlite_stmt table](https://www.sqlite.org/stmt.html), and the [sqlite_stat4 table](https://sqlite.org/fileformat2.html#stat4tab).
 
-The build configuration may be customized using package traits. The table below summarizes the supported and **default** traits.
+Additionally, the [carray](https://sqlite.org/carray.html), [decimal](https://sqlite.org/floatingpoint.html#the_decimal_c_extension), [ieee754](https://sqlite.org/floatingpoint.html#the_ieee754_c_extension), [percentile](https://www.sqlite.org/src/file/ext/misc/percentile.c), [series](https://www.sqlite.org/src/file/ext/misc/series.c), [sha3](https://www.sqlite.org/src/file/ext/misc/shathree.c), and [uuid](https://www.sqlite.org/src/file/ext/misc/uuid.c) extensions are statically linked.
+
+The package also includes [shims](Sources/CSQLite/include/csqlite_shims.h) for various C functions not easily accessible from Swift.
+
+## Customization
+
+The build configuration may be customized using package traits. The tables below summarize the supported and **default** traits.
 
 | Package Trait | SQLite Compile-Time Option | Notes |
+| --- | --- | --- |
+| **OMIT_AUTOINIT** | [SQLITE_OMIT_AUTOINIT](https://sqlite.org/compile.html#omit_autoinit) | |
+
+| Package Trait | SQLite Feature | Notes |
 | --- | --- | --- |
 | ENABLE_BYTECODE_VTAB | [SQLITE_ENABLE_BYTECODE_VTAB](https://sqlite.org/bytecodevtab.html) | |
 | ENABLE_COLUMN_METADATA | [SQLITE_ENABLE_COLUMN_METADATA](https://sqlite.org/c3ref/column_database_name.html) | |
@@ -27,10 +37,6 @@ The build configuration may be customized using package traits. The table below 
 | **ENABLE_SNAPSHOT** | [SQLITE_ENABLE_SNAPSHOT](https://sqlite.org/c3ref/snapshot.html) | |
 | **ENABLE_STMTVTAB** | [SQLITE_ENABLE_STMTVTAB](https://sqlite.org/stmt.html) | |
 | **ENABLE_STAT4** | [SQLITE_ENABLE_STAT4](https://sqlite.org/fileformat2.html#stat4tab) | |
-
-Additionally, the [carray](https://sqlite.org/carray.html), [decimal](https://sqlite.org/floatingpoint.html#the_decimal_c_extension), [ieee754](https://sqlite.org/floatingpoint.html#the_ieee754_c_extension), [percentile](https://www.sqlite.org/src/file/ext/misc/percentile.c), [series](https://www.sqlite.org/src/file/ext/misc/series.c), [sha3](https://www.sqlite.org/src/file/ext/misc/shathree.c), and [uuid](https://www.sqlite.org/src/file/ext/misc/uuid.c) extensions are statically linked.
-
-The package also includes [shims](Sources/CSQLite/include/csqlite_shims.h) for various C functions not easily accessible from Swift.
 
 ## License
 

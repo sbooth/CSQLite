@@ -44,7 +44,7 @@ let compileTimeOptions: [CSetting] = [
 	// https://sqlite.org/compile.html#use_alloca
 	.define("SQLITE_USE_ALLOCA"),
 	// https://sqlite.org/compile.html#omit_autoinit
-	.define("SQLITE_OMIT_AUTOINIT"),
+	.define("SQLITE_OMIT_AUTOINIT", .when(traits: ["OMIT_AUTOINIT"])),
 	// https://sqlite.org/compile.html#strict_subtype
 	.define("SQLITE_STRICT_SUBTYPE", to: "1"),
 ]
@@ -101,6 +101,12 @@ let package = Package(
 			]),
 	],
 	traits: [
+		// Compile-time options
+		.trait(
+			name: "OMIT_AUTOINIT",
+			description: "Omit automatic library initialization"
+		),
+		// Features
 		.trait(
 			name: "ENABLE_BYTECODE_VTAB",
 			description: "Enables bytecode and tables_used table-valued functions"
@@ -160,7 +166,9 @@ let package = Package(
 			name: "ENABLE_STAT4",
 			description: "Enables the sqlite_stat4 table"
 		),
+		// Default traits
 		.default(enabledTraits: [
+			"OMIT_AUTOINIT",
 			"ENABLE_FTS5",
 			"ENABLE_MATH_FUNCTIONS",
 			"ENABLE_RTREE",
