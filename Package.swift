@@ -34,15 +34,15 @@ let compileTimeOptions: [CSetting] = [
 	// https://sqlite.org/limits.html#max_expr_depth
 	.define("SQLITE_MAX_EXPR_DEPTH", to: "0"),
 	// https://sqlite.org/compile.html#omit_decltype
-	.define("SQLITE_OMIT_DECLTYPE"),
+	.define("SQLITE_OMIT_DECLTYPE", .when(traits: ["OMIT_DECLTYPE"])),
 	// https://sqlite.org/compile.html#omit_deprecated
-	.define("SQLITE_OMIT_DEPRECATED"),
+	.define("SQLITE_OMIT_DEPRECATED", .when(traits: ["OMIT_DEPRECATED"])),
 	// https://sqlite.org/compile.html#omit_progress_callback
-	.define("SQLITE_OMIT_PROGRESS_CALLBACK"),
+	.define("SQLITE_OMIT_PROGRESS_CALLBACK", .when(traits: ["OMIT_PROGRESS_CALLBACK"])),
 	// https://sqlite.org/compile.html#omit_shared_cache
-	.define("SQLITE_OMIT_SHARED_CACHE"),
+	.define("SQLITE_OMIT_SHARED_CACHE", .when(traits: ["OMIT_SHARED_CACHE"])),
 	// https://sqlite.org/compile.html#use_alloca
-	.define("SQLITE_USE_ALLOCA"),
+	.define("SQLITE_USE_ALLOCA", .when(traits: ["USE_ALLOCA"])),
 	// https://sqlite.org/compile.html#omit_autoinit
 	.define("SQLITE_OMIT_AUTOINIT", .when(traits: ["OMIT_AUTOINIT"])),
 	// https://sqlite.org/compile.html#strict_subtype
@@ -60,13 +60,13 @@ let platformConfiguration: [CSetting] = [
 /// - seealso: [Options To Enable Features Normally Turned Off](https://sqlite.org/compile.html#_options_to_enable_features_normally_turned_off)
 let features: [CSetting] = [
 	// https://sqlite.org/bytecodevtab.html
-	.define("SQLITE_ENABLE_BYTECODE_VTAB", .when( traits: ["ENABLE_BYTECODE_VTAB"])),
+	.define("SQLITE_ENABLE_BYTECODE_VTAB", .when(traits: ["ENABLE_BYTECODE_VTAB"])),
 	// https://sqlite.org/c3ref/column_database_name.html
-	.define("SQLITE_ENABLE_COLUMN_METADATA", .when( traits: ["ENABLE_COLUMN_METADATA"])),
+	.define("SQLITE_ENABLE_COLUMN_METADATA", .when(traits: ["ENABLE_COLUMN_METADATA"])),
 	// https://sqlite.org/dbpage.html
-	.define("SQLITE_ENABLE_DBPAGE_VTAB", .when( traits: ["ENABLE_DBPAGE_VTAB"])),
+	.define("SQLITE_ENABLE_DBPAGE_VTAB", .when(traits: ["ENABLE_DBPAGE_VTAB"])),
 	// https://sqlite.org/dbstat.html
-	.define("SQLITE_ENABLE_DBSTAT_VTAB", .when( traits: ["ENABLE_DBSTAT_VTAB"])),
+	.define("SQLITE_ENABLE_DBSTAT_VTAB", .when(traits: ["ENABLE_DBSTAT_VTAB"])),
 	// https://sqlite.org/fts5.html
 	.define("SQLITE_ENABLE_FTS5", .when(traits: ["ENABLE_FTS5"])),
 	// https://sqlite.org/geopoly.html
@@ -102,6 +102,26 @@ let package = Package(
 	],
 	traits: [
 		// Compile-time options
+		.trait(
+			name: "OMIT_DECLTYPE",
+			description: "Omit the ability to return the declared type of columns"
+		),
+		.trait(
+			name: "OMIT_DEPRECATED",
+			description: "Omit deprecated interfaces and features"
+		),
+		.trait(
+			name: "OMIT_PROGRESS_CALLBACK",
+			description: "Omit progress callback"
+		),
+		.trait(
+			name: "OMIT_SHARED_CACHE",
+			description: "Omit shared cache support"
+		),
+		.trait(
+			name: "USE_ALLOCA",
+			description: "Use alloca to dynamically allocate temporary stack space"
+		),
 		.trait(
 			name: "OMIT_AUTOINIT",
 			description: "Omit automatic library initialization"
@@ -168,6 +188,11 @@ let package = Package(
 		),
 		// Default traits
 		.default(enabledTraits: [
+			"OMIT_DECLTYPE",
+			"OMIT_DEPRECATED",
+			"OMIT_PROGRESS_CALLBACK",
+			"OMIT_SHARED_CACHE",
+			"USE_ALLOCA",
 			"OMIT_AUTOINIT",
 			"ENABLE_FTS5",
 			"ENABLE_MATH_FUNCTIONS",

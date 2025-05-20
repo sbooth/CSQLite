@@ -19,6 +19,11 @@ The build configuration may be customized using package traits. The tables below
 
 | Package Trait | SQLite Compile-Time Option | Notes |
 | --- | --- | --- |
+| **OMIT_DECLTYPE** | [SQLITE_OMIT_AUTOINIT](https://sqlite.org/compile.html#omit_decltype) | |
+| **OMIT_DEPRECATED** | [SQLITE_OMIT_AUTOINIT](https://sqlite.org/compile.html#omit_deprecated) | |
+| **OMIT_PROGRESS_CALLBACK** | [SQLITE_OMIT_AUTOINIT](https://sqlite.org/compile.html#omit_progress_callback) | |
+| **OMIT_SHARED_CACHE** | [SQLITE_OMIT_AUTOINIT](https://sqlite.org/compile.html#omit_shared_cache) | |
+| **USE_ALLOCA** | [SQLITE_OMIT_AUTOINIT](https://sqlite.org/compile.html#use_alloca) | |
 | **OMIT_AUTOINIT** | [SQLITE_OMIT_AUTOINIT](https://sqlite.org/compile.html#omit_autoinit) | |
 
 | Package Trait | SQLite Feature | Notes |
