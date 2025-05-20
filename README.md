@@ -15,7 +15,7 @@ The package also includes [shims](Sources/CSQLite/include/csqlite_shims.h) for v
 
 ## Customization
 
-For Swift 6.1 and later the build configuration may be customized using package traits. The tables below summarize the supported and **default** traits.
+For Swift 6.1 and later the build configuration may be customized using package traits. The tables below summarize the supported and default traits.
 
 | Package Trait | Default | SQLite Compile-Time Option | Notes |
 | --- | --- | --- | --- |
@@ -30,22 +30,22 @@ For Swift 6.1 and later the build configuration may be customized using package 
 | USE_ALLOCA | Y | [SQLITE_USE_ALLOCA](https://sqlite.org/compile.html#use_alloca) | |
 | OMIT_AUTOINIT | Y | [SQLITE_OMIT_AUTOINIT](https://sqlite.org/compile.html#omit_autoinit) | |
 
-| Package Trait | SQLite Feature | Notes |
-| --- | --- | --- |
-| ENABLE_BYTECODE_VTAB | [SQLITE_ENABLE_BYTECODE_VTAB](https://sqlite.org/bytecodevtab.html) | |
-| ENABLE_COLUMN_METADATA | [SQLITE_ENABLE_COLUMN_METADATA](https://sqlite.org/c3ref/column_database_name.html) | |
-| ENABLE_DBPAGE_VTAB | [SQLITE_ENABLE_DBPAGE_VTAB](https://sqlite.org/dbpage.html) | |
-| ENABLE_DBSTAT_VTAB | [SQLITE_ENABLE_DBSTAT_VTAB](https://sqlite.org/dbstat.html) | |
-| **ENABLE_FTS5** | [SQLITE_ENABLE_FTS5](https://sqlite.org/fts5.html) | |
-| ENABLE_GEOPOLY | [SQLITE_ENABLE_GEOPOLY](https://sqlite.org/geopoly.html) | |
-| **ENABLE_MATH_FUNCTIONS** | [SQLITE_ENABLE_MATH_FUNCTIONS](https://sqlite.org/lang_mathfunc.html) | |
-| ENABLE_NORMALIZE | [SQLITE_ENABLE_NORMALIZE](https://sqlite.org/c3ref/expanded_sql.html) | |
-| ENABLE_PREUPDATE_HOOK | [SQLITE_ENABLE_PREUPDATE_HOOK](https://sqlite.org/c3ref/preupdate_blobwrite.html) | |
-| **ENABLE_RTREE** | [SQLITE_ENABLE_RTREE](https://sqlite.org/rtree.html) | |
-| ENABLE_SESSION | [SQLITE_ENABLE_SESSION](https://sqlite.org/sessionintro.html) | Also sets `ENABLE_PREUPDATE_HOOK` |
-| **ENABLE_SNAPSHOT** | [SQLITE_ENABLE_SNAPSHOT](https://sqlite.org/c3ref/snapshot.html) | |
-| **ENABLE_STMTVTAB** | [SQLITE_ENABLE_STMTVTAB](https://sqlite.org/stmt.html) | |
-| **ENABLE_STAT4** | [SQLITE_ENABLE_STAT4](https://sqlite.org/fileformat2.html#stat4tab) | |
+| Package Trait | Default | SQLite Feature | Notes |
+| --- | --- | --- | --- |
+| ENABLE_BYTECODE_VTAB | | [SQLITE_ENABLE_BYTECODE_VTAB](https://sqlite.org/bytecodevtab.html) | |
+| ENABLE_COLUMN_METADATA | | [SQLITE_ENABLE_COLUMN_METADATA](https://sqlite.org/c3ref/column_database_name.html) | |
+| ENABLE_DBPAGE_VTAB | | [SQLITE_ENABLE_DBPAGE_VTAB](https://sqlite.org/dbpage.html) | |
+| ENABLE_DBSTAT_VTAB | | [SQLITE_ENABLE_DBSTAT_VTAB](https://sqlite.org/dbstat.html) | |
+| ENABLE_FTS5 | Y | [SQLITE_ENABLE_FTS5](https://sqlite.org/fts5.html) | |
+| ENABLE_GEOPOLY | | [SQLITE_ENABLE_GEOPOLY](https://sqlite.org/geopoly.html) | |
+| ENABLE_MATH_FUNCTIONS | Y | [SQLITE_ENABLE_MATH_FUNCTIONS](https://sqlite.org/lang_mathfunc.html) | |
+| ENABLE_NORMALIZE | | [SQLITE_ENABLE_NORMALIZE](https://sqlite.org/c3ref/expanded_sql.html) | |
+| ENABLE_PREUPDATE_HOOK | | [SQLITE_ENABLE_PREUPDATE_HOOK](https://sqlite.org/c3ref/preupdate_blobwrite.html) | |
+| ENABLE_RTREE | Y | [SQLITE_ENABLE_RTREE](https://sqlite.org/rtree.html) | |
+| ENABLE_SESSION | | [SQLITE_ENABLE_SESSION](https://sqlite.org/sessionintro.html) | Also sets `ENABLE_PREUPDATE_HOOK` |
+| ENABLE_SNAPSHOT | Y | [SQLITE_ENABLE_SNAPSHOT](https://sqlite.org/c3ref/snapshot.html) | |
+| ENABLE_STMTVTAB | Y | [SQLITE_ENABLE_STMTVTAB](https://sqlite.org/stmt.html) | |
+| ENABLE_STAT4 | Y | [SQLITE_ENABLE_STAT4](https://sqlite.org/fileformat2.html#stat4tab) | |
 
 ## License
 
