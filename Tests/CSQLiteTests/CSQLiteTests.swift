@@ -19,7 +19,6 @@ import XCTest
 final class CSQLiteTests: XCTestCase {
 	override class func setUp() {
 		super.setUp()
-
 #if swift(<6.1) || OMIT_AUTOINIT
 		// It's necessary to call sqlite3_initialize() since SQLITE_OMIT_AUTOINIT is defined
 		XCTAssertEqual(sqlite3_initialize(), SQLITE_OK)
