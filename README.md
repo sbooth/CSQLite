@@ -19,6 +19,9 @@ For Swift 6.1 and later the build configuration may be customized using package 
 
 | Package Trait | SQLite Compile-Time Option | Notes |
 | --- | --- | --- |
+| **THREADSAFE_0** | [SQLITE_THREADSAFE=0](https://sqlite.org/compile.html#threadsafe) | SQLite recommended |
+| THREADSAFE_1 | [SQLITE_THREADSAFE=1](https://sqlite.org/compile.html#threadsafe) | SQLite default|
+| THREADSAFE_2 | [SQLITE_THREADSAFE=2](https://sqlite.org/compile.html#threadsafe) | |
 | **LIKE_DOESNT_MATCH_BLOBS** | [SQLITE_OMIT_AUTOINIT](https://sqlite.org/compile.html#like_doesnt_match_blobs) | |
 | **OMIT_DECLTYPE** | [SQLITE_OMIT_AUTOINIT](https://sqlite.org/compile.html#omit_decltype) | |
 | **OMIT_DEPRECATED** | [SQLITE_OMIT_AUTOINIT](https://sqlite.org/compile.html#omit_deprecated) | |

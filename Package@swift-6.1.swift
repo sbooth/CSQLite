@@ -24,7 +24,9 @@ let compileTimeOptions: [CSetting] = [
 	// https://sqlite.org/compile.html#dqs
 	.define("SQLITE_DQS", to: "0"),
 	// https://sqlite.org/compile.html#threadsafe
-	.define("SQLITE_THREADSAFE", to: "0"),
+	.define("SQLITE_THREADSAFE", to: "0", .when(traits: ["THREADSAFE_0"])),
+	.define("SQLITE_THREADSAFE", to: "1", .when(traits: ["THREADSAFE_1"])),
+	.define("SQLITE_THREADSAFE", to: "2", .when(traits: ["THREADSAFE_2"])),
 	// https://sqlite.org/compile.html#default_memstatus
 	.define("SQLITE_DEFAULT_MEMSTATUS", to: "0"),
 	// https://sqlite.org/compile.html#default_wal_synchronous
@@ -102,6 +104,18 @@ let package = Package(
 	],
 	traits: [
 		// Compile-time options
+		.trait(
+			name: "THREADSAFE_0",
+			description: "Omit all mutex and thread-safety logic (single-thread mode)"
+		),
+		.trait(
+			name: "THREADSAFE_1",
+			description: "The library may be safely used from multiple threads (serialized mode)"
+		),
+		.trait(
+			name: "THREADSAFE_2",
+			description: "The library may be safely used from multiple threads but individual database connections can only be used by a single thread at a time (multi-thread mode)"
+		),
 		.trait(
 			name: "LIKE_DOESNT_MATCH_BLOBS",
 			description: "Don't allow BLOB operands to LIKE and GLOB operators"
@@ -192,6 +206,7 @@ let package = Package(
 		),
 		// Default traits
 		.default(enabledTraits: [
+			"THREADSAFE_0",
 			"LIKE_DOESNT_MATCH_BLOBS",
 			"OMIT_DECLTYPE",
 			"OMIT_DEPRECATED",
