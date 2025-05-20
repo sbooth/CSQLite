@@ -17,18 +17,18 @@ The package also includes [shims](Sources/CSQLite/include/csqlite_shims.h) for v
 
 For Swift 6.1 and later the build configuration may be customized using package traits. The tables below summarize the supported and **default** traits.
 
-| Package Trait | SQLite Compile-Time Option | Notes |
+| Package Trait | Default | SQLite Compile-Time Option | Notes |
 | --- | --- | --- |
-| **THREADSAFE_0** | [SQLITE_THREADSAFE=0](https://sqlite.org/compile.html#threadsafe) | SQLite recommended |
-| THREADSAFE_1 | [SQLITE_THREADSAFE=1](https://sqlite.org/compile.html#threadsafe) | SQLite default|
-| THREADSAFE_2 | [SQLITE_THREADSAFE=2](https://sqlite.org/compile.html#threadsafe) | |
-| **LIKE_DOESNT_MATCH_BLOBS** | [SQLITE_LIKE_DOESNT_MATCH_BLOBS](https://sqlite.org/compile.html#like_doesnt_match_blobs) | |
-| **OMIT_DECLTYPE** | [SQLITE_OMIT_DECLTYPE](https://sqlite.org/compile.html#omit_decltype) | |
-| **OMIT_DEPRECATED** | [SQLITE_OMIT_DEPRECATED](https://sqlite.org/compile.html#omit_deprecated) | |
-| **OMIT_PROGRESS_CALLBACK** | [SQLITE_OMIT_PROGRESS_CALLBACK](https://sqlite.org/compile.html#omit_progress_callback) | |
-| **OMIT_SHARED_CACHE** | [SQLITE_OMIT_SHARED_CACHE](https://sqlite.org/compile.html#omit_shared_cache) | |
-| **USE_ALLOCA** | [SQLITE_USE_ALLOCA](https://sqlite.org/compile.html#use_alloca) | |
-| **OMIT_AUTOINIT** | [SQLITE_OMIT_AUTOINIT](https://sqlite.org/compile.html#omit_autoinit) | |
+| THREADSAFE_0 | Y | [SQLITE_THREADSAFE=0](https://sqlite.org/compile.html#threadsafe) | SQLite recommended |
+| THREADSAFE_1 | | [SQLITE_THREADSAFE=1](https://sqlite.org/compile.html#threadsafe) | SQLite default|
+| THREADSAFE_2 | | [SQLITE_THREADSAFE=2](https://sqlite.org/compile.html#threadsafe) | |
+| LIKE_DOESNT_MATCH_BLOBS | Y | [SQLITE_LIKE_DOESNT_MATCH_BLOBS](https://sqlite.org/compile.html#like_doesnt_match_blobs) | |
+| OMIT_DECLTYPE | Y | [SQLITE_OMIT_DECLTYPE](https://sqlite.org/compile.html#omit_decltype) | |
+| OMIT_DEPRECATED | Y | [SQLITE_OMIT_DEPRECATED](https://sqlite.org/compile.html#omit_deprecated) | |
+| OMIT_PROGRESS_CALLBACK | Y | [SQLITE_OMIT_PROGRESS_CALLBACK](https://sqlite.org/compile.html#omit_progress_callback) | |
+| OMIT_SHARED_CACHE | Y | [SQLITE_OMIT_SHARED_CACHE](https://sqlite.org/compile.html#omit_shared_cache) | |
+| USE_ALLOCA | Y | [SQLITE_USE_ALLOCA](https://sqlite.org/compile.html#use_alloca) | |
+| OMIT_AUTOINIT | Y | [SQLITE_OMIT_AUTOINIT](https://sqlite.org/compile.html#omit_autoinit) | |
 
 | Package Trait | SQLite Feature | Notes |
 | --- | --- | --- |
