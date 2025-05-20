@@ -30,7 +30,7 @@ let compileTimeOptions: [CSetting] = [
 	// https://sqlite.org/compile.html#default_wal_synchronous
 	.define("SQLITE_DEFAULT_WAL_SYNCHRONOUS", to: "1"),
 	// https://sqlite.org/compile.html#like_doesnt_match_blobs
-	.define("SQLITE_LIKE_DOESNT_MATCH_BLOBS"),
+	.define("SQLITE_LIKE_DOESNT_MATCH_BLOBS", .when(traits: ["LIKE_DOESNT_MATCH_BLOBS"])),
 	// https://sqlite.org/limits.html#max_expr_depth
 	.define("SQLITE_MAX_EXPR_DEPTH", to: "0"),
 	// https://sqlite.org/compile.html#omit_decltype
@@ -102,6 +102,10 @@ let package = Package(
 	],
 	traits: [
 		// Compile-time options
+		.trait(
+			name: "LIKE_DOESNT_MATCH_BLOBS",
+			description: "Don't allow BLOB operands to LIKE and GLOB operators"
+		),
 		.trait(
 			name: "OMIT_DECLTYPE",
 			description: "Omit the ability to return the declared type of columns"
@@ -188,6 +192,7 @@ let package = Package(
 		),
 		// Default traits
 		.default(enabledTraits: [
+			"LIKE_DOESNT_MATCH_BLOBS",
 			"OMIT_DECLTYPE",
 			"OMIT_DEPRECATED",
 			"OMIT_PROGRESS_CALLBACK",

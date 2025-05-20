@@ -19,6 +19,7 @@ For Swift 6.1 and later the build configuration may be customized using package 
 
 | Package Trait | SQLite Compile-Time Option | Notes |
 | --- | --- | --- |
+| **LIKE_DOESNT_MATCH_BLOBS** | [SQLITE_OMIT_AUTOINIT](https://sqlite.org/compile.html#like_doesnt_match_blobs) | |
 | **OMIT_DECLTYPE** | [SQLITE_OMIT_AUTOINIT](https://sqlite.org/compile.html#omit_decltype) | |
 | **OMIT_DEPRECATED** | [SQLITE_OMIT_AUTOINIT](https://sqlite.org/compile.html#omit_deprecated) | |
 | **OMIT_PROGRESS_CALLBACK** | [SQLITE_OMIT_AUTOINIT](https://sqlite.org/compile.html#omit_progress_callback) | |
