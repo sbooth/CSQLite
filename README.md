@@ -18,7 +18,7 @@ The package also includes [shims](Sources/CSQLite/include/csqlite_shims.h) for v
 For Swift 6.1 and later the build configuration may be customized using package traits. The tables below summarize the supported and default traits.
 
 | Package Trait | Default | SQLite Compile-Time Option | Notes |
-| --- | --- | --- | --- |
+| --- | :---: | --- | --- |
 | THREADSAFE_0 | Y | [SQLITE_THREADSAFE=0](https://sqlite.org/compile.html#threadsafe) | SQLite recommended |
 | THREADSAFE_1 | | [SQLITE_THREADSAFE=1](https://sqlite.org/compile.html#threadsafe) | SQLite default|
 | THREADSAFE_2 | | [SQLITE_THREADSAFE=2](https://sqlite.org/compile.html#threadsafe) | |
@@ -31,7 +31,7 @@ For Swift 6.1 and later the build configuration may be customized using package 
 | OMIT_AUTOINIT | Y | [SQLITE_OMIT_AUTOINIT](https://sqlite.org/compile.html#omit_autoinit) | |
 
 | Package Trait | Default | SQLite Feature | Notes |
-| --- | --- | --- | --- |
+| --- | :---: | --- | --- |
 | ENABLE_BYTECODE_VTAB | | [SQLITE_ENABLE_BYTECODE_VTAB](https://sqlite.org/bytecodevtab.html) | |
 | ENABLE_COLUMN_METADATA | | [SQLITE_ENABLE_COLUMN_METADATA](https://sqlite.org/c3ref/column_database_name.html) | |
 | ENABLE_DBPAGE_VTAB | | [SQLITE_ENABLE_DBPAGE_VTAB](https://sqlite.org/dbpage.html) | |
