@@ -34,7 +34,7 @@ For Swift 6.1 and later the build configuration may be customized using package 
 | STRICT_SUBTYPE | Y | [SQLITE_STRICT_SUBTYPE=1](https://sqlite.org/compile.html#strict_subtype) | |
 
 > [!NOTE]
-> The options `THREADSAFE_0`, THREADSAFE_1`, and `THREADSAFE_2` are mutually exclusive.
+> The `THREADSAFE_` traits are mutually exclusive and only one should be specified.
 
 ### Features
 
