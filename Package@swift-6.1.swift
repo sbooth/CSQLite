@@ -48,7 +48,7 @@ let compileTimeOptions: [CSetting] = [
 	// https://sqlite.org/compile.html#omit_autoinit
 	.define("SQLITE_OMIT_AUTOINIT", .when(traits: ["OMIT_AUTOINIT"])),
 	// https://sqlite.org/compile.html#strict_subtype
-	.define("SQLITE_STRICT_SUBTYPE", to: "1"),
+	.define("SQLITE_STRICT_SUBTYPE", to: "1", .when(traits: ["STRICT_SUBTYPE"])),
 ]
 
 /// Platform configuration
@@ -144,6 +144,10 @@ let package = Package(
 			name: "OMIT_AUTOINIT",
 			description: "Omit automatic library initialization"
 		),
+		.trait(
+			name: "STRICT_SUBTYPE",
+			description: "Cause application-defined SQL functions not registered with the SQLITE_RESULT_SUBTYPE property to raise an error when invoking sqlite3_result_subtype"
+		),
 		// Features
 		.trait(
 			name: "ENABLE_BYTECODE_VTAB",
@@ -214,6 +218,7 @@ let package = Package(
 			"OMIT_SHARED_CACHE",
 			"USE_ALLOCA",
 			"OMIT_AUTOINIT",
+			"STRICT_SUBTYPE",
 			"ENABLE_FTS5",
 			"ENABLE_MATH_FUNCTIONS",
 			"ENABLE_RTREE",
