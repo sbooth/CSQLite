@@ -26,7 +26,7 @@ For Swift 6.1 and later the build configuration may be customized using package 
 | DQS_2 | | [SQLITE_DQS=2](https://sqlite.org/compile.html#dqs) | |
 | DQS_3 | | [SQLITE_DQS=3](https://sqlite.org/compile.html#dqs) | SQLite default |
 
-> [!NOTE]
+> [!IMPORTANT]
 > The `DQS_` traits are mutually exclusive and only one should be specified.
 
 | Package Trait | Default | SQLite Compile-Time Option | Notes |
@@ -35,7 +35,7 @@ For Swift 6.1 and later the build configuration may be customized using package 
 | THREADSAFE_1 | | [SQLITE_THREADSAFE=1](https://sqlite.org/compile.html#threadsafe) | SQLite default|
 | THREADSAFE_2 | | [SQLITE_THREADSAFE=2](https://sqlite.org/compile.html#threadsafe) | |
 
-> [!NOTE]
+> [!IMPORTANT]
 > The `THREADSAFE_` traits are mutually exclusive and only one should be specified.
 
 | Package Trait | Default | SQLite Compile-Time Option | Notes |
