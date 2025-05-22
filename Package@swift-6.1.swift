@@ -22,7 +22,10 @@ import PackageDescription
 /// - seealso: [Recommended Compile-time Options](https://sqlite.org/compile.html#recommended_compile_time_options)
 let compileTimeOptions: [CSetting] = [
 	// https://sqlite.org/compile.html#dqs
-	.define("SQLITE_DQS", to: "0"),
+	.define("SQLITE_DQS", to: "0", .when(traits: ["DQS_0"])),
+	.define("SQLITE_DQS", to: "1", .when(traits: ["DQS_1"])),
+	.define("SQLITE_DQS", to: "2", .when(traits: ["DQS_2"])),
+	.define("SQLITE_DQS", to: "3", .when(traits: ["DQS_3"])),
 	// https://sqlite.org/compile.html#threadsafe
 	.define("SQLITE_THREADSAFE", to: "0", .when(traits: ["THREADSAFE_0"])),
 	.define("SQLITE_THREADSAFE", to: "1", .when(traits: ["THREADSAFE_1"])),
@@ -104,6 +107,22 @@ let package = Package(
 	],
 	traits: [
 		// Compile-time options
+		.trait(
+			name: "DQS_0",
+			description: "Disallow double-quoted strings in DDL and DML"
+		),
+		.trait(
+			name: "DQS_1",
+			description: "Disallow double-quoted strings in DDL, allow in DML"
+		),
+		.trait(
+			name: "DQS_2",
+			description: "Allow double-quoted strings in DDL, disallow in DML"
+		),
+		.trait(
+			name: "DQS_3",
+			description: "Allow double-quoted strings in DDL and DML"
+		),
 		.trait(
 			name: "THREADSAFE_0",
 			description: "Omit all mutex and thread-safety logic (single-thread mode)"
@@ -210,6 +229,7 @@ let package = Package(
 		),
 		// Default traits
 		.default(enabledTraits: [
+			"DQS_0",
 			"THREADSAFE_0",
 			"LIKE_DOESNT_MATCH_BLOBS",
 			"OMIT_DECLTYPE",

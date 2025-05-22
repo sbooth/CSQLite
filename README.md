@@ -21,9 +21,25 @@ For Swift 6.1 and later the build configuration may be customized using package 
 
 | Package Trait | Default | SQLite Compile-Time Option | Notes |
 | --- | :---: | --- | --- |
+| DQS_0 | Y | [SQLITE_DQS=0](https://sqlite.org/compile.html#dqs) | SQLite recommended |
+| DQS_1 | | [SQLITE_DQS=1](https://sqlite.org/compile.html#dqs) | |
+| DQS_2 | | [SQLITE_DQS=2](https://sqlite.org/compile.html#dqs) | |
+| DQS_3 | | [SQLITE_DQS=3](https://sqlite.org/compile.html#dqs) | SQLite default |
+
+> [!NOTE]
+> The `DQS_` traits are mutually exclusive and only one should be specified.
+
+| Package Trait | Default | SQLite Compile-Time Option | Notes |
+| --- | :---: | --- | --- |
 | THREADSAFE_0 | Y | [SQLITE_THREADSAFE=0](https://sqlite.org/compile.html#threadsafe) | SQLite recommended |
 | THREADSAFE_1 | | [SQLITE_THREADSAFE=1](https://sqlite.org/compile.html#threadsafe) | SQLite default|
 | THREADSAFE_2 | | [SQLITE_THREADSAFE=2](https://sqlite.org/compile.html#threadsafe) | |
+
+> [!NOTE]
+> The `THREADSAFE_` traits are mutually exclusive and only one should be specified.
+
+| Package Trait | Default | SQLite Compile-Time Option | Notes |
+| --- | :---: | --- | --- |
 | LIKE_DOESNT_MATCH_BLOBS | Y | [SQLITE_LIKE_DOESNT_MATCH_BLOBS](https://sqlite.org/compile.html#like_doesnt_match_blobs) | |
 | OMIT_DECLTYPE | Y | [SQLITE_OMIT_DECLTYPE](https://sqlite.org/compile.html#omit_decltype) | |
 | OMIT_DEPRECATED | Y | [SQLITE_OMIT_DEPRECATED](https://sqlite.org/compile.html#omit_deprecated) | |
@@ -32,9 +48,6 @@ For Swift 6.1 and later the build configuration may be customized using package 
 | USE_ALLOCA | Y | [SQLITE_USE_ALLOCA](https://sqlite.org/compile.html#use_alloca) | |
 | OMIT_AUTOINIT | Y | [SQLITE_OMIT_AUTOINIT](https://sqlite.org/compile.html#omit_autoinit) | |
 | STRICT_SUBTYPE | Y | [SQLITE_STRICT_SUBTYPE=1](https://sqlite.org/compile.html#strict_subtype) | |
-
-> [!NOTE]
-> The `THREADSAFE_` traits are mutually exclusive and only one should be specified.
 
 ### Features
 
