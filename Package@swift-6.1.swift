@@ -54,7 +54,7 @@ let compileTimeOptions: [CSetting] = [
 let platformConfiguration: [CSetting] = [
 	.define("HAVE_ISNAN", to: "1"),
 	// 'strchrnul' is only available on macOS 15.4, iOS 18.4, tvOS 18.4, watchOS 11.4
-//	.define("HAVE_STRCHRNUL", to: "1", .when(platforms: [.macOS])),
+	// and there is no way to specify a version in the build settings condition platform
 	.define("HAVE_UTIME", to: "1"),
 ]
 
