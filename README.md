@@ -19,21 +19,26 @@ For Swift 6.1 and later the build configuration and features may be customized u
 
 ### Recommended Compile-Time Options
 
-The following traits are used to enable the SQLite [recommended compile-time options](https://sqlite.org/compile.html#recommended_compile_time_options):
+The following traits are used to set the SQLite [recommended compile-time options](https://sqlite.org/compile.html#recommended_compile_time_options):
 
-| Package Trait | Default | Compile-Time Option |
-| --- | :---: | --- |
-| DQS_0 | Y | [SQLITE_DQS=0](https://sqlite.org/compile.html#dqs) |
-| THREADSAFE_0 | Y | [SQLITE_THREADSAFE=0](https://sqlite.org/compile.html#threadsafe) |
-| DEFAULT_MEMSTATUS_0 | Y | [SQLITE_DEFAULT_MEMSTATUS=0](https://sqlite.org/compile.html#default_memstatus) |
-| LIKE_DOESNT_MATCH_BLOBS | Y | [SQLITE_LIKE_DOESNT_MATCH_BLOBS](https://sqlite.org/compile.html#like_doesnt_match_blobs) |
-| OMIT_DECLTYPE | Y | [SQLITE_OMIT_DECLTYPE](https://sqlite.org/compile.html#omit_decltype) |
-| OMIT_DEPRECATED | Y | [SQLITE_OMIT_DEPRECATED](https://sqlite.org/compile.html#omit_deprecated) |
-| OMIT_PROGRESS_CALLBACK | Y | [SQLITE_OMIT_PROGRESS_CALLBACK](https://sqlite.org/compile.html#omit_progress_callback) |
-| OMIT_SHARED_CACHE | Y | [SQLITE_OMIT_SHARED_CACHE](https://sqlite.org/compile.html#omit_shared_cache) |
-| USE_ALLOCA | Y | [SQLITE_USE_ALLOCA](https://sqlite.org/compile.html#use_alloca) |
-| OMIT_AUTOINIT | Y | [SQLITE_OMIT_AUTOINIT](https://sqlite.org/compile.html#omit_autoinit) |
-| STRICT_SUBTYPE | Y | [SQLITE_STRICT_SUBTYPE=1](https://sqlite.org/compile.html#strict_subtype) |
+| Package Trait | Compile-Time Option |
+| --- | --- |
+| DQS_0 | [SQLITE_DQS=0](https://sqlite.org/compile.html#dqs) |
+| THREADSAFE_0 | [SQLITE_THREADSAFE=0](https://sqlite.org/compile.html#threadsafe) |
+| DEFAULT_MEMSTATUS_0 | [SQLITE_DEFAULT_MEMSTATUS=0](https://sqlite.org/compile.html#default_memstatus) |
+| DEFAULT_WAL_SYNCHRONOUS_1 | [SQLITE_DEFAULT_WAL_SYNCHRONOUS=1](https://sqlite.org/compile.html#default_wal_synchronous) |
+| LIKE_DOESNT_MATCH_BLOBS | [SQLITE_LIKE_DOESNT_MATCH_BLOBS](https://sqlite.org/compile.html#like_doesnt_match_blobs) |
+| MAX_EXPR_DEPTH_0 | [SQLITE_MAX_EXPR_DEPTH=0](https://sqlite.org/compile.html#max_expr_depth) |
+| OMIT_DECLTYPE | [SQLITE_OMIT_DECLTYPE](https://sqlite.org/compile.html#omit_decltype) |
+| OMIT_DEPRECATED | [SQLITE_OMIT_DEPRECATED](https://sqlite.org/compile.html#omit_deprecated) |
+| OMIT_PROGRESS_CALLBACK | [SQLITE_OMIT_PROGRESS_CALLBACK](https://sqlite.org/compile.html#omit_progress_callback) |
+| OMIT_SHARED_CACHE | [SQLITE_OMIT_SHARED_CACHE](https://sqlite.org/compile.html#omit_shared_cache) |
+| USE_ALLOCA | [SQLITE_USE_ALLOCA](https://sqlite.org/compile.html#use_alloca) |
+| OMIT_AUTOINIT | [SQLITE_OMIT_AUTOINIT](https://sqlite.org/compile.html#omit_autoinit) |
+| STRICT_SUBTYPE | [SQLITE_STRICT_SUBTYPE=1](https://sqlite.org/compile.html#strict_subtype) |
+
+> [!IMPORTANT]
+> All of the above traits are enabled by default.
 
 ### Features
 

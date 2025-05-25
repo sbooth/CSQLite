@@ -28,11 +28,11 @@ let compileTimeOptions: [CSetting] = [
 	// https://sqlite.org/compile.html#default_memstatus
 	.define("SQLITE_DEFAULT_MEMSTATUS", to: "0", .when(traits: ["DEFAULT_MEMSTATUS_0"])),
 	// https://sqlite.org/compile.html#default_wal_synchronous
-	.define("SQLITE_DEFAULT_WAL_SYNCHRONOUS", to: "1"),
+	.define("SQLITE_DEFAULT_WAL_SYNCHRONOUS", to: "1", .when(traits: ["DEFAULT_WAL_SYNCHRONOUS_1"])),
 	// https://sqlite.org/compile.html#like_doesnt_match_blobs
 	.define("SQLITE_LIKE_DOESNT_MATCH_BLOBS", .when(traits: ["LIKE_DOESNT_MATCH_BLOBS"])),
 	// https://sqlite.org/limits.html#max_expr_depth
-	.define("SQLITE_MAX_EXPR_DEPTH", to: "0"),
+	.define("SQLITE_MAX_EXPR_DEPTH", to: "0", .when(traits: ["MAX_EXPR_DEPTH_0"])),
 	// https://sqlite.org/compile.html#omit_decltype
 	.define("SQLITE_OMIT_DECLTYPE", .when(traits: ["OMIT_DECLTYPE"])),
 	// https://sqlite.org/compile.html#omit_deprecated
@@ -115,8 +115,16 @@ let package = Package(
 			description: "Disable memory allocation statistics by default"
 		),
 		.trait(
+			name: "DEFAULT_WAL_SYNCHRONOUS_1",
+			description: "Use synchronous=NORMAL in WAL mode by default"
+		),
+		.trait(
 			name: "LIKE_DOESNT_MATCH_BLOBS",
 			description: "Don't allow BLOB operands to LIKE and GLOB operators"
+		),
+		.trait(
+			name: "MAX_EXPR_DEPTH_0",
+			description: "Disabl all checking of the expression parse-tree depth"
 		),
 		.trait(
 			name: "OMIT_DECLTYPE",
@@ -210,7 +218,10 @@ let package = Package(
 		.default(enabledTraits: [
 			"DQS_0",
 			"THREADSAFE_0",
+			"DEFAULT_MEMSTATUS_0",
+			"DEFAULT_WAL_SYNCHRONOUS_1",
 			"LIKE_DOESNT_MATCH_BLOBS",
+			"MAX_EXPR_DEPTH_0",
 			"OMIT_DECLTYPE",
 			"OMIT_DEPRECATED",
 			"OMIT_PROGRESS_CALLBACK",
