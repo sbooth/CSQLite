@@ -53,6 +53,8 @@ let compileTimeOptions: [CSetting] = [
 /// - seealso: [Platform Configuration](https://sqlite.org/compile.html#_platform_configuration)
 let platformConfiguration: [CSetting] = [
 	.define("HAVE_ISNAN", to: "1"),
+	// 'strchrnul' is only available on macOS 15.4, iOS 18.4, tvOS 18.4, watchOS 11.4
+//	.define("HAVE_STRCHRNUL", to: "1", .when(platforms: [.macOS])),
 	.define("HAVE_UTIME", to: "1"),
 ]
 
