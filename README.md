@@ -15,31 +15,17 @@ The package also includes [shims](Sources/CSQLite/include/csqlite_shims.h) for v
 
 ## Customization
 
-For Swift 6.1 and later the build configuration may be customized using package traits. The tables below summarize the supported and default traits.
+For Swift 6.1 and later the build configuration and features may be customized using package traits.
 
-### Compile-Time Options
+### Recommended Compile-Time Options
 
-| Package Trait | Default | SQLite Compile-Time Option | Notes |
+The following traits are used to enable the SQLite [recommended compile-time options](https://sqlite.org/compile.html#recommended_compile_time_options):
+
+| Package Trait | Default | Compile-Time Option |
 | --- | :---: | --- | --- |
-| DQS_0 | Y | [SQLITE_DQS=0](https://sqlite.org/compile.html#dqs) | SQLite recommended |
-| DQS_1 | | [SQLITE_DQS=1](https://sqlite.org/compile.html#dqs) | |
-| DQS_2 | | [SQLITE_DQS=2](https://sqlite.org/compile.html#dqs) | |
-| DQS_3 | | [SQLITE_DQS=3](https://sqlite.org/compile.html#dqs) | SQLite default |
-
-> [!IMPORTANT]
-> The `DQS_` traits are mutually exclusive and only one should be specified.
-
-| Package Trait | Default | SQLite Compile-Time Option | Notes |
-| --- | :---: | --- | --- |
-| THREADSAFE_0 | Y | [SQLITE_THREADSAFE=0](https://sqlite.org/compile.html#threadsafe) | SQLite recommended |
-| THREADSAFE_1 | | [SQLITE_THREADSAFE=1](https://sqlite.org/compile.html#threadsafe) | SQLite default|
-| THREADSAFE_2 | | [SQLITE_THREADSAFE=2](https://sqlite.org/compile.html#threadsafe) | |
-
-> [!IMPORTANT]
-> The `THREADSAFE_` traits are mutually exclusive and only one should be specified.
-
-| Package Trait | Default | SQLite Compile-Time Option |
-| --- | :---: | --- |
+| DQS_0 | Y | [SQLITE_DQS=0](https://sqlite.org/compile.html#dqs) |
+| THREADSAFE_0 | Y | [SQLITE_THREADSAFE=0](https://sqlite.org/compile.html#threadsafe) |
+| DEFAULT_MEMSTATUS_0 | Y | [SQLITE_DEFAULT_MEMSTATUS=0](https://sqlite.org/compile.html#default_memstatus) |
 | LIKE_DOESNT_MATCH_BLOBS | Y | [SQLITE_LIKE_DOESNT_MATCH_BLOBS](https://sqlite.org/compile.html#like_doesnt_match_blobs) |
 | OMIT_DECLTYPE | Y | [SQLITE_OMIT_DECLTYPE](https://sqlite.org/compile.html#omit_decltype) |
 | OMIT_DEPRECATED | Y | [SQLITE_OMIT_DEPRECATED](https://sqlite.org/compile.html#omit_deprecated) |
@@ -51,22 +37,27 @@ For Swift 6.1 and later the build configuration may be customized using package 
 
 ### Features
 
-| Package Trait | Default | SQLite Feature | Notes |
-| --- | :---: | --- | --- |
-| ENABLE_BYTECODE_VTAB | | [SQLITE_ENABLE_BYTECODE_VTAB](https://sqlite.org/bytecodevtab.html) | |
-| ENABLE_COLUMN_METADATA | | [SQLITE_ENABLE_COLUMN_METADATA](https://sqlite.org/c3ref/column_database_name.html) | |
-| ENABLE_DBPAGE_VTAB | | [SQLITE_ENABLE_DBPAGE_VTAB](https://sqlite.org/dbpage.html) | |
-| ENABLE_DBSTAT_VTAB | | [SQLITE_ENABLE_DBSTAT_VTAB](https://sqlite.org/dbstat.html) | |
-| ENABLE_FTS5 | Y | [SQLITE_ENABLE_FTS5](https://sqlite.org/fts5.html) | |
-| ENABLE_GEOPOLY | | [SQLITE_ENABLE_GEOPOLY](https://sqlite.org/geopoly.html) | |
-| ENABLE_MATH_FUNCTIONS | Y | [SQLITE_ENABLE_MATH_FUNCTIONS](https://sqlite.org/lang_mathfunc.html) | |
-| ENABLE_NORMALIZE | | [SQLITE_ENABLE_NORMALIZE](https://sqlite.org/c3ref/expanded_sql.html) | |
-| ENABLE_PREUPDATE_HOOK | | [SQLITE_ENABLE_PREUPDATE_HOOK](https://sqlite.org/c3ref/preupdate_blobwrite.html) | |
-| ENABLE_RTREE | Y | [SQLITE_ENABLE_RTREE](https://sqlite.org/rtree.html) | |
-| ENABLE_SESSION | | [SQLITE_ENABLE_SESSION](https://sqlite.org/sessionintro.html) | Also sets `ENABLE_PREUPDATE_HOOK` |
-| ENABLE_SNAPSHOT | Y | [SQLITE_ENABLE_SNAPSHOT](https://sqlite.org/c3ref/snapshot.html) | |
-| ENABLE_STMTVTAB | Y | [SQLITE_ENABLE_STMTVTAB](https://sqlite.org/stmt.html) | |
-| ENABLE_STAT4 | Y | [SQLITE_ENABLE_STAT4](https://sqlite.org/fileformat2.html#stat4tab) | |
+The following traits enable commonly-used SQLite features:
+
+| Package Trait | Default | SQLite Feature |
+| --- | :---: | --- |
+| ENABLE_BYTECODE_VTAB | | [SQLITE_ENABLE_BYTECODE_VTAB](https://sqlite.org/bytecodevtab.html) |
+| ENABLE_COLUMN_METADATA | | [SQLITE_ENABLE_COLUMN_METADATA](https://sqlite.org/c3ref/column_database_name.html) |
+| ENABLE_DBPAGE_VTAB | | [SQLITE_ENABLE_DBPAGE_VTAB](https://sqlite.org/dbpage.html) |
+| ENABLE_DBSTAT_VTAB | | [SQLITE_ENABLE_DBSTAT_VTAB](https://sqlite.org/dbstat.html) |
+| ENABLE_FTS5 | Y | [SQLITE_ENABLE_FTS5](https://sqlite.org/fts5.html) |
+| ENABLE_GEOPOLY | | [SQLITE_ENABLE_GEOPOLY](https://sqlite.org/geopoly.html) |
+| ENABLE_MATH_FUNCTIONS | Y | [SQLITE_ENABLE_MATH_FUNCTIONS](https://sqlite.org/lang_mathfunc.html) |
+| ENABLE_NORMALIZE | | [SQLITE_ENABLE_NORMALIZE](https://sqlite.org/c3ref/expanded_sql.html) |
+| ENABLE_PREUPDATE_HOOK | | [SQLITE_ENABLE_PREUPDATE_HOOK](https://sqlite.org/c3ref/preupdate_blobwrite.html) |
+| ENABLE_RTREE | Y | [SQLITE_ENABLE_RTREE](https://sqlite.org/rtree.html) |
+| ENABLE_SESSION | | [SQLITE_ENABLE_SESSION](https://sqlite.org/sessionintro.html) |
+| ENABLE_SNAPSHOT | Y | [SQLITE_ENABLE_SNAPSHOT](https://sqlite.org/c3ref/snapshot.html) |
+| ENABLE_STMTVTAB | Y | [SQLITE_ENABLE_STMTVTAB](https://sqlite.org/stmt.html) |
+| ENABLE_STAT4 | Y | [SQLITE_ENABLE_STAT4](https://sqlite.org/fileformat2.html#stat4tab) |
+
+> [!NOTE]
+> The `ENABLE_SESSION` trait also sets the `ENABLE_PREUPDATE_HOOK` trait.
 
 ## License
 

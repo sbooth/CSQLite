@@ -23,15 +23,10 @@ import PackageDescription
 let compileTimeOptions: [CSetting] = [
 	// https://sqlite.org/compile.html#dqs
 	.define("SQLITE_DQS", to: "0", .when(traits: ["DQS_0"])),
-	.define("SQLITE_DQS", to: "1", .when(traits: ["DQS_1"])),
-	.define("SQLITE_DQS", to: "2", .when(traits: ["DQS_2"])),
-	.define("SQLITE_DQS", to: "3", .when(traits: ["DQS_3"])),
 	// https://sqlite.org/compile.html#threadsafe
 	.define("SQLITE_THREADSAFE", to: "0", .when(traits: ["THREADSAFE_0"])),
-	.define("SQLITE_THREADSAFE", to: "1", .when(traits: ["THREADSAFE_1"])),
-	.define("SQLITE_THREADSAFE", to: "2", .when(traits: ["THREADSAFE_2"])),
 	// https://sqlite.org/compile.html#default_memstatus
-	.define("SQLITE_DEFAULT_MEMSTATUS", to: "0"),
+	.define("SQLITE_DEFAULT_MEMSTATUS", to: "0", .when(traits: ["DEFAULT_MEMSTATUS_0"])),
 	// https://sqlite.org/compile.html#default_wal_synchronous
 	.define("SQLITE_DEFAULT_WAL_SYNCHRONOUS", to: "1"),
 	// https://sqlite.org/compile.html#like_doesnt_match_blobs
@@ -109,31 +104,15 @@ let package = Package(
 		// Compile-time options
 		.trait(
 			name: "DQS_0",
-			description: "Disallow double-quoted strings in DDL and DML"
-		),
-		.trait(
-			name: "DQS_1",
-			description: "Disallow double-quoted strings in DDL, allow in DML"
-		),
-		.trait(
-			name: "DQS_2",
-			description: "Allow double-quoted strings in DDL, disallow in DML"
-		),
-		.trait(
-			name: "DQS_3",
-			description: "Allow double-quoted strings in DDL and DML"
+			description: "Disallow double-quoted string literals in DDL and DML"
 		),
 		.trait(
 			name: "THREADSAFE_0",
-			description: "Omit all mutex and thread-safety logic (single-thread mode)"
+			description: "Omit all mutex and thread-safety logic"
 		),
 		.trait(
-			name: "THREADSAFE_1",
-			description: "The library may be safely used from multiple threads (serialized mode)"
-		),
-		.trait(
-			name: "THREADSAFE_2",
-			description: "The library may be safely used from multiple threads but individual database connections can only be used by a single thread at a time (multi-thread mode)"
+			name: "DEFAULT_MEMSTATUS_0",
+			description: "Disable memory allocation statistics by default"
 		),
 		.trait(
 			name: "LIKE_DOESNT_MATCH_BLOBS",
