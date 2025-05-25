@@ -22,7 +22,7 @@ For Swift 6.1 and later the build configuration and features may be customized u
 The following traits are used to enable the SQLite [recommended compile-time options](https://sqlite.org/compile.html#recommended_compile_time_options):
 
 | Package Trait | Default | Compile-Time Option |
-| --- | :---: | --- | --- |
+| --- | :---: | --- |
 | DQS_0 | Y | [SQLITE_DQS=0](https://sqlite.org/compile.html#dqs) |
 | THREADSAFE_0 | Y | [SQLITE_THREADSAFE=0](https://sqlite.org/compile.html#threadsafe) |
 | DEFAULT_MEMSTATUS_0 | Y | [SQLITE_DEFAULT_MEMSTATUS=0](https://sqlite.org/compile.html#default_memstatus) |
