@@ -126,7 +126,7 @@ let package = Package(
 		),
 		.trait(
 			name: "MAX_EXPR_DEPTH_0",
-			description: "Disabl all checking of the expression parse-tree depth"
+			description: "Disable all checking of the expression parse-tree depth"
 		),
 		.trait(
 			name: "OMIT_DECLTYPE",
