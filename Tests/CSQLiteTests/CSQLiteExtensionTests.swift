@@ -17,11 +17,13 @@ import XCTest
 @testable import CSQLite
 
 final class CSQLiteExtensionTests: XCTestCase {
+#if swift(<6.1) || OMIT_AUTOINIT
 	override class func setUp() {
 		super.setUp()
 		// It's necessary to call sqlite3_initialize() since SQLITE_OMIT_AUTOINIT is defined
 		XCTAssertEqual(sqlite3_initialize(), SQLITE_OK)
 	}
+#endif
 
 	func testCarray() {
 		XCTAssertEqual(csqlite_sqlite3_auto_extension_carray(), SQLITE_OK)
