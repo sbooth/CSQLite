@@ -35,7 +35,7 @@ The following traits are used to set the SQLite [recommended compile-time option
 | OMIT_SHARED_CACHE | [SQLITE_OMIT_SHARED_CACHE](https://sqlite.org/compile.html#omit_shared_cache) |
 | USE_ALLOCA | [SQLITE_USE_ALLOCA](https://sqlite.org/compile.html#use_alloca) |
 | OMIT_AUTOINIT | [SQLITE_OMIT_AUTOINIT](https://sqlite.org/compile.html#omit_autoinit) |
-| STRICT_SUBTYPE | [SQLITE_STRICT_SUBTYPE=1](https://sqlite.org/compile.html#strict_subtype) |
+| STRICT_SUBTYPE_1 | [SQLITE_STRICT_SUBTYPE=1](https://sqlite.org/compile.html#strict_subtype) |
 
 > [!IMPORTANT]
 > All of the above traits are enabled by default.
