@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-
+    name: Build and test on macOS
     runs-on: macos-latest
 
     steps:
@@ -24,7 +24,7 @@ jobs:
       run: swift test -v
 
   build:
-
+    name: Build and test on Ubuntu
     runs-on: ubuntu-latest
 
     steps:
