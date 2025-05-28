@@ -270,7 +270,7 @@ let package = Package(
 			name: "CSQLiteExtensionsTests",
 			dependencies: [
 				"CSQLiteExtensions",
-			])
+			]),
 	],
 	cLanguageStandard: .gnu11
 )
