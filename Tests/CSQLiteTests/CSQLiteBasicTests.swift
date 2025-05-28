@@ -16,7 +16,7 @@
 import XCTest
 @testable import CSQLite
 
-final class CSQLiteTests: XCTestCase {
+final class CSQLiteBasicTests: XCTestCase {
 #if swift(<6.1) || OMIT_AUTOINIT
 	override class func setUp() {
 		super.setUp()
