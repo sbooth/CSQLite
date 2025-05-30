@@ -10,7 +10,7 @@
  **
  ******************************************************************************
  **
- ** Basic tests of CSQLite statically-linked extension functionality.
+ ** Basic tests of CSQLite statically linked extension functionality.
  */
 
 import XCTest
