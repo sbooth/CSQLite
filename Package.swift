@@ -290,7 +290,6 @@ let package = Package(
 		.target(
 			name: "CSQLiteExtensions",
 			dependencies: [
-//				"CSQLite",
 				.targetItem(name: "CSQLiteCArrayExtension", condition: .when(traits: ["CSQLITE_ENABLE_CARRAY_EXTENSION"])),
 				.targetItem(name: "CSQLiteDecimalExtension", condition: .when(traits: ["CSQLITE_ENABLE_DECIMAL_EXTENSION"])),
 				.targetItem(name: "CSQLiteIEEE754Extension", condition: .when(traits: ["CSQLITE_ENABLE_IEEE754_EXTENSION"])),
