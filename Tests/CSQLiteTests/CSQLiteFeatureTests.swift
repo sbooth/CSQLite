@@ -17,7 +17,7 @@ import XCTest
 @testable import CSQLite
 
 final class CSQLiteFeatureTests: XCTestCase {
-#if swift(<6.1) || OMIT_AUTOINIT
+#if swift(<6.1) || CSQLITE_OMIT_AUTOINIT
 	override class func setUp() {
 		super.setUp()
 		// It's necessary to call sqlite3_initialize() since SQLITE_OMIT_AUTOINIT is defined
@@ -25,7 +25,7 @@ final class CSQLiteFeatureTests: XCTestCase {
 	}
 #endif
 
-#if swift(<6.1) || ENABLE_FTS5
+#if swift(<6.1) || CSQLITE_ENABLE_FTS5
 	func testFTS5() {
 		var db: OpaquePointer?
 		XCTAssertEqual(sqlite3_open_v2(":memory:", &db, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, nil), SQLITE_OK)
@@ -45,7 +45,7 @@ final class CSQLiteFeatureTests: XCTestCase {
 	}
 #endif
 
-#if swift(<6.1) || ENABLE_MATH_FUNCTIONS
+#if swift(<6.1) || CSQLITE_ENABLE_MATH_FUNCTIONS
 	func testMathFunctions() {
 		var db: OpaquePointer?
 		XCTAssertEqual(sqlite3_open_v2(":memory:", &db, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, nil), SQLITE_OK)
@@ -61,7 +61,7 @@ final class CSQLiteFeatureTests: XCTestCase {
 	}
 #endif
 
-#if swift(<6.1) || ENABLE_RTREE
+#if swift(<6.1) || CSQLITE_ENABLE_RTREE
 	func testRTree() {
 		var db: OpaquePointer?
 		XCTAssertEqual(sqlite3_open_v2(":memory:", &db, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, nil), SQLITE_OK)
@@ -80,7 +80,7 @@ final class CSQLiteFeatureTests: XCTestCase {
 	}
 #endif
 
-#if swift(<6.1) || ENABLE_STMTVTAB
+#if swift(<6.1) || CSQLITE_ENABLE_STMTVTAB
 	func testStmtVtab() {
 		var db: OpaquePointer?
 		XCTAssertEqual(sqlite3_open_v2(":memory:", &db, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, nil), SQLITE_OK)
