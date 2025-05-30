@@ -1,0 +1,4 @@
+module CSQLiteExtensions {
+	header "csqlite_extensions.h"
+	export *
+}
