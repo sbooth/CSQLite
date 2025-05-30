@@ -14,6 +14,7 @@
  */
 
 import XCTest
+import CSQLite
 @testable import CSQLiteExtensions
 
 final class CSQLiteExtensionTests: XCTestCase {
@@ -25,6 +26,7 @@ final class CSQLiteExtensionTests: XCTestCase {
 	}
 #endif
 
+#if swift(<6.1) || CSQLITE_ENABLE_CARRAY_EXTENSION
 	func testCarray() {
 		XCTAssertEqual(csqlite_sqlite3_auto_extension_carray(), SQLITE_OK)
 
@@ -50,7 +52,9 @@ final class CSQLiteExtensionTests: XCTestCase {
 		XCTAssertEqual(sqlite3_finalize(stmt), SQLITE_OK)
 		XCTAssertEqual(sqlite3_close(db), SQLITE_OK)
 	}
+#endif
 
+#if swift(<6.1) || CSQLITE_ENABLE_DECIMAL_EXTENSION
 	func testDecimal() {
 		XCTAssertEqual(csqlite_sqlite3_auto_extension_decimal(), SQLITE_OK)
 
@@ -66,7 +70,9 @@ final class CSQLiteExtensionTests: XCTestCase {
 		XCTAssertEqual(sqlite3_finalize(stmt), SQLITE_OK)
 		XCTAssertEqual(sqlite3_close(db), SQLITE_OK)
 	}
+#endif
 
+#if swift(<6.1) || CSQLITE_ENABLE_IEEE754_EXTENSION
 	func testIEEE() {
 		XCTAssertEqual(csqlite_sqlite3_auto_extension_ieee754(), SQLITE_OK)
 
@@ -82,7 +88,9 @@ final class CSQLiteExtensionTests: XCTestCase {
 		XCTAssertEqual(sqlite3_finalize(stmt), SQLITE_OK)
 		XCTAssertEqual(sqlite3_close(db), SQLITE_OK)
 	}
+#endif
 
+#if swift(<6.1) || CSQLITE_ENABLE_PERCENTILE_EXTENSION
 	func testPercentile() {
 		XCTAssertEqual(csqlite_sqlite3_auto_extension_percentile(), SQLITE_OK)
 
@@ -97,7 +105,9 @@ final class CSQLiteExtensionTests: XCTestCase {
 		XCTAssertEqual(sqlite3_finalize(stmt), SQLITE_OK)
 		XCTAssertEqual(sqlite3_close(db), SQLITE_OK)
 	}
+#endif
 
+#if swift(<6.1) || CSQLITE_ENABLE_SERIES_EXTENSION
 	func testSeries() {
 		XCTAssertEqual(csqlite_sqlite3_auto_extension_series(), SQLITE_OK)
 
@@ -116,7 +126,9 @@ final class CSQLiteExtensionTests: XCTestCase {
 		XCTAssertEqual(sqlite3_finalize(stmt), SQLITE_OK)
 		XCTAssertEqual(sqlite3_close(db), SQLITE_OK)
 	}
+#endif
 
+#if swift(<6.1) || CSQLITE_ENABLE_SHA3_EXTENSION
 	func testSHA3() {
 		XCTAssertEqual(csqlite_sqlite3_auto_extension_sha3(), SQLITE_OK)
 
@@ -132,7 +144,9 @@ final class CSQLiteExtensionTests: XCTestCase {
 		XCTAssertEqual(sqlite3_finalize(stmt), SQLITE_OK)
 		XCTAssertEqual(sqlite3_close(db), SQLITE_OK)
 	}
+#endif
 
+#if swift(<6.1) || CSQLITE_ENABLE_UUID_EXTENSION
 	func testUUID() {
 		XCTAssertEqual(csqlite_sqlite3_auto_extension_uuid(), SQLITE_OK)
 
@@ -156,4 +170,5 @@ final class CSQLiteExtensionTests: XCTestCase {
 		XCTAssertEqual(sqlite3_finalize(stmt), SQLITE_OK)
 		XCTAssertEqual(sqlite3_close(db), SQLITE_OK)
 	}
+#endif
 }

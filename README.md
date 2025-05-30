@@ -64,6 +64,20 @@ The following traits enable commonly-used SQLite features:
 > [!NOTE]
 > The `ENABLE_SESSION` trait also sets the `ENABLE_PREUPDATE_HOOK` trait.
 
+### Statically Linked Extensions
+
+The following traits enable statically linked SQLite extensions and helper functions for automatic extension registration:
+
+| Package Trait | Default | SQLite Extension |
+| --- | :---: | --- |
+| CSQLITE_ENABLE_CARRAY_EXTENSION | Y | [carray](https://sqlite.org/carray.html) |
+| CSQLITE_ENABLE_DECIMAL_EXTENSION | Y | [decimal](https://sqlite.org/floatingpoint.html#the_decimal_c_extension) |
+| CSQLITE_ENABLE_IEEE754_EXTENSION | Y | [ieee754](https://sqlite.org/floatingpoint.html#the_ieee754_c_extension) |
+| CSQLITE_ENABLE_PERCENTILE_EXTENSION | Y | [percentile](https://www.sqlite.org/src/file/ext/misc/percentile.c) |
+| CSQLITE_ENABLE_SERIES_EXTENSION | Y | [series](https://www.sqlite.org/src/file/ext/misc/series.c) |
+| CSQLITE_ENABLE_SHA3_EXTENSION | Y | [sha3](https://www.sqlite.org/src/file/ext/misc/shathree.c) |
+| CSQLITE_ENABLE_UUID_EXTENSION | Y | [uuid](https://www.sqlite.org/src/file/ext/misc/uuid.c) |
+
 ## License
 
 SQLite is in the [public domain](https://sqlite.org/copyright.html).

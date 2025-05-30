@@ -1,0 +1,4 @@
+module CSQLitePercentileExtension {
+	header "csqlite_percentile_extension.h"
+	export *
+}
