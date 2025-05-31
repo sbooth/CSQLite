@@ -42,21 +42,19 @@ The following traits are used to specify the build configuration and the default
 | OMIT_AUTOINIT | Y | [SQLITE_OMIT_AUTOINIT](https://sqlite.org/compile.html#omit_autoinit) |
 | STRICT_SUBTYPE_1 | Y | [SQLITE_STRICT_SUBTYPE=1](https://sqlite.org/compile.html#strict_subtype) |
 
-#### Double-Quoted Strings
+#### [Double-Quoted Strings](https://sqlite.org/quirks.html#dblquote)
 
 > [!IMPORTANT]
 > The `DQS_` traits are mutually exclusive and only one should be specified. 
 
-> [!NOTE]
-> The SQLite default is `DQS_3` but the SQLite recommended value is `DQS_0`.
+The SQLite default is `DQS_3` but the SQLite recommended value is `DQS_0`.
 
-#### Thread Safety
+#### [Threading Mode](https://sqlite.org/threadsafe.html)
 
 > [!IMPORTANT]
 > The `THREADSAFE_` traits are mutually exclusive and only one should be specified.
 
-> [!NOTE]
-> The SQLite default is `THREADSAFE_1` but the SQLite recommended value is `THREADSAFE_0`.
+The SQLite default is `THREADSAFE_1` but the SQLite recommended value is `THREADSAFE_0`.
 
 ### Features
 
