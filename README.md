@@ -44,11 +44,13 @@ The following traits are used to specify the build configuration and the default
 
 > [!IMPORTANT]
 > The `DQS_` traits are mutually exclusive and only one should be specified. 
+
 > [!NOTE]
 > The SQLite default is `DQS_3` but the SQLite recommended value is `DQS_0`.
 
 > [!IMPORTANT]
 > The `THREADSAFE_` traits are mutually exclusive and only one should be specified.
+
 > [!NOTE]
 > The SQLite default is `THREADSAFE_1` but the SQLite recommended value is `THREADSAFE_0`.
 
