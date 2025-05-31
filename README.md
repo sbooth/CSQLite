@@ -47,14 +47,14 @@ The following traits are used to specify the build configuration and the default
 > [!IMPORTANT]
 > The `DQS_` traits are mutually exclusive and only one should be specified. 
 
-The SQLite default is `DQS_3` but the SQLite recommended value is `DQS_0`.
+The SQLite default is `SQLITE_DQS=3` but the SQLite recommended value is `SQLITE_DQS=0`.
 
 #### [Threading Mode](https://sqlite.org/threadsafe.html)
 
 > [!IMPORTANT]
 > The `THREADSAFE_` traits are mutually exclusive and only one should be specified.
 
-The SQLite default is `THREADSAFE_1` but the SQLite recommended value is `THREADSAFE_0`.
+The SQLite default is `SQLITE_THREADSAFE=1` but the SQLite recommended value is `SQLITE_THREADSAFE=0`.
 
 ### Features
 
@@ -79,6 +79,24 @@ The following traits enable commonly-used SQLite features:
 
 > [!NOTE]
 > The `ENABLE_SESSION` trait also sets the `ENABLE_PREUPDATE_HOOK` trait.
+
+### Using Custom Traits
+
+For example, to build using the SQLite recommended compile-time options except with the default thread-safety and automatic library initialization behavior, add the following dependency to your `Package.swift`:
+
+```swift
+dependencies: [
+    .package(
+        url: "https://github.com/sbooth/CSQLite",
+        from: "3.50.0"
+        traits: Set<Package.Dependency.Trait>([.defaults])
+            .subtracting([
+                "THREADSAFE_0",
+                "OMIT_AUTOINIT",
+            ])
+    )
+],
+```
 
 ## License
 
