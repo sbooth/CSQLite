@@ -80,24 +80,6 @@ The following traits enable commonly-used SQLite features:
 > [!NOTE]
 > The `ENABLE_SESSION` trait also sets the `ENABLE_PREUPDATE_HOOK` trait.
 
-### Using Traits
-
-For example, to build using the SQLite recommended compile-time options except with default thread-safety and automatic library initialization, add the following dependency to your `Package.swift`:
-
-```swift
-dependencies: [
-    .package(
-        url: "https://github.com/sbooth/CSQLite",
-        from: "3.50.0"
-        traits: Set<Package.Dependency.Trait>([.defaults])
-            .subtracting([
-                "THREADSAFE_0",
-                "OMIT_AUTOINIT",
-            ])
-    )
-],
-```
-
 ## License
 
 SQLite is in the [public domain](https://sqlite.org/copyright.html).
