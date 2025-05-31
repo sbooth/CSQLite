@@ -1,0 +1,4 @@
+module CSQLiteSHA3Extension {
+	header "csqlite_sha3_extension.h"
+	export *
+}
