@@ -1,5 +1,5 @@
 /*
- ** 2021-06-08
+ ** 2024-05-24
  **
  ** The author disclaims copyright to this source code.  In place of
  ** a legal notice, here is a blessing:
@@ -14,7 +14,7 @@
  */
 
 import XCTest
-@testable import CSQLite
+@testable import CSQLiteExtensions
 
 final class CSQLiteExtensionTests: XCTestCase {
 #if swift(<6.1) || OMIT_AUTOINIT
