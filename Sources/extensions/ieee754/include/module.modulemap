@@ -1,0 +1,4 @@
+module CSQLiteIEEE754Extension {
+	header "csqlite_ieee754_extension.h"
+	export *
+}
