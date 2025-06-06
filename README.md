@@ -66,6 +66,7 @@ The following traits enable commonly-used SQLite features:
 | ENABLE_COLUMN_METADATA | | [SQLITE_ENABLE_COLUMN_METADATA](https://sqlite.org/c3ref/column_database_name.html) |
 | ENABLE_DBPAGE_VTAB | | [SQLITE_ENABLE_DBPAGE_VTAB](https://sqlite.org/dbpage.html) |
 | ENABLE_DBSTAT_VTAB | | [SQLITE_ENABLE_DBSTAT_VTAB](https://sqlite.org/dbstat.html) |
+| ENABLE_FTS4 | | [SQLITE_ENABLE_FTS4](https://sqlite.org/fts3.html) |
 | ENABLE_FTS5 | Y | [SQLITE_ENABLE_FTS5](https://sqlite.org/fts5.html) |
 | ENABLE_GEOPOLY | | [SQLITE_ENABLE_GEOPOLY](https://sqlite.org/geopoly.html) |
 | ENABLE_MATH_FUNCTIONS | Y | [SQLITE_ENABLE_MATH_FUNCTIONS](https://sqlite.org/lang_mathfunc.html) |

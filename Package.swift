@@ -76,6 +76,8 @@ let features: [CSetting] = [
 	.define("SQLITE_ENABLE_DBPAGE_VTAB", .when(traits: ["ENABLE_DBPAGE_VTAB"])),
 	// https://sqlite.org/dbstat.html
 	.define("SQLITE_ENABLE_DBSTAT_VTAB", .when(traits: ["ENABLE_DBSTAT_VTAB"])),
+	// https://sqlite.org/fts3.html
+	.define("SQLITE_ENABLE_FTS4", .when(traits: ["ENABLE_FTS4"])),
 	// https://sqlite.org/fts5.html
 	.define("SQLITE_ENABLE_FTS5", .when(traits: ["ENABLE_FTS5"])),
 	// https://sqlite.org/geopoly.html
@@ -200,6 +202,10 @@ let package = Package(
 		.trait(
 			name: "ENABLE_DBSTAT_VTAB",
 			description: "Enables the dbstat virtual table"
+		),
+		.trait(
+			name: "ENABLE_FTS4",
+			description: "Enables versions 3 and 4 of the full-text search engine (fts3 and fts4)"
 		),
 		.trait(
 			name: "ENABLE_FTS5",
