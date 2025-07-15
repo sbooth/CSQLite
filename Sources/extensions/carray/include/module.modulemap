@@ -1,0 +1,5 @@
+module CSQLiteCArrayExtension {
+	header "carray.h"
+	header "csqlite_carray_extension.h"
+	export *
+}

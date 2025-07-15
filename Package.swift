@@ -109,6 +109,7 @@ let package = Package(
 			name: "CSQLite",
 			targets: [
 				"CSQLite",
+				"CSQLiteExtensions",
 			]),
 	],
 	traits: [
@@ -249,6 +250,35 @@ let package = Package(
 			name: "ENABLE_STAT4",
 			description: "Enables the sqlite_stat4 table"
 		),
+		// Statically linked extensions
+		.trait(
+			name: "CSQLITE_ENABLE_CARRAY_EXTENSION",
+			description: "Enables the statically linked carray extension"
+		),
+		.trait(
+			name: "CSQLITE_ENABLE_DECIMAL_EXTENSION",
+			description: "Enables the statically linked decimal extension"
+		),
+		.trait(
+			name: "CSQLITE_ENABLE_IEEE754_EXTENSION",
+			description: "Enables the statically linked ieee754 extension"
+		),
+		.trait(
+			name: "CSQLITE_ENABLE_PERCENTILE_EXTENSION",
+			description: "Enables the statically linked percentile extension"
+		),
+		.trait(
+			name: "CSQLITE_ENABLE_SERIES_EXTENSION",
+			description: "Enables the statically linked series extension"
+		),
+		.trait(
+			name: "CSQLITE_ENABLE_SHA3_EXTENSION",
+			description: "Enables the statically linked sha3 extension"
+		),
+		.trait(
+			name: "CSQLITE_ENABLE_UUID_EXTENSION",
+			description: "Enables the statically linked uuid extension"
+		),
 		// Default traits
 		.default(enabledTraits: [
 			"DQS_0",
@@ -270,6 +300,13 @@ let package = Package(
 			"ENABLE_SNAPSHOT",
 			"ENABLE_STMTVTAB",
 			"ENABLE_STAT4",
+			"CSQLITE_ENABLE_CARRAY_EXTENSION",
+			"CSQLITE_ENABLE_DECIMAL_EXTENSION",
+			"CSQLITE_ENABLE_IEEE754_EXTENSION",
+			"CSQLITE_ENABLE_PERCENTILE_EXTENSION",
+			"CSQLITE_ENABLE_SERIES_EXTENSION",
+			"CSQLITE_ENABLE_SHA3_EXTENSION",
+			"CSQLITE_ENABLE_UUID_EXTENSION",
 		]),
 	],
 	targets: [
@@ -277,19 +314,108 @@ let package = Package(
 		// Targets can depend on other targets in this package and products from dependencies.
 		.target(
 			name: "CSQLite",
-			cSettings: compileTimeOptions + platformConfiguration + features + [
+			cSettings: compileTimeOptions + platformConfiguration + features,
+			linkerSettings: [
+				.linkedLibrary("m"),
+			]),
+		.target(
+			name: "CSQLiteExtensions",
+			dependencies: [
+				.targetItem(name: "CSQLiteCArrayExtension", condition: .when(traits: ["CSQLITE_ENABLE_CARRAY_EXTENSION"])),
+				.targetItem(name: "CSQLiteDecimalExtension", condition: .when(traits: ["CSQLITE_ENABLE_DECIMAL_EXTENSION"])),
+				.targetItem(name: "CSQLiteIEEE754Extension", condition: .when(traits: ["CSQLITE_ENABLE_IEEE754_EXTENSION"])),
+				.targetItem(name: "CSQLitePercentileExtension", condition: .when(traits: ["CSQLITE_ENABLE_PERCENTILE_EXTENSION"])),
+				.targetItem(name: "CSQLiteSeriesExtension", condition: .when(traits: ["CSQLITE_ENABLE_SERIES_EXTENSION"])),
+				.targetItem(name: "CSQLiteSHA3Extension", condition: .when(traits: ["CSQLITE_ENABLE_SHA3_EXTENSION"])),
+				.targetItem(name: "CSQLiteUUIDExtension", condition: .when(traits: ["CSQLITE_ENABLE_UUID_EXTENSION"])),
+			]),
+		.target(
+			name: "CSQLiteCArrayExtension",
+			dependencies: [
+				"CSQLite",
+			],
+			path: "Sources/extensions/carray",
+			cSettings: [
 				// For statically linking extensions
 				// https://sqlite.org/loadext.html#statically_linking_a_run_time_loadable_extension
 				.define("SQLITE_CORE", to: "1"),
+			]),
+		.target(
+			name: "CSQLiteDecimalExtension",
+			dependencies: [
+				"CSQLite",
 			],
-			linkerSettings: [
-				.linkedLibrary("m"),
+			path: "Sources/extensions/decimal",
+			cSettings: [
+				// For statically linking extensions
+				// https://sqlite.org/loadext.html#statically_linking_a_run_time_loadable_extension
+				.define("SQLITE_CORE", to: "1"),
+			]),
+		.target(
+			name: "CSQLiteIEEE754Extension",
+			dependencies: [
+				"CSQLite",
+			],
+			path: "Sources/extensions/ieee754",
+			cSettings: [
+				// For statically linking extensions
+				// https://sqlite.org/loadext.html#statically_linking_a_run_time_loadable_extension
+				.define("SQLITE_CORE", to: "1"),
+			]),
+		.target(
+			name: "CSQLitePercentileExtension",
+			dependencies: [
+				"CSQLite",
+			],
+			path: "Sources/extensions/percentile",
+			cSettings: [
+				// For statically linking extensions
+				// https://sqlite.org/loadext.html#statically_linking_a_run_time_loadable_extension
+				.define("SQLITE_CORE", to: "1"),
+			]),
+		.target(
+			name: "CSQLiteSeriesExtension",
+			dependencies: [
+				"CSQLite",
+			],
+			path: "Sources/extensions/series",
+			cSettings: [
+				// For statically linking extensions
+				// https://sqlite.org/loadext.html#statically_linking_a_run_time_loadable_extension
+				.define("SQLITE_CORE", to: "1"),
+			]),
+		.target(
+			name: "CSQLiteSHA3Extension",
+			dependencies: [
+				"CSQLite",
+			],
+			path: "Sources/extensions/sha3",
+			cSettings: [
+				// For statically linking extensions
+				// https://sqlite.org/loadext.html#statically_linking_a_run_time_loadable_extension
+				.define("SQLITE_CORE", to: "1"),
+			]),
+		.target(
+			name: "CSQLiteUUIDExtension",
+			dependencies: [
+				"CSQLite",
+			],
+			path: "Sources/extensions/uuid",
+			cSettings: [
+				// For statically linking extensions
+				// https://sqlite.org/loadext.html#statically_linking_a_run_time_loadable_extension
+				.define("SQLITE_CORE", to: "1"),
 			]),
 		.testTarget(
 			name: "CSQLiteTests",
 			dependencies: [
 				"CSQLite",
-			])
+			]),
+		.testTarget(
+			name: "CSQLiteExtensionsTests",
+			dependencies: [
+				"CSQLiteExtensions",
+			]),
 	],
 	cLanguageStandard: .gnu11
 )

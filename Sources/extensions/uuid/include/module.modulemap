@@ -1,0 +1,4 @@
+module CSQLiteUUIDExtension {
+	header "csqlite_uuid_extension.h"
+	export *
+}
