@@ -28,8 +28,8 @@ import Foundation
 	}
 #endif
 
-	@Test func carray() {
-		#expect(csqlite_sqlite3_auto_extension_carray() == SQLITE_OK)
+	@Test func carray() throws {
+		try #require(csqlite_sqlite3_auto_extension_carray() == SQLITE_OK)
 
 		var db: OpaquePointer?
 		#expect(sqlite3_open_v2(":memory:", &db, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, nil) == SQLITE_OK)
@@ -54,8 +54,8 @@ import Foundation
 		#expect(sqlite3_close(db) == SQLITE_OK)
 	}
 
-	@Test func decimal() {
-		#expect(csqlite_sqlite3_auto_extension_decimal() == SQLITE_OK)
+	@Test func decimal() throws {
+		try #require(csqlite_sqlite3_auto_extension_decimal() == SQLITE_OK)
 
 		var db: OpaquePointer?
 		#expect(sqlite3_open_v2(":memory:", &db, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, nil) == SQLITE_OK)
@@ -70,8 +70,8 @@ import Foundation
 		#expect(sqlite3_close(db) == SQLITE_OK)
 	}
 
-	@Test func ieee() {
-		#expect(csqlite_sqlite3_auto_extension_ieee754() == SQLITE_OK)
+	@Test func ieee() throws {
+		try #require(csqlite_sqlite3_auto_extension_ieee754() == SQLITE_OK)
 
 		var db: OpaquePointer?
 		#expect(sqlite3_open_v2(":memory:", &db, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, nil) == SQLITE_OK)
@@ -86,8 +86,8 @@ import Foundation
 		#expect(sqlite3_close(db) == SQLITE_OK)
 	}
 
-	@Test func percentile() {
-		#expect(csqlite_sqlite3_auto_extension_percentile() == SQLITE_OK)
+	@Test func percentile() throws {
+		try #require(csqlite_sqlite3_auto_extension_percentile() == SQLITE_OK)
 
 		var db: OpaquePointer?
 		#expect(sqlite3_open_v2(":memory:", &db, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, nil) == SQLITE_OK)
@@ -101,8 +101,8 @@ import Foundation
 		#expect(sqlite3_close(db) == SQLITE_OK)
 	}
 
-	@Test func series() {
-		#expect(csqlite_sqlite3_auto_extension_series() == SQLITE_OK)
+	@Test func series() throws {
+		try #require(csqlite_sqlite3_auto_extension_series() == SQLITE_OK)
 
 		var db: OpaquePointer?
 		#expect(sqlite3_open_v2(":memory:", &db, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, nil) == SQLITE_OK)
@@ -120,8 +120,8 @@ import Foundation
 		#expect(sqlite3_close(db) == SQLITE_OK)
 	}
 
-	@Test func sha3() {
-		#expect(csqlite_sqlite3_auto_extension_sha3() == SQLITE_OK)
+	@Test func sha3() throws {
+		try #require(csqlite_sqlite3_auto_extension_sha3() == SQLITE_OK)
 
 		var db: OpaquePointer?
 		#expect(sqlite3_open_v2(":memory:", &db, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, nil) == SQLITE_OK)
@@ -136,8 +136,8 @@ import Foundation
 		#expect(sqlite3_close(db) == SQLITE_OK)
 	}
 
-	@Test func uuid() {
-		#expect(csqlite_sqlite3_auto_extension_uuid() == SQLITE_OK)
+	@Test func uuid() throws {
+		try #require(csqlite_sqlite3_auto_extension_uuid() == SQLITE_OK)
 
 		var db: OpaquePointer?
 		#expect(sqlite3_open_v2(":memory:", &db, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, nil) == SQLITE_OK)
