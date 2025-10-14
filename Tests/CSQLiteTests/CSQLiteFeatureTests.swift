@@ -27,6 +27,32 @@ import Testing
 	}
 #endif
 
+#if swift(<6.1) || ENABLE_CARRAY
+	@Test func carray() {
+		var db: OpaquePointer?
+		#expect(sqlite3_open_v2(":memory:", &db, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, nil) == SQLITE_OK)
+
+		#expect(sqlite3_exec(db, "create table t1(a);", nil, nil, nil) == SQLITE_OK)
+		#expect(sqlite3_exec(db, "insert into t1(a) values (2),(3),(4),(5);", nil, nil, nil) == SQLITE_OK)
+
+		var stmt: OpaquePointer?
+		#expect(sqlite3_prepare_v2(db, "select a from t1 where a in carray(?);", -1, &stmt, nil) == SQLITE_OK)
+		let array: [Int32] = [3,5];
+		let mem = UnsafeMutableBufferPointer<Int32>.allocate(capacity: array.count)
+		_ = mem.initialize(from: array)
+		#expect(sqlite3_carray_bind(stmt, 1, mem.baseAddress, Int32(array.count), CARRAY_INT32, {
+			$0?.deallocate()
+		}) == SQLITE_OK)
+		#expect(sqlite3_step(stmt) == SQLITE_ROW)
+		#expect(sqlite3_column_int(stmt, 0) == 3)
+		#expect(sqlite3_step(stmt) == SQLITE_ROW)
+		#expect(sqlite3_column_int(stmt, 0) == 5)
+
+		#expect(sqlite3_finalize(stmt) == SQLITE_OK)
+		#expect(sqlite3_close(db) == SQLITE_OK)
+	}
+#endif
+
 #if swift(<6.1) || ENABLE_FTS5
 	@Test func fts5() {
 		var db: OpaquePointer?
@@ -57,6 +83,21 @@ import Testing
 
 		#expect(sqlite3_step(stmt) == SQLITE_ROW)
 		#expect(sqlite3_column_double(stmt, 0) < 3.2)
+
+		#expect(sqlite3_finalize(stmt) == SQLITE_OK)
+		#expect(sqlite3_close(db) == SQLITE_OK)
+	}
+#endif
+
+#if swift(<6.1) || ENABLE_PERCENTILE
+	@Test func percentile() {
+		var db: OpaquePointer?
+		#expect(sqlite3_open_v2(":memory:", &db, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, nil) == SQLITE_OK)
+
+		var stmt: OpaquePointer?
+		#expect(sqlite3_prepare_v2(db, "select median(33);", -1, &stmt, nil) == SQLITE_OK)
+		#expect(sqlite3_step(stmt) == SQLITE_ROW)
+		#expect(sqlite3_column_int(stmt, 0) == 33)
 
 		#expect(sqlite3_finalize(stmt) == SQLITE_OK)
 		#expect(sqlite3_close(db) == SQLITE_OK)

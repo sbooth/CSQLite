@@ -7,9 +7,9 @@
 
 The package contains the [SQLite amalgamation](https://sqlite.org/amalgamation.html) built using the [recommended compile-time options](https://sqlite.org/compile.html#recommended_compile_time_options).
 
-The default build configuration includes the [FTS5 extension](https://sqlite.org/fts5.html), built-in [SQL math functions](https://sqlite.org/lang_mathfunc.html), the [R\*Tree index extension](https://sqlite.org/rtree.html), [database snapshots](https://sqlite.org/c3ref/snapshot.html), [sqlite_stmt table](https://www.sqlite.org/stmt.html), and the [sqlite_stat4 table](https://sqlite.org/fileformat2.html#stat4tab).
+The default build configuration includes the [carray extension](https://sqlite.org/carray.html), [FTS5 extension](https://sqlite.org/fts5.html), built-in [SQL math functions](https://sqlite.org/lang_mathfunc.html), [percentile extension](https://www.sqlite.org/src/file/ext/misc/percentile.c), [R\*Tree index extension](https://sqlite.org/rtree.html), [database snapshots](https://sqlite.org/c3ref/snapshot.html), [sqlite_stmt table](https://www.sqlite.org/stmt.html), and the [sqlite_stat4 table](https://sqlite.org/fileformat2.html#stat4tab).
 
-Additionally, the [carray](https://sqlite.org/carray.html), [decimal](https://sqlite.org/floatingpoint.html#the_decimal_c_extension), [ieee754](https://sqlite.org/floatingpoint.html#the_ieee754_c_extension), [percentile](https://www.sqlite.org/src/file/ext/misc/percentile.c), [series](https://www.sqlite.org/src/file/ext/misc/series.c), [sha3](https://www.sqlite.org/src/file/ext/misc/shathree.c), and [uuid](https://www.sqlite.org/src/file/ext/misc/uuid.c) extensions are statically linked.
+Additionally, the [decimal](https://sqlite.org/floatingpoint.html#the_decimal_c_extension), [ieee754](https://sqlite.org/floatingpoint.html#the_ieee754_c_extension), [series](https://www.sqlite.org/src/file/ext/misc/series.c), [sha3](https://www.sqlite.org/src/file/ext/misc/shathree.c), and [uuid](https://www.sqlite.org/src/file/ext/misc/uuid.c) extensions are statically linked.
 
 The package also includes [shims](Sources/CSQLite/include/csqlite_shims.h) for various C functions not easily accessible from Swift.
 
@@ -63,6 +63,7 @@ The following traits enable commonly-used SQLite features:
 | Package Trait | Default | SQLite Feature |
 | --- | :---: | --- |
 | ENABLE_BYTECODE_VTAB | | [SQLITE_ENABLE_BYTECODE_VTAB](https://sqlite.org/bytecodevtab.html) |
+| ENABLE_CARRAY | | [SQLITE_ENABLE_CARRAY](https://sqlite.org/carray.html) |
 | ENABLE_COLUMN_METADATA | | [SQLITE_ENABLE_COLUMN_METADATA](https://sqlite.org/c3ref/column_database_name.html) |
 | ENABLE_DBPAGE_VTAB | | [SQLITE_ENABLE_DBPAGE_VTAB](https://sqlite.org/dbpage.html) |
 | ENABLE_DBSTAT_VTAB | | [SQLITE_ENABLE_DBSTAT_VTAB](https://sqlite.org/dbstat.html) |
@@ -71,6 +72,7 @@ The following traits enable commonly-used SQLite features:
 | ENABLE_GEOPOLY | | [SQLITE_ENABLE_GEOPOLY](https://sqlite.org/geopoly.html) |
 | ENABLE_MATH_FUNCTIONS | Y | [SQLITE_ENABLE_MATH_FUNCTIONS](https://sqlite.org/lang_mathfunc.html) |
 | ENABLE_NORMALIZE | | [SQLITE_ENABLE_NORMALIZE](https://sqlite.org/c3ref/expanded_sql.html) |
+| ENABLE_PERCENTILE | | [SQLITE_ENABLE_PERCENTILE](https://sqlite.org/percentile.html) |
 | ENABLE_PREUPDATE_HOOK | | [SQLITE_ENABLE_PREUPDATE_HOOK](https://sqlite.org/c3ref/preupdate_blobwrite.html) |
 | ENABLE_RTREE | Y | [SQLITE_ENABLE_RTREE](https://sqlite.org/rtree.html) |
 | ENABLE_SESSION | | [SQLITE_ENABLE_SESSION](https://sqlite.org/sessionintro.html) |
