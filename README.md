@@ -63,7 +63,7 @@ The following traits enable commonly-used SQLite features:
 | Package Trait | Default | SQLite Feature |
 | --- | :---: | --- |
 | ENABLE_BYTECODE_VTAB | | [SQLITE_ENABLE_BYTECODE_VTAB](https://sqlite.org/bytecodevtab.html) |
-| ENABLE_CARRAY | | [SQLITE_ENABLE_CARRAY](https://sqlite.org/carray.html) |
+| ENABLE_CARRAY | Y | [SQLITE_ENABLE_CARRAY](https://sqlite.org/carray.html) |
 | ENABLE_COLUMN_METADATA | | [SQLITE_ENABLE_COLUMN_METADATA](https://sqlite.org/c3ref/column_database_name.html) |
 | ENABLE_DBPAGE_VTAB | | [SQLITE_ENABLE_DBPAGE_VTAB](https://sqlite.org/dbpage.html) |
 | ENABLE_DBSTAT_VTAB | | [SQLITE_ENABLE_DBSTAT_VTAB](https://sqlite.org/dbstat.html) |
@@ -72,7 +72,7 @@ The following traits enable commonly-used SQLite features:
 | ENABLE_GEOPOLY | | [SQLITE_ENABLE_GEOPOLY](https://sqlite.org/geopoly.html) |
 | ENABLE_MATH_FUNCTIONS | Y | [SQLITE_ENABLE_MATH_FUNCTIONS](https://sqlite.org/lang_mathfunc.html) |
 | ENABLE_NORMALIZE | | [SQLITE_ENABLE_NORMALIZE](https://sqlite.org/c3ref/expanded_sql.html) |
-| ENABLE_PERCENTILE | | [SQLITE_ENABLE_PERCENTILE](https://sqlite.org/percentile.html) |
+| ENABLE_PERCENTILE | Y | [SQLITE_ENABLE_PERCENTILE](https://sqlite.org/percentile.html) |
 | ENABLE_PREUPDATE_HOOK | | [SQLITE_ENABLE_PREUPDATE_HOOK](https://sqlite.org/c3ref/preupdate_blobwrite.html) |
 | ENABLE_RTREE | Y | [SQLITE_ENABLE_RTREE](https://sqlite.org/rtree.html) |
 | ENABLE_SESSION | | [SQLITE_ENABLE_SESSION](https://sqlite.org/sessionintro.html) |
