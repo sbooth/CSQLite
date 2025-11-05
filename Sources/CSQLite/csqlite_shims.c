@@ -293,17 +293,6 @@ int csqlite_sqlite3_vtab_uses_all_schemas(sqlite3 *db)
 
 // MARK: - Database extensions
 
-void sqlite3_carray_init(void);
-int csqlite_sqlite3_auto_extension_carray()
-{
-	return sqlite3_auto_extension(sqlite3_carray_init);
-}
-
-int csqlite_sqlite3_cancel_auto_extension_carray()
-{
-	return sqlite3_cancel_auto_extension(sqlite3_carray_init);
-}
-
 void sqlite3_decimal_init(void);
 int csqlite_sqlite3_auto_extension_decimal()
 {
@@ -324,17 +313,6 @@ int csqlite_sqlite3_auto_extension_ieee754()
 int csqlite_sqlite3_cancel_auto_extension_ieee754()
 {
 	return sqlite3_cancel_auto_extension(sqlite3_ieee_init);
-}
-
-void sqlite3_percentile_init(void);
-int csqlite_sqlite3_auto_extension_percentile()
-{
-	return sqlite3_auto_extension(sqlite3_percentile_init);
-}
-
-int csqlite_sqlite3_cancel_auto_extension_percentile()
-{
-	return sqlite3_cancel_auto_extension(sqlite3_percentile_init);
 }
 
 void sqlite3_series_init(void);
