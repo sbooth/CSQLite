@@ -70,6 +70,8 @@ let platformConfiguration: [CSetting] = [
 let features: [CSetting] = [
 	// https://sqlite.org/bytecodevtab.html
 	.define("SQLITE_ENABLE_BYTECODE_VTAB", .when(traits: ["ENABLE_BYTECODE_VTAB"])),
+	// https://sqlite.org/carray.html
+	.define("SQLITE_ENABLE_CARRAY", .when(traits: ["ENABLE_CARRAY"])),
 	// https://sqlite.org/c3ref/column_database_name.html
 	.define("SQLITE_ENABLE_COLUMN_METADATA", .when(traits: ["ENABLE_COLUMN_METADATA"])),
 	// https://sqlite.org/dbpage.html
@@ -87,6 +89,8 @@ let features: [CSetting] = [
 	.define("SQLITE_ENABLE_MATH_FUNCTIONS", .when(traits: ["ENABLE_MATH_FUNCTIONS"])),
 	// https://sqlite.org/c3ref/expanded_sql.html
 	.define("SQLITE_ENABLE_NORMALIZE", .when(traits: ["ENABLE_NORMALIZE"])),
+	// https://sqlite.org/percentile.html
+	.define("SQLITE_ENABLE_PERCENTILE", .when(traits: ["ENABLE_PERCENTILE"])),
 	// https://sqlite.org/c3ref/preupdate_blobwrite.html
 	.define("SQLITE_ENABLE_PREUPDATE_HOOK", .when(traits: ["ENABLE_PREUPDATE_HOOK"])),
 	// https://sqlite.org/rtree.html
@@ -191,6 +195,10 @@ let package = Package(
 			description: "Enables bytecode and tables_used table-valued functions"
 		),
 		.trait(
+			name: "ENABLE_CARRAY",
+			description: "Enables the carray extension"
+		),
+		.trait(
 			name: "ENABLE_COLUMN_METADATA",
 			description: "Enables column and table metadata functions"
 		),
@@ -221,6 +229,10 @@ let package = Package(
 		.trait(
 			name: "ENABLE_NORMALIZE",
 			description: "Enables the sqlite3_normalized_sql function"
+		),
+		.trait(
+			name: "ENABLE_PERCENTILE",
+			description: "Enables the percentile extension"
 		),
 		.trait(
 			name: "ENABLE_PREUPDATE_HOOK",
@@ -264,8 +276,10 @@ let package = Package(
 			"USE_ALLOCA",
 			"OMIT_AUTOINIT",
 			"STRICT_SUBTYPE_1",
+			"ENABLE_CARRAY",
 			"ENABLE_FTS5",
 			"ENABLE_MATH_FUNCTIONS",
+			"ENABLE_PERCENTILE",
 			"ENABLE_RTREE",
 			"ENABLE_SNAPSHOT",
 			"ENABLE_STMTVTAB",
