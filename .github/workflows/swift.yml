@@ -7,8 +7,8 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
-
+  build-macos:
+    name: Build and test on macOS
     runs-on: macos-latest
 
     steps:
@@ -18,6 +18,18 @@ jobs:
         xcode-version: latest-stable
     - name: Checkout
       uses: actions/checkout@v6
+    - name: Build
+      run: swift build -v
+    - name: Run tests
+      run: swift test -v
+
+  build-ubuntu:
+    name: Build and test on Ubuntu
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
     - name: Build
       run: swift build -v
     - name: Run tests
