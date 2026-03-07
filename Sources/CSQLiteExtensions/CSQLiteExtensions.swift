@@ -17,20 +17,12 @@
 @_exported import CSQLite
 #endif
 
-#if swift(<6.1) || CSQLITE_ENABLE_CARRAY_EXTENSION
-@_exported import CSQLiteCArrayExtension
-#endif
-
 #if swift(<6.1) || CSQLITE_ENABLE_DECIMAL_EXTENSION
 @_exported import CSQLiteDecimalExtension
 #endif
 
 #if swift(<6.1) || CSQLITE_ENABLE_IEEE754_EXTENSION
 @_exported import CSQLiteIEEE754Extension
-#endif
-
-#if swift(<6.1) || CSQLITE_ENABLE_PERCENTILE_EXTENSION
-@_exported import CSQLitePercentileExtension
 #endif
 
 #if swift(<6.1) || CSQLITE_ENABLE_SERIES_EXTENSION

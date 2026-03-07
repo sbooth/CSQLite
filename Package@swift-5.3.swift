@@ -61,6 +61,8 @@ let platformConfiguration: [CSetting] = [
 let features: [CSetting] = [
 	// https://sqlite.org/c3ref/column_database_name.html
 //	.define("SQLITE_ENABLE_COLUMN_METADATA"),
+	// https://sqlite.org/carray.html
+	.define("SQLITE_ENABLE_CARRAY"),
 	// https://sqlite.org/fts5.html
 	.define("SQLITE_ENABLE_FTS5"),
 	// https://sqlite.org/geopoly.html
@@ -68,6 +70,8 @@ let features: [CSetting] = [
 //	.define("SQLITE_ENABLE_ICU"),
 	// https://sqlite.org/lang_mathfunc.html
 	.define("SQLITE_ENABLE_MATH_FUNCTIONS"),
+	// https://sqlite.org/percentile.html
+	.define("SQLITE_ENABLE_PERCENTILE"),
 	// --> For pre-update hook support uncomment the following define
 	// https://sqlite.org/c3ref/preupdate_blobwrite.html
 //	.define("SQLITE_ENABLE_PREUPDATE_HOOK"),
@@ -107,24 +111,11 @@ let package = Package(
 		.target(
 			name: "CSQLiteExtensions",
 			dependencies: [
-				"CSQLiteCArrayExtension",
 				"CSQLiteDecimalExtension",
 				"CSQLiteIEEE754Extension",
-				"CSQLitePercentileExtension",
 				"CSQLiteSeriesExtension",
 				"CSQLiteSHA3Extension",
 				"CSQLiteUUIDExtension",
-			]),
-		.target(
-			name: "CSQLiteCArrayExtension",
-			dependencies: [
-				"CSQLite",
-			],
-			path: "Sources/extensions/carray",
-			cSettings: [
-				// For statically linking extensions
-				// https://sqlite.org/loadext.html#statically_linking_a_run_time_loadable_extension
-				.define("SQLITE_CORE", to: "1"),
 			]),
 		.target(
 			name: "CSQLiteDecimalExtension",
@@ -143,17 +134,6 @@ let package = Package(
 				"CSQLite",
 			],
 			path: "Sources/extensions/ieee754",
-			cSettings: [
-				// For statically linking extensions
-				// https://sqlite.org/loadext.html#statically_linking_a_run_time_loadable_extension
-				.define("SQLITE_CORE", to: "1"),
-			]),
-		.target(
-			name: "CSQLitePercentileExtension",
-			dependencies: [
-				"CSQLite",
-			],
-			path: "Sources/extensions/percentile",
 			cSettings: [
 				// For statically linking extensions
 				// https://sqlite.org/loadext.html#statically_linking_a_run_time_loadable_extension

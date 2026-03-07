@@ -70,6 +70,8 @@ let platformConfiguration: [CSetting] = [
 let features: [CSetting] = [
 	// https://sqlite.org/bytecodevtab.html
 	.define("SQLITE_ENABLE_BYTECODE_VTAB", .when(traits: ["ENABLE_BYTECODE_VTAB"])),
+	// https://sqlite.org/carray.html
+	.define("SQLITE_ENABLE_CARRAY", .when(traits: ["ENABLE_CARRAY"])),
 	// https://sqlite.org/c3ref/column_database_name.html
 	.define("SQLITE_ENABLE_COLUMN_METADATA", .when(traits: ["ENABLE_COLUMN_METADATA"])),
 	// https://sqlite.org/dbpage.html
@@ -87,6 +89,8 @@ let features: [CSetting] = [
 	.define("SQLITE_ENABLE_MATH_FUNCTIONS", .when(traits: ["ENABLE_MATH_FUNCTIONS"])),
 	// https://sqlite.org/c3ref/expanded_sql.html
 	.define("SQLITE_ENABLE_NORMALIZE", .when(traits: ["ENABLE_NORMALIZE"])),
+	// https://sqlite.org/percentile.html
+	.define("SQLITE_ENABLE_PERCENTILE", .when(traits: ["ENABLE_PERCENTILE"])),
 	// https://sqlite.org/c3ref/preupdate_blobwrite.html
 	.define("SQLITE_ENABLE_PREUPDATE_HOOK", .when(traits: ["ENABLE_PREUPDATE_HOOK"])),
 	// https://sqlite.org/rtree.html
@@ -192,6 +196,10 @@ let package = Package(
 			description: "Enables bytecode and tables_used table-valued functions"
 		),
 		.trait(
+			name: "ENABLE_CARRAY",
+			description: "Enables the carray extension"
+		),
+		.trait(
 			name: "ENABLE_COLUMN_METADATA",
 			description: "Enables column and table metadata functions"
 		),
@@ -224,6 +232,10 @@ let package = Package(
 			description: "Enables the sqlite3_normalized_sql function"
 		),
 		.trait(
+			name: "ENABLE_PERCENTILE",
+			description: "Enables the percentile extension"
+		),
+		.trait(
 			name: "ENABLE_PREUPDATE_HOOK",
 			description: "Enables the pre-update hook"
 		),
@@ -252,20 +264,12 @@ let package = Package(
 		),
 		// Statically linked extensions
 		.trait(
-			name: "CSQLITE_ENABLE_CARRAY_EXTENSION",
-			description: "Enables the statically linked carray extension"
-		),
-		.trait(
 			name: "CSQLITE_ENABLE_DECIMAL_EXTENSION",
 			description: "Enables the statically linked decimal extension"
 		),
 		.trait(
 			name: "CSQLITE_ENABLE_IEEE754_EXTENSION",
 			description: "Enables the statically linked ieee754 extension"
-		),
-		.trait(
-			name: "CSQLITE_ENABLE_PERCENTILE_EXTENSION",
-			description: "Enables the statically linked percentile extension"
 		),
 		.trait(
 			name: "CSQLITE_ENABLE_SERIES_EXTENSION",
@@ -294,16 +298,16 @@ let package = Package(
 			"USE_ALLOCA",
 			"OMIT_AUTOINIT",
 			"STRICT_SUBTYPE_1",
+			"ENABLE_CARRAY",
 			"ENABLE_FTS5",
 			"ENABLE_MATH_FUNCTIONS",
+			"ENABLE_PERCENTILE",
 			"ENABLE_RTREE",
 			"ENABLE_SNAPSHOT",
 			"ENABLE_STMTVTAB",
 			"ENABLE_STAT4",
-			"CSQLITE_ENABLE_CARRAY_EXTENSION",
 			"CSQLITE_ENABLE_DECIMAL_EXTENSION",
 			"CSQLITE_ENABLE_IEEE754_EXTENSION",
-			"CSQLITE_ENABLE_PERCENTILE_EXTENSION",
 			"CSQLITE_ENABLE_SERIES_EXTENSION",
 			"CSQLITE_ENABLE_SHA3_EXTENSION",
 			"CSQLITE_ENABLE_UUID_EXTENSION",
@@ -321,24 +325,11 @@ let package = Package(
 		.target(
 			name: "CSQLiteExtensions",
 			dependencies: [
-				.targetItem(name: "CSQLiteCArrayExtension", condition: .when(traits: ["CSQLITE_ENABLE_CARRAY_EXTENSION"])),
 				.targetItem(name: "CSQLiteDecimalExtension", condition: .when(traits: ["CSQLITE_ENABLE_DECIMAL_EXTENSION"])),
 				.targetItem(name: "CSQLiteIEEE754Extension", condition: .when(traits: ["CSQLITE_ENABLE_IEEE754_EXTENSION"])),
-				.targetItem(name: "CSQLitePercentileExtension", condition: .when(traits: ["CSQLITE_ENABLE_PERCENTILE_EXTENSION"])),
 				.targetItem(name: "CSQLiteSeriesExtension", condition: .when(traits: ["CSQLITE_ENABLE_SERIES_EXTENSION"])),
 				.targetItem(name: "CSQLiteSHA3Extension", condition: .when(traits: ["CSQLITE_ENABLE_SHA3_EXTENSION"])),
 				.targetItem(name: "CSQLiteUUIDExtension", condition: .when(traits: ["CSQLITE_ENABLE_UUID_EXTENSION"])),
-			]),
-		.target(
-			name: "CSQLiteCArrayExtension",
-			dependencies: [
-				"CSQLite",
-			],
-			path: "Sources/extensions/carray",
-			cSettings: [
-				// For statically linking extensions
-				// https://sqlite.org/loadext.html#statically_linking_a_run_time_loadable_extension
-				.define("SQLITE_CORE", to: "1"),
 			]),
 		.target(
 			name: "CSQLiteDecimalExtension",
@@ -357,17 +348,6 @@ let package = Package(
 				"CSQLite",
 			],
 			path: "Sources/extensions/ieee754",
-			cSettings: [
-				// For statically linking extensions
-				// https://sqlite.org/loadext.html#statically_linking_a_run_time_loadable_extension
-				.define("SQLITE_CORE", to: "1"),
-			]),
-		.target(
-			name: "CSQLitePercentileExtension",
-			dependencies: [
-				"CSQLite",
-			],
-			path: "Sources/extensions/percentile",
 			cSettings: [
 				// For statically linking extensions
 				// https://sqlite.org/loadext.html#statically_linking_a_run_time_loadable_extension
