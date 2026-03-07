@@ -109,7 +109,7 @@ import CSQLite
 
 #if swift(<6.1) || CSQLITE_ENABLE_UUID_EXTENSION
 	@Test func uuid() throws {
-		#require(csqlite_sqlite3_auto_extension_uuid() == SQLITE_OK)
+		try #require(csqlite_sqlite3_auto_extension_uuid() == SQLITE_OK)
 
 		var db: OpaquePointer?
 		#expect(sqlite3_open_v2(":memory:", &db, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, nil) == SQLITE_OK)
