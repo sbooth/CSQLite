@@ -1,5 +1,5 @@
 /*
- ** 2021-06-08
+ ** 2024-05-24
  **
  ** The author disclaims copyright to this source code.  In place of
  ** a legal notice, here is a blessing:
@@ -10,12 +10,13 @@
  **
  ******************************************************************************
  **
- ** Basic tests of CSQLite statically-linked extension functionality.
+ ** Basic tests of CSQLite statically linked extension functionality.
  */
 
 import Testing
 import Foundation
-@testable import CSQLite
+import CSQLite
+@testable import CSQLiteExtensions
 
 #if swift(<6.1) || THREADSAFE_0
 @MainActor
@@ -28,6 +29,7 @@ import Foundation
 	}
 #endif
 
+#if swift(<6.1) || CSQLITE_ENABLE_DECIMAL_EXTENSION
 	@Test func decimal() throws {
 		try #require(csqlite_sqlite3_auto_extension_decimal() == SQLITE_OK)
 
@@ -37,13 +39,16 @@ import Foundation
 		var stmt: OpaquePointer?
 		#expect(sqlite3_prepare_v2(db, "select decimal_add('1.67','2.33');", -1, &stmt, nil) == SQLITE_OK)
 		#expect(sqlite3_step(stmt) == SQLITE_ROW)
+
 		let r = String(cString: sqlite3_column_text(stmt, 0))
 		#expect(r == "4.00")
 
 		#expect(sqlite3_finalize(stmt) == SQLITE_OK)
 		#expect(sqlite3_close(db) == SQLITE_OK)
 	}
+#endif
 
+#if swift(<6.1) || CSQLITE_ENABLE_IEEE754_EXTENSION
 	@Test func ieee() throws {
 		try #require(csqlite_sqlite3_auto_extension_ieee754() == SQLITE_OK)
 
@@ -59,7 +64,9 @@ import Foundation
 		#expect(sqlite3_finalize(stmt) == SQLITE_OK)
 		#expect(sqlite3_close(db) == SQLITE_OK)
 	}
+#endif
 
+#if swift(<6.1) || CSQLITE_ENABLE_SERIES_EXTENSION
 	@Test func series() throws {
 		try #require(csqlite_sqlite3_auto_extension_series() == SQLITE_OK)
 
@@ -67,6 +74,7 @@ import Foundation
 		#expect(sqlite3_open_v2(":memory:", &db, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, nil) == SQLITE_OK)
 
 		var stmt: OpaquePointer?
+
 		#expect(sqlite3_prepare_v2(db, "select * from generate_series(10,20,5);", -1, &stmt, nil) == SQLITE_OK)
 		#expect(sqlite3_step(stmt) == SQLITE_ROW)
 		#expect(sqlite3_column_int(stmt, 0) == 10)
@@ -78,7 +86,9 @@ import Foundation
 		#expect(sqlite3_finalize(stmt) == SQLITE_OK)
 		#expect(sqlite3_close(db) == SQLITE_OK)
 	}
+#endif
 
+#if swift(<6.1) || CSQLITE_ENABLE_SHA3_EXTENSION
 	@Test func sha3() throws {
 		try #require(csqlite_sqlite3_auto_extension_sha3() == SQLITE_OK)
 
@@ -88,13 +98,16 @@ import Foundation
 		var stmt: OpaquePointer?
 		#expect(sqlite3_prepare_v2(db, "select lower(hex(sha3('sqlite')));", -1, &stmt, nil) == SQLITE_OK)
 		#expect(sqlite3_step(stmt) == SQLITE_ROW)
+
 		let h = String(cString: sqlite3_column_text(stmt, 0))
 		#expect(h == "963a88636d4c9cc3f011dfc9dc0058e96669d80a89893c68c0bb08a6a8208db3")
 
 		#expect(sqlite3_finalize(stmt) == SQLITE_OK)
 		#expect(sqlite3_close(db) == SQLITE_OK)
 	}
+#endif
 
+#if swift(<6.1) || CSQLITE_ENABLE_UUID_EXTENSION
 	@Test func uuid() throws {
 		try #require(csqlite_sqlite3_auto_extension_uuid() == SQLITE_OK)
 
@@ -118,4 +131,5 @@ import Foundation
 		#expect(sqlite3_finalize(stmt) == SQLITE_OK)
 		#expect(sqlite3_close(db) == SQLITE_OK)
 	}
+#endif
 }
