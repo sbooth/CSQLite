@@ -269,11 +269,6 @@ int csqlite_sqlite3_db_config_enable_comments(sqlite3 *db, int x, int *y)
 	return sqlite3_db_config(db, SQLITE_DBCONFIG_ENABLE_COMMENTS, x, y);
 }
 
-int csqlite_sqlite3_db_config_fp_digits(sqlite3 *db, int x, int *y)
-{
-	return sqlite3_db_config(db, SQLITE_DBCONFIG_FP_DIGITS, x, y);
-}
-
 // MARK: - Virtual table configuration
 
 int csqlite_sqlite3_vtab_config_constraint_support(sqlite3 *db, int x)
