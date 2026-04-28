@@ -38,7 +38,7 @@ The following traits are used to specify the build configuration and the default
 | OMIT_DEPRECATED | Y | [SQLITE_OMIT_DEPRECATED](https://sqlite.org/compile.html#omit_deprecated) |
 | OMIT_PROGRESS_CALLBACK | Y | [SQLITE_OMIT_PROGRESS_CALLBACK](https://sqlite.org/compile.html#omit_progress_callback) |
 | OMIT_SHARED_CACHE | Y | [SQLITE_OMIT_SHARED_CACHE](https://sqlite.org/compile.html#omit_shared_cache) |
-| USE_ALLOCA | Y | [SQLITE_USE_ALLOCA](https://sqlite.org/compile.html#use_alloca) |
+| USE_ALLOCA | | [SQLITE_USE_ALLOCA](https://sqlite.org/compile.html#use_alloca) |
 | OMIT_AUTOINIT | Y | [SQLITE_OMIT_AUTOINIT](https://sqlite.org/compile.html#omit_autoinit) |
 | STRICT_SUBTYPE_1 | Y | [SQLITE_STRICT_SUBTYPE=1](https://sqlite.org/compile.html#strict_subtype) |
 
