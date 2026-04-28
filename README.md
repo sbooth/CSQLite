@@ -17,7 +17,7 @@ The package also includes [shims](Sources/CSQLite/include/csqlite_shims.h) for v
 
 For Swift 6.1 and later the build configuration and features may be customized using package traits.
 
-### Recommended Compile-Time Options
+### Compile-Time Options
 
 The following traits are used to specify the build configuration and the defaults reflect the SQLite [recommended compile-time options](https://sqlite.org/compile.html#recommended_compile_time_options):
 
