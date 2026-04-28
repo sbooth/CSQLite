@@ -127,6 +127,8 @@ int csqlite_sqlite3_db_config_enable_attach_create(sqlite3 *db, int x, int *y);
 int csqlite_sqlite3_db_config_enable_attach_write(sqlite3 *db, int x, int *y);
 /// Equivalent to `sqlite3_db_config(db, SQLITE_DBCONFIG_ENABLE_COMMENTS, x, y)`
 int csqlite_sqlite3_db_config_enable_comments(sqlite3 *db, int x, int *y);
+/// Equivalent to `sqlite3_db_config(db, SQLITE_DBCONFIG_FP_DIGITS, x, y)`
+int csqlite_sqlite3_db_config_fp_digits(sqlite3 *db, int x, int *y);
 
 // MARK: - Virtual table configuration
 // See https://sqlite.org/c3ref/vtab_config.html
