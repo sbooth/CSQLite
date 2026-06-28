@@ -1,0 +1,4 @@
+module CSQLiteDecimalExtension {
+	header "csqlite_decimal_extension.h"
+	export *
+}
