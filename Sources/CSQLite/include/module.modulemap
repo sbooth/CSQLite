@@ -1,6 +1,12 @@
 module CSQLite {
-	header "sqlite3.h"
-	header "sqlite3ext.h"
-	header "csqlite_shims.h"
-	export *
+	module csqlite {
+		header "sqlite3.h"
+		header "csqlite_shims.h"
+	}
+
+	explicit module ext {
+		textual header "sqlite3ext.h"
+	}
+
+	export csqlite
 }
